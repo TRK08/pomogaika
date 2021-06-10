@@ -1,9 +1,18 @@
 <template>
-  <div></div>
+  <section class="home-shop">
+    <ShopSlider />
+  </section>
 </template>
 
 <script>
-export default {};
+import ShopSlider from "../components/ShopSLider.vue";
+export default {
+  components: { ShopSlider },
+  name: "HomeShop",
+  data() {
+    return {};
+  },
+};
 </script>
 
 <style>

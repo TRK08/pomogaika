@@ -6,7 +6,7 @@
     >
       <div class="container">
         <div class="row">
-          <div class="footer-left col-md-4">
+          <div class="footer-left col-md-4 col-sm-4">
             <img
               src="../../assets/img/logo-black.png"
               alt=""
@@ -20,7 +20,7 @@
               <a href="mailto:pomogaika96@yandex.ru">pomogaika96@yandex.ru</a>
             </p>
           </div>
-          <div class="footer-center col-md-6">
+          <div class="footer-center col-md-6 col-sm-8">
             <div class="footer-menu__wrap" v-if="this.$route.path === '/'">
               <ul
                 class="footer-menu"
@@ -56,6 +56,22 @@
               </ul>
             </div>
           </div>
+        </div>
+        <div class="footer-social" v-if="this.$route.path === '/'">
+          <a href="https://vk.com/pomogayka96"
+            ><img src="../../assets/img/vk-black.svg" alt="vk"
+          /></a>
+          <a href=""
+            ><img src="../../assets/img/instagram-black.svg" alt="inst"
+          /></a>
+        </div>
+        <div class="footer-social" v-else>
+          <a href="https://vk.com/pomogayka96"
+            ><img src="../../assets/img/vk-yellow.svg" alt="vk"
+          /></a>
+          <a href=""
+            ><img src="../../assets/img/instagram-yellow.svg" alt="inst"
+          /></a>
         </div>
       </div>
     </div>

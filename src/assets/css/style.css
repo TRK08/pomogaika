@@ -31,6 +31,11 @@ li {
 	padding: 0;
 }
 
+p {
+	margin: 0;
+	padding: 0;
+}
+
 a,
 a:hover,
 a:focus,
@@ -41,8 +46,6 @@ a:active {
 
 .container {
 	max-width: 1200px;
-	padding: 0 15px;
-	margin: 0 auto;
 }
 
 /* Header */
@@ -123,7 +126,6 @@ a:active {
 .header-menu-block {
 	display: flex;
 	font-size: 15px;
-	line-height: 18px;
 }
 
 .header-menu-block li {
@@ -210,6 +212,10 @@ a:active {
 	font-weight: 400;
 }
 
+.footer .container {
+	position: relative;
+}
+
 .head-footer {
 	background-color: var(--yellow-color);
 	padding: 21px 0;
@@ -229,17 +235,89 @@ a:active {
 }
 
 .footer-menu-title {
-	font-weight: 500;
 	font-size: 20px;
 	line-height: 24px;
+	font-weight: 500;
 	margin-bottom: 30px;
 }
 
 .footer-menu-item {
 	font-size: 15px;
 	line-height: 20px;
+	font-weight: 400;
 	margin-bottom: 20px;
 	white-space: nowrap;
+}
+
+.footer-social {
+	position: absolute;
+	bottom: 40px;
+	right: 60px;
+}
+
+/* SHOP SLIDER */
+
+.shop-slider {
+	padding: 30px 0;
+}
+
+.slide-box {
+	padding: 120px 0 83px 90px;
+	color: #fff;
+	font-weight: 400;
+	font-size: 16px;
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	background-size: cover;
+}
+
+.swiper-slide h2 {
+	color: var(--yellow-color);
+	font-size: 35px;
+	font-weight: 700;
+	margin-bottom: 25px;
+}
+
+.swiper-slide p {
+	margin-bottom: 73px;
+}
+
+.slider-btn {
+	padding: 15px 56px;
+	border: 1px solid #FFFAFA;
+	background-color: transparent;
+	transition: all .5s ease;
+}
+
+.slider-btn:hover {
+	border: 1px solid #000;
+	background-color: #000;
+	transition: all .5s ease;
+}
+
+.under-slider__wrap {
+  margin: 35px 0;
+}
+
+.under-slider-block {
+  display: flex;
+  align-items: center;
+}
+
+.under-slider-block:nth-child(2) {
+  justify-content: center;
+}
+
+.under-slider-block:last-child {
+  justify-content: flex-end;
+}
+
+.yellow-cube {
+  display: block;
+  width: 42px;
+  height: 42px;
+  background-color: var(--yellow-color);
+  margin-right: 25px;
 }
 
 /*ADAPTIIIIIIIIIV*/
