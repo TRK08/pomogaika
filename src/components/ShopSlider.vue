@@ -7,9 +7,11 @@
             class="slide-box"
             :style="{ 'background-image': 'url(' + item.img + ')' }"
           >
-            <h2 v-html="item.title"></h2>
-            <p v-html="item.subtitle"></p>
-            <button class="slider-btn">Получить</button>
+            <h2 data-swiper-parallax="-700" v-html="item.title"></h2>
+            <p data-swiper-parallax="-500" v-html="item.subtitle"></p>
+            <button class="slider-btn" data-swiper-parallax="-300">
+              Получить
+            </button>
           </div>
         </swiper-slide>
       </swiper>
@@ -37,13 +39,14 @@ export default {
       swiperOptions: {
         slidesPerView: 1,
         parallax: true,
-        delay: 5000,
+        autoplay: {
+          delay: 5000,
+        },
         spaceBetween: 0,
         touchRatio: 1,
         loop: true,
-        autoplay: true,
         infinite: true,
-        speed: 1200,
+        speed: 800,
       },
 
       slides: [

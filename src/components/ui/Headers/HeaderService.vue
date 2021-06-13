@@ -82,7 +82,7 @@ export default {
         },
         {
           text: "Статьи",
-          link: "/",
+          link: "/articles",
         },
         {
           text: "О нас",

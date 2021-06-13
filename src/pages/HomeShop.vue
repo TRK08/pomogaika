@@ -1,13 +1,15 @@
 <template>
   <section class="home-shop">
     <ShopSlider />
+    <AboutUs />
   </section>
 </template>
 
 <script>
-import ShopSlider from "../components/ShopSLider.vue";
+import AboutUs from "../components/AboutUs";
+import ShopSlider from "../components/ShopSlider";
 export default {
-  components: { ShopSlider },
+  components: { ShopSlider, AboutUs },
   name: "HomeShop",
   data() {
     return {};
@@ -15,5 +17,8 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+h2 {
+  color: red;
+}
 </style>

@@ -81,11 +81,11 @@ export default {
         },
         {
           text: "Автосервис",
-          link: "/",
+          link: "/service",
         },
         {
           text: "Статьи",
-          link: "/",
+          link: "/articles",
         },
         {
           text: "О нас",
