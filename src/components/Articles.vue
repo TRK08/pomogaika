@@ -1,7 +1,12 @@
 <template>
   <section class="articles">
     <div class="container">
-      <h2 class="articles-title">Статьи</h2>
+      <div class="articles-wrap">
+        <h2 class="articles-title">Статьи</h2>
+        <router-link tag="span" to="/articles" class="articles-all"
+          >Все статьи</router-link
+        >
+      </div>
       <div class="row">
         <SingleArticle
           v-for="singleArticle in articles.slice(0, articlesToShow)"
@@ -34,4 +39,17 @@ export default {
 </script>
 
 <style scoped>
+.articles-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.articles-all {
+  display: block;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 21px;
+  color: #fbbb36;
+}
 </style>

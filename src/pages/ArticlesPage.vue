@@ -1,14 +1,20 @@
 <template>
   <div class="container">
-    <div class="big-article">
-      <h3>Как часто нужно проводить диагностику автомобиля?</h3>
-      <span>5 ноября 2020</span>
-    </div>
+    <router-link
+      class="big-article"
+      tag="div"
+      v-for="bigArticle in articles.slice(0, 1)"
+      :key="bigArticle.id"
+      :to="`/articles/${bigArticle.id}`"
+    >
+      <h3>{{ bigArticle.title }}</h3>
+      <span> {{ bigArticle.date }} </span>
+    </router-link>
     <h2>Статьи</h2>
     <div class="row">
       <SingleArticle
         style="margin-bottom: 35px"
-        v-for="singleArticle in articles.slice(0, itemsToShow)"
+        v-for="singleArticle in articles.slice(1, itemsToShow + 1)"
         :key="singleArticle.id"
         :singleArticle="singleArticle"
         :artId="singleArticle.id"

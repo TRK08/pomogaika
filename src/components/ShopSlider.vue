@@ -15,10 +15,10 @@
           </div>
         </swiper-slide>
       </swiper>
-      <div class="under-slider__wrap">
+      <div class="under-slider__wrap hidden-xs">
         <div class="row">
           <div
-            class="under-slider-block col-md-4"
+            class="under-slider-block col-sm-4"
             v-for="item in underSlider"
             :key="item.text"
           >
@@ -39,6 +39,7 @@ export default {
       swiperOptions: {
         slidesPerView: 1,
         parallax: true,
+        autoheight: true,
         autoplay: {
           delay: 5000,
         },

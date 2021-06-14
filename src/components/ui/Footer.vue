@@ -6,7 +6,7 @@
     >
       <div class="container">
         <div class="row">
-          <div class="footer-left col-md-4 col-sm-4">
+          <div class="footer-left col-xs-4">
             <img
               src="../../assets/img/logo-black.png"
               alt=""
@@ -20,7 +20,7 @@
               <a href="mailto:pomogaika96@yandex.ru">pomogaika96@yandex.ru</a>
             </p>
           </div>
-          <div class="footer-center col-md-6 col-sm-8">
+          <div class="footer-center col-xs-8">
             <div class="footer-menu__wrap" v-if="this.$route.path === '/'">
               <ul
                 class="footer-menu"

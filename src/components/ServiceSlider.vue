@@ -4,11 +4,15 @@
       <div class="swiper__wrap row">
         <!-- swiper1 -->
         <swiper
-          class="swiper-container gallery-top col-lg-9"
+          class="swiper-container gallery-top"
           :options="swiperOptionTop"
           ref="swiperTop"
         >
-          <swiper-slide class="slides" v-for="slide in slides" :key="slide.img">
+          <swiper-slide
+            class="slides"
+            v-for="(slide, index) in slides"
+            :key="index"
+          >
             <div
               class="slide-box"
               :style="{ 'background-image': 'url(' + slide.img + ')' }"
@@ -24,7 +28,7 @@
         </swiper>
         <!-- swiper2 Right -->
         <swiper
-          class="swiper gallery-Right col-lg-3"
+          class="swiper gallery-Right"
           :options="swiperOptionRight"
           ref="swiperRight"
         >
@@ -85,9 +89,9 @@ export default {
       ],
 
       swiperOptionTop: {
-        // slidesPerView: "auto",
+        slidesPerView: 1,
         autoplay: true,
-        // loopedSlides: 25,
+        loopedSlides: 25,
         loop: true,
         pagination: {
           el: ".swiper-pagination",
@@ -95,9 +99,9 @@ export default {
         },
       },
       swiperOptionRight: {
-        // slidesPerView: "auto",
+        slidesPerView: 3,
         loop: true,
-        autoplay: true,
+        loopedSlides: 25,
         spaceBetween: 30,
         direction: "vertical",
       },
@@ -119,13 +123,19 @@ export default {
   padding-top: 30px;
 }
 
+.swiper-wrapper {
+  position: unset !important;
+  width: unset !important;
+  height: unset !important;
+}
+
 .swiper__wrap {
   display: flex;
+  max-height: 390px;
 }
 
 .gallery-top {
   max-width: 850px;
-  max-height: 390px;
   margin-right: 30px;
 }
 
@@ -152,8 +162,8 @@ export default {
   padding: 0 18px;
 }
 
-.gallery-Right .swiper-slide {
-  height: 110px !important;
+.gallery-Right {
+  width: 100%;
 }
 
 .gallery-Right .swiper-slide .slide-box h2 {

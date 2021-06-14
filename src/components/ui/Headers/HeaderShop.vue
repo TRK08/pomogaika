@@ -17,17 +17,19 @@
             />
             <button @click.prevent>Найти</button>
           </form>
-          <div class="header-contacts">
-            <img src="../../../assets/img/phone-black.svg" alt="" />
-            <div>
-              <span>Свяжитесь с нами</span>
-              <a href="">+7 (992) 340-23-83</a>
+          <div class="header-shop-right">
+            <div class="header-contacts">
+              <img src="../../../assets/img/phone-black.svg" alt="" />
+              <div>
+                <span>Свяжитесь с нами</span>
+                <a href="">+7 (992) 340-23-83</a>
+              </div>
             </div>
-          </div>
-          <div class="header-cart">
-            <img src="../../../assets/img/shop-cart-black.svg" alt="" />
-            <span class="cart-price">8888 р.</span>
-            <span class="cart-count">3</span>
+            <div class="header-cart">
+              <img src="../../../assets/img/shop-cart-black.svg" alt="" />
+              <span class="cart-price">8888 р.</span>
+              <span class="cart-count">3</span>
+            </div>
           </div>
         </div>
       </div>

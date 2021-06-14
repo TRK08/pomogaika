@@ -103,6 +103,13 @@ p {
 	color: #fff;
 }
 
+.header-shop-right {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 33%;
+}
+
 .header-contacts,
 .header-worktime,
 .header-adress {
@@ -235,6 +242,7 @@ p {
 
 .footer-menu__wrap {
 	display: flex;
+	justify-content: flex-end;
 }
 
 .footer-menu:not(:last-child) {
@@ -258,8 +266,8 @@ p {
 
 .footer-social {
 	position: absolute;
-	bottom: 40px;
-	right: 60px;
+	bottom: 0px;
+	right: 15px;
 }
 
 /* SHOP SLIDER */
@@ -307,6 +315,10 @@ p {
   margin: 35px 0;
 }
 
+.under-slider__wrap .row {
+	display: flex;
+}
+
 .under-slider-block {
   display: flex;
   align-items: center;
@@ -331,7 +343,6 @@ p {
 /* ABOUT US COMPONENT */
 
 .about-component {
-	padding-top: 35px;
 	margin-bottom: 70px;
 }
 
@@ -447,7 +458,6 @@ p {
 }
 
 .articles-title {
-	margin-bottom: 30px;
 	color: var(--yellow-color);
 }
 
@@ -468,10 +478,12 @@ p {
 .article-item-body span {
 	display: block;
 	margin: 37px 0;
+	
 }
 
 .article-item-body p {
 	margin-bottom: 30px;
+	min-height: 50px;
 }
 
 .article-item-body button {
@@ -610,6 +622,81 @@ p {
 	margin-bottom: 30px;
 }
 
+/* PROFITABLE OFFER COMPONENT  */
+
+.profitable-offer {
+  margin-bottom: 70px;
+}
+
+.profitable-offer-title {
+  margin-bottom: 30px;
+}
+
+.offer-item {
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1), 0px 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.offer-item-img-box {
+  /* max-width: 350px; */
+  height: 200px;
+  background-color: #fbbb36;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+
+
+.offer-item-discount {
+  position: absolute;
+  left: 0;
+  top: 17px;
+  padding: 5px 8px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 13px;
+  text-align: center;
+  background-color: #ff0f0f;
+}
+
+.offer-item-body {
+  padding: 25px;
+}
+
+.offer-item-title {
+  margin-bottom: 30px;
+  font-size: 15px;
+  line-height: 24px;
+  font-weight: 500;
+}
+
+.offer-item-descr {
+  margin-bottom: 30px;
+  font-size: 15px;
+  line-height: 16px;
+  font-weight: 400;
+}
+
+.offer-item-price {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  margin-bottom: 30px;
+  color: #ff0f0f;
+}
+
+.offer-item-btn {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #fbbb36;
+  background-color: #fff;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+}
+
 /*ADAPTIIIIIIIIIV*/
 
 @media (min-width: 1200px) {
@@ -617,8 +704,82 @@ p {
 @media (min-width: 1200px) {
 }
 @media (max-width: 1199px) {
+
+	
 }
+
 @media (max-width: 991px) {
+	p {
+		font-size: 10px;
+		line-height: 11px;
+	}
+
+	.header-wrap {
+		padding: 17px 0;
+	}
+
+	.header-search {
+		max-width: 350px;
+	}
+
+	.header-search input {
+		padding: 5px;
+    font-size: 10px;
+    line-height: 10px;
+	}
+
+	.header-search button {
+		padding: 5px;
+	}
+
+	.header-shop-right {
+    flex-direction: column-reverse;
+    align-items: flex-end;
+		width: unset
+	}
+
+	.header-cart {
+		margin-bottom: 15px;
+	}
+
+	.footer-menu:not(:last-child) {
+		margin-right: 46px;
+	}
+
+	.footer-left-text {
+		font-size: 10px;
+		margin-top: 15px;
+	}
+
+	.footer-menu-title {
+		font-size: 13px;
+		margin-bottom: 15px;
+	}
+
+	.footer-menu-item {
+		font-size: 10px;
+		line-height: 11px;
+		margin-bottom: 10px;
+	}
+
+	/* .footer-social {
+		right: 50px;
+		bottom: 0px;
+	} */
+
+	.footer-social a img{
+		height: 18px;
+	}
+
+	.offer-item-img-box img {
+		width: 100%;
+	}
+
+	.yellow-cube {
+		width: 26px;
+		height: 26px;
+		margin-right: 10px;
+	}
 }
 @media (max-width: 786px) {
 }
@@ -627,6 +788,31 @@ p {
 @media (max-width: 672px) {
 }
 @media (max-width: 512px) {
+	.head-footer .row {
+		display: flex;
+    flex-direction: column;
+    justify-content: center;
+	}
+
+	.footer-left {
+		display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+		margin-bottom: 30px;
+	}
+
+	.footer-center {
+		width: 100%;
+	}
+
+	.footer-menu__wrap {
+		justify-content: center;
+	}
+
+	.footer-menu:not(:last-child) {
+		margin-right: 12px;
+	}
 }
 @media (max-width: 390px) {
 }
