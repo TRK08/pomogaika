@@ -4,7 +4,7 @@
       <router-link class="main-breadcrumb" to="/articles" tag="span">
         Все статьи</router-link
       >
-      <span v-if="articleTitle.length > 0" class="breadcrumb-article-title">
+      <span v-if="articleTitle" class="breadcrumb-article-title">
         {{ articleTitle }}
       </span>
     </div>
@@ -17,7 +17,6 @@ export default {
   props: {
     articleTitle: {
       type: String,
-      required: true,
     },
   },
 };

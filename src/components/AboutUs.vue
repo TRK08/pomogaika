@@ -60,7 +60,9 @@
             </div>
           </div>
         </div>
-        <div class="map__wrap col-sm-8"></div>
+        <div class="map__wrap col-sm-8">
+          <div id="map"></div>
+        </div>
       </div>
     </div>
   </section>
@@ -132,8 +134,52 @@ export default {
       },
     };
   },
+  methods: {
+    yaMapInit() {
+      var myMap = new ymaps.Map(
+        "map",
+        {
+          center: [56.81112924593115, 60.57892605602271],
+          zoom: 15,
+          controls: [],
+        },
+        { suppressMapOpenBlock: true }
+      );
+      myMap.geoObjects.add(
+        new ymaps.Placemark(
+          [56.81012924593115, 60.578926056022719],
+          {
+            hintContent: "Собственный значок метки",
+            balloonContent: "Это красивая метка",
+          },
+          {
+            iconLayout: "default#image",
+            iconImageHref:
+              "https://image.flaticon.com/icons/svg/787/787433.svg",
+            iconImageSize: [50, 50],
+          }
+        )
+      );
+      myMap.behaviors.disable("scrollZoom");
+    },
+  },
+  created() {
+    const script = document.createElement("script");
+    script.onload = () => {
+      ymaps.ready(() => this.yaMapInit());
+    };
+    script.id = "ymaps";
+    script.src =
+      "https://api-maps.yandex.ru/2.1/?apikey=8c4059db-3b8d-4535-a15e-569ee80fc827&lang=ru_RU";
+    document.head.append(script);
+  },
 };
 </script>
 
 <style scoped>
+#map {
+  height: 100%;
+  width: 100%;
+  min-height: 265px;
+}
 </style>

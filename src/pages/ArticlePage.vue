@@ -1,18 +1,18 @@
 <template>
   <div>
     <div class="container">
-      <Breadcrumbs :articleTitle="article.title" />
+      <Breadcrumbs :articleTitle="singleArticle.title" />
       <div class="article-page__wrap">
         <div
           :style="{
             background:
               'linear-gradient(180deg, #030405 0%, rgba(255, 255, 255, 0) 100%),url(' +
-              article.img +
+              singleArticle.image +
               ')',
           }"
         ></div>
-        <span> {{ article.date }} </span>
-        <h2>{{ article.title }}</h2>
+        <span> {{ singleArticle.date }} </span>
+        <h2>{{ singleArticle.title }}</h2>
       </div>
     </div>
   </div>
@@ -24,25 +24,17 @@ import Breadcrumbs from "../components/ui/Breadcrumbs.vue";
 export default {
   components: { Breadcrumbs },
   name: "ArticlePage",
+  props: ["id"],
   data() {
-    return {
-      articleId: this.$route.params["id"],
-    };
+    return {};
   },
   computed: {
     ...mapGetters({
-      getArticles: "getArticles",
+      singleArticle: "articles/getSingleArticle",
     }),
-    article() {
-      let result = {};
-      let vm = this;
-      this.getArticles.map(function (item) {
-        if (item.id === vm.$route.params.id) {
-          result = item;
-        }
-      });
-      return result;
-    },
+  },
+  created() {
+    this.$store.dispatch("articles/LOAD_SINGLE_ARTICLE", this.id);
   },
 };
 </script>

@@ -411,6 +411,7 @@ p {
 
 .services {
 	margin-top: 70px;
+	margin-bottom: 70px;
 }
 
 .services__wrap {
@@ -466,9 +467,15 @@ p {
 	max-width: 350px;
 }
 
-.article-item img {
+
+
+.article-item-img__wrap {
 	width: 100%;
-	object-fit: none;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	min-height: 200px;
 }
 
 .article-item-body {

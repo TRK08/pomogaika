@@ -32,8 +32,11 @@ export default {
   },
   computed: {
     ...mapGetters({
-      articles: "getArticles",
+      articles: "articles/getArticles",
     }),
+  },
+  created() {
+    this.$store.dispatch("articles/LOAD_ARTICLES");
   },
 };
 </script>

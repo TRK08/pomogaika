@@ -8,9 +8,11 @@ import VueTheMask from 'vue-the-mask'
 import Vuelidate from 'vuelidate'
 import VueScrollTo from 'vue-scrollto'
 import VueTyperPlugin from 'vue-typer'
+import Ymaps from 'vue-yandex-maps'
 
 
 import 'swiper/css/swiper.css'
+
 
 Vue.use(VueTyperPlugin)
 Vue.use(VueRouter) 
@@ -19,6 +21,8 @@ Vue.use(require('vue-cookies'))
 Vue.use(VueAwesomeSwiper)
 Vue.use(VueScrollTo)
 Vue.use(VueTheMask)
+Vue.use(Ymaps)
+
 
 
 // const basicScroll = require('basicscroll')

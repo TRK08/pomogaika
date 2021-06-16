@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import { mapGetters } from "vuex";
 import SingleArticle from "../components/ui/SingleArticle.vue";
 
@@ -36,18 +37,20 @@ export default {
   data() {
     return {
       itemsToShow: 6,
-      bigArticle: [],
     };
   },
   computed: {
     ...mapGetters({
-      articles: "getArticles",
+      articles: "articles/getArticles",
     }),
   },
   methods: {
     loadMore() {
       this.itemsToShow = this.itemsToShow + 3;
     },
+  },
+  created() {
+    this.$store.dispatch("articles/LOAD_ARTICLES");
   },
 };
 </script>
