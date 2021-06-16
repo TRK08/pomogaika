@@ -719,6 +719,7 @@ p {
   margin-bottom: 70px;
 }
 
+
 .usluga-info-title {
   margin-bottom: 30px;
 }
@@ -748,6 +749,70 @@ p {
   width: 80%;
 }
 
+
+/* USLUGA TABLE */
+
+.usluga-table-component {
+  margin-bottom: 70px;
+}
+
+.usluga-table-title {
+  color: var(--yellow-color);
+  margin-bottom: 30px;
+}
+
+.usluga-table-subtitle {
+  margin-bottom: 30px;
+}
+
+.usluga-table {
+  width: 100%;
+}
+
+.usluga-table tr {
+  border-bottom: 1px solid #c4c4c4;
+}
+
+.usluga-table tr td {
+  padding: 15px 0;
+  text-align: center;
+}
+
+.usluga-table tr td:first-child {
+  text-align: left;
+}
+
+.usluga-table tr td:last-child {
+  text-align: right;
+}
+
+
+/* MOBILE USLUGA TABLE  */
+
+.mobile-table-component {
+  margin-bottom: 70px;
+}
+
+.mobile-table-tab {
+  font-size: 13px;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.mobile-table-tab div:first-child {
+  max-width: 120px;
+  padding: 7px;
+  background-color: #fbbb36;
+}
+
+table {
+  width: 100%;
+}
+
+.mobile-table tr td {
+  padding: 10px 0;
+  border-bottom: 1px solid #c4c4c4;
+}
 
 
 /*ADAPTIIIIIIIIIV*/

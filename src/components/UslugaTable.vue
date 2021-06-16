@@ -31,29 +31,4 @@ export default {
 </script>
 
 <style scoped>
-.usluga-table-component {
-  margin-bottom: 70px;
-}
-
-.usluga-table-title {
-  color: var(--yellow-color);
-  margin-bottom: 30px;
-}
-
-.usluga-table-subtitle {
-  margin-bottom: 30px;
-}
-
-.usluga-table {
-  width: 100%;
-}
-
-.usluga-table tr {
-  border-bottom: 1px solid #c4c4c4;
-}
-
-.usluga-table tr td {
-  padding: 15px 0;
-  text-align: left;
-}
 </style>
