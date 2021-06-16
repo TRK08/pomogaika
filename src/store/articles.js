@@ -18,7 +18,7 @@ const articles = {
 	actions: {
     LOAD_ARTICLES({commit}){
       axios
-      .get("http://pomogayka96.ru/wp-json/pg/v1/get/articles")
+      .get("https://pomogayka96.ru/wp-json/pg/v1/get/articles")
       .then(res => {
         commit('SET_ARTICLES', res.data)
       })
@@ -28,7 +28,7 @@ const articles = {
       state.singleArticle = {}
 
       axios
-      .get(`http://pomogayka96.ru/wp-json/pg/v1/get/articles/${id}`)
+      .get(`https://pomogayka96.ru/wp-json/pg/v1/get/articles/${id}`)
       .then(res => {
         console.log(res.data);
         commit('SET_SINGLE_ARTICLE', res.data)
