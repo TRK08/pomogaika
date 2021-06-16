@@ -20,6 +20,15 @@ const articles = {
       axios
       .get("https://pomogayka96.ru/wp-json/pg/v1/get/articles")
       .then(res => {
+        res.data.forEach(item => {
+          let date = new Date(item.date)
+          let options = {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          };
+          item.date = date.toLocaleDateString("ru-RU", options).slice(0, -2);
+        })
         commit('SET_ARTICLES', res.data)
       })
     },
@@ -30,14 +39,19 @@ const articles = {
       axios
       .get(`https://pomogayka96.ru/wp-json/pg/v1/get/articles/${id}`)
       .then(res => {
-        console.log(res.data);
+        let date = new Date(res.data.date)
+          let options = {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          };
+          res.data.date = date.toLocaleDateString("ru-RU", options).slice(0, -2);
         commit('SET_SINGLE_ARTICLE', res.data)
       })
     },
 	},
 	getters: {
 		getArticles (state) {
-      console.log(state.articles);
 			return state.articles
 		},
 

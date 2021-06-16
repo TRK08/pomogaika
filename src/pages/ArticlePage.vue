@@ -4,8 +4,9 @@
       <Breadcrumbs :articleTitle="singleArticle.title" />
       <div class="article-page__wrap">
         <div
+          class="article-page-img"
           :style="{
-            background:
+            backgroundImage:
               'linear-gradient(180deg, #030405 0%, rgba(255, 255, 255, 0) 100%),url(' +
               singleArticle.image +
               ')',
@@ -13,6 +14,7 @@
         ></div>
         <span> {{ singleArticle.date }} </span>
         <h2>{{ singleArticle.title }}</h2>
+        <div class="article-page-content" v-html="singleArticle.content"></div>
       </div>
     </div>
   </div>
@@ -40,4 +42,7 @@ export default {
 </script>
 
 <style scoped>
+.article-page-content {
+  color: #000;
+}
 </style>

@@ -8,7 +8,7 @@
         <!-- <img :src="singleArticle.image" alt="" /> -->
       </div>
       <div class="article-item-body">
-        <span> {{ setDateFormat }} </span>
+        <span> {{ singleArticle.date }} </span>
         <p>{{ singleArticle.title }}</p>
         <router-link tag="button" :to="`/articles/${artId}`"
           >Читать</router-link
@@ -35,15 +35,7 @@ export default {
     return {};
   },
   computed: {
-    setDateFormat() {
-      let date = new Date(this.singleArticle.date);
-      let options = {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      };
-      return date.toLocaleDateString("ru-RU", options).slice(0, -2);
-    },
+    //
   },
 };
 </script>

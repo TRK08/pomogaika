@@ -574,7 +574,7 @@ p {
 .big-article {
   background: linear-gradient(180deg, #030405 0%, rgba(255, 255, 255, 0) 100%),
     url("../img/article-img.png");
-  background-size: 120%;
+  background-size: auto;
   background-position: center center;
   background-repeat: no-repeat;
   min-height: 450px;
@@ -609,15 +609,13 @@ p {
 
 /* ARTICLE PAGE */
 
-.article-page__wrap > div{
-	background-size: 120% !important;
-  background-position: center center !important;
-  background-repeat: no-repeat !important;
+.article-page__wrap .article-page-img{
+	/* background-size: cover; */
+  background-position: center center;
 	filter: drop-shadow(0px 12px 27px rgba(0, 0, 0, 0.25));
-  min-height: 600px;
-  padding: 30px;
-  color: #fff;
+  height: 500px;
   margin: 0 0 70px 0;
+	width: 100%;
 }
 
 .article-page__wrap span {
@@ -627,6 +625,15 @@ p {
 
 .article-page__wrap h2 {
 	margin-bottom: 30px;
+}
+
+.article-page-content p {
+	margin-bottom: 38px;
+}
+
+.article-page-content .wp-block-image {
+	text-align: center;
+	margin-bottom: 50px;
 }
 
 /* PROFITABLE OFFER COMPONENT  */
@@ -703,6 +710,45 @@ p {
   font-size: 20px;
   line-height: 24px;
 }
+
+
+/* USLUGA PAGE  */
+
+.usluga-info {
+  margin-top: 30px;
+  margin-bottom: 70px;
+}
+
+.usluga-info-title {
+  margin-bottom: 30px;
+}
+
+.usluga-info-descr {
+  font-size: 15px;
+  line-height: 16px;
+}
+
+.usluga-info-descr p strong {
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 21px;
+}
+
+.usluga-info-descr p {
+  margin-bottom: 15px;
+}
+
+.usluga-info-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.usluga-info-right img {
+  width: 80%;
+}
+
+
 
 /*ADAPTIIIIIIIIIV*/
 

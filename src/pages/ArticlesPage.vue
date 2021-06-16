@@ -3,6 +3,12 @@
     <router-link
       class="big-article"
       tag="div"
+      :style="{
+        backgroundImage:
+          'linear-gradient(180deg, #030405 0%, rgba(255, 255, 255, 0) 100%),url(' +
+          bigArticle.image +
+          ')',
+      }"
       v-for="bigArticle in articles.slice(0, 1)"
       :key="bigArticle.id"
       :to="`/articles/${bigArticle.id}`"
@@ -27,7 +33,6 @@
 </template>
 
 <script>
-import axios from "axios";
 import { mapGetters } from "vuex";
 import SingleArticle from "../components/ui/SingleArticle.vue";
 
