@@ -52,14 +52,16 @@
           </router-link>
         </ul>
         <div class="header-menu-cabinet__wrap">
-          <div
+          <router-link
+            tag="div"
+            :to="item.link"
             class="header-menu-cabinet"
             v-for="item in cabinet"
             :key="item.text"
           >
             <img :src="item.img" alt="" />
-            <span>{{ item.text }}</span>
-          </div>
+            <span class="hidden-sm hidden-xs">{{ item.text }}</span>
+          </router-link>
         </div>
       </div>
     </div>
@@ -98,17 +100,28 @@ export default {
         {
           img: require("../../../assets/img/cabinet.svg"),
           text: "Личный кабинет",
+          link: "/cabinet",
         },
         {
           img: require("../../../assets/img/dostavka.svg"),
           text: "Доставка",
+          link: "/send",
         },
         {
           img: require("../../../assets/img/ruble.svg"),
           text: "Оплата",
+          link: "/payment",
         },
       ],
     };
   },
 };
 </script>	
+<style scoped>
+@media (max-width: 672px) {
+  .header-wrap {
+    height: 160px;
+    position: relative;
+  }
+}
+</style>

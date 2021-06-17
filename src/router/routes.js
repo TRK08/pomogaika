@@ -4,11 +4,21 @@ import HomeService from '../pages/HomeService'
 import ArticlesPage from '../pages/ArticlesPage'
 import ArticlePage from '../pages/ArticlePage'
 import UslugaPage from '../pages/UslugaPage'
+import PaymentPage from '../pages/PaymentPage'
+import SendPage from '../pages/SendPage'
 
 const routes = [
 	{
 		path: '/',
 		component: HomeShop,
+	},
+	{
+		path: '/payment',
+		component: PaymentPage
+	},
+	{
+		path: '/send',
+		component: SendPage
 	},
 	{
 		path: '/service',

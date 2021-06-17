@@ -26,7 +26,6 @@ const serv = {
       axios
         .get(`https://pomogayka96.ru/wp-json/pg/v1/get/services/${id}`)
         .then(res => {
-          console.log(res.data['']);
           commit('SET_SINGLE_SERVICE', res.data[''])
         })
     }

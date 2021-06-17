@@ -95,10 +95,6 @@ export default {
 </script>	
 
 <style scoped>
-.header {
-  justify-content: unset;
-}
-
 .header-menu__wrap {
   background-color: #fbbb36;
 }

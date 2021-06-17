@@ -16,12 +16,14 @@
           @click="activateTab(index)"
           class="mobile-table-tab col-xs-4"
         >
-          <div>{{ tab.c }}</div>
+          <div class="mobile-table-tab-btn" :class="{ activeTab: isActive }">
+            {{ tab.c }}
+          </div>
         </div>
       </div>
       <div class="mobile-table__wrap">
         <table class="mobile-table">
-          <tr v-for="tabInfo in serviceTable.body">
+          <tr v-for="tabInfo in serviceTable.body" :key="tabInfo.c">
             <td>
               {{ tabInfo[0].c }}
             </td>
@@ -47,12 +49,12 @@ export default {
   data() {
     return {
       id: 1,
+      isActive: false,
     };
   },
   methods: {
     activateTab(index) {
       this.id = index + 1;
-      console.log(this.id);
     },
   },
 };

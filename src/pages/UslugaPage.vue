@@ -3,11 +3,11 @@
     <UslugaInfo v-if="singleService" :singleService="singleService" />
     <AutoBrands />
     <UslugaTable
-      v-if="singleService && !mobile"
+      v-if="!isMobile && singleService"
       :serviceTable="singleService.prices"
     />
     <MobileUslugaTable
-      v-if="mobile && singleService"
+      v-if="isMobile && singleService"
       :serviceTable="singleService.prices"
     />
     <OnlineRegistr />
@@ -37,15 +37,15 @@ export default {
   props: ["name"],
   data() {
     return {
-      mobile: false,
+      isMobile: false,
     };
   },
   methods: {
     updateWidth() {
-      if (window.innerWidth < 768) {
-        this.mobile = true;
+      if (window.innerWidth <= 672) {
+        this.isMobile = true;
       } else {
-        this.mobile = false;
+        this.isMobile = false;
       }
     },
   },
@@ -56,7 +56,7 @@ export default {
   },
   created() {
     this.$store.dispatch("services/LOAD_SINGLE_SERVICE", this.name);
-    window.addEventListener("resize", this.updateWidth);
+    window.addEventListener("load", this.updateWidth);
   },
 };
 </script>

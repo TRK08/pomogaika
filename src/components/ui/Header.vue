@@ -1,6 +1,13 @@
 <template>
   <div>
-    <HeaderShop v-if="this.$route.path === '/'" />
+    <HeaderShop
+      v-if="
+        this.$route.path === '/' ||
+        this.$route.path === '/cabinet' ||
+        this.$route.path === '/send' ||
+        this.$route.path === '/payment'
+      "
+    />
     <HeaderService v-else />
   </div>
 </template>

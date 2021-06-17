@@ -10,8 +10,8 @@
         <tr>
           <td v-for="model in serviceTable.header">{{ model.c }}</td>
         </tr>
-        <tr v-for="price in serviceTable.body">
-          <td v-for="item in price">{{ item.c }}</td>
+        <tr v-for="prices in serviceTable.body">
+          <td v-for="item in prices">{{ item.c }}</td>
         </tr>
       </table>
     </div>
