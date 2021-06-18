@@ -25,11 +25,11 @@
                 <a href="">+7 (992) 340-23-83</a>
               </div>
             </div>
-            <div class="header-cart">
+            <router-link tag="div" to="/cart" class="header-cart">
               <img src="../../../assets/img/shop-cart-black.svg" alt="" />
               <span class="cart-price">8888 р.</span>
               <span class="cart-count">3</span>
-            </div>
+            </router-link>
           </div>
         </div>
       </div>

@@ -7,7 +7,8 @@
         this.$route.path === '/cabinet' ||
         this.$route.path === '/send' ||
         this.$route.path === '/payment' ||
-        this.$route.path === '/guarantee'
+        this.$route.path === '/guarantee' ||
+        this.$route.path === '/cart'
       "
     >
       <div class="container">

@@ -7,11 +7,16 @@ import UslugaPage from '../pages/UslugaPage'
 import PaymentPage from '../pages/PaymentPage'
 import SendPage from '../pages/SendPage'
 import GuaranteePage from '../pages/GuaranteePage'
+import CartPage from '../pages/CartPage'
 
 const routes = [
 	{
 		path: '/',
 		component: HomeShop,
+	},
+	{
+		path: '/cart',
+		component: CartPage
 	},
 	{
 		path: '/payment',
