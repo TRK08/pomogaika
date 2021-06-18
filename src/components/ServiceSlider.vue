@@ -28,7 +28,7 @@
         </swiper>
         <!-- swiper2 Right -->
         <swiper
-          class="swiper gallery-Right"
+          class="swiper gallery-Right visible-lg"
           :options="swiperOptionRight"
           ref="swiperRight"
         >
@@ -55,6 +55,7 @@ export default {
   name: "ServiceSlider",
   data() {
     return {
+      isDisable: false,
       slides: [
         {
           title: "Новым клиентам <br> скидка 10%",
@@ -115,6 +116,7 @@ export default {
       swiperRight.controller.control = swiperTop;
     });
   },
+  methods: {},
 };
 </script>
 
@@ -174,5 +176,11 @@ export default {
 
 .swiper-slide:nth-child(odd) .slide-box h2 {
   color: #fff;
+}
+
+@media (max-width: 1199px) {
+  .gallery-top {
+    max-width: none;
+  }
 }
 </style>

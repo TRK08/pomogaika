@@ -124,8 +124,25 @@ p {
 .header-adress div {
 	display: flex;
 	flex-direction: column;
-
 	margin-left: 11px;
+}
+
+.header-cart {
+	display: flex;
+}
+
+.cart-price {
+	margin: 0 6px;
+}
+
+.cart-count {
+	background-color: #fff;
+	border-radius: 100%;
+	width: 20px;
+	height: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 
@@ -195,7 +212,7 @@ p {
 
 .header-info__wrap {
 	display: flex;
-	justify-content: flex-end;
+	justify-content: center;
 	width: 75%;
 }
 
@@ -843,6 +860,30 @@ table {
 
 .payment-page h3 {
   color: #fbbb36;
+}
+
+/* GUARANTEE PAGE  */
+
+.guarantee-page-title {
+  margin-bottom: 30px;
+}
+
+.guarantee-page {
+  padding: 30px 0;
+}
+
+.guarantee-page-block {
+  margin-bottom: 30px;
+}
+
+.guarantee-page-block p {
+  margin-top: 30px;
+  font-size: 15px;
+  line-height: 16px;
+}
+
+.guarantee-page-block .guarantee-yellow-title {
+  color: var(--yellow-color)
 }
 
 

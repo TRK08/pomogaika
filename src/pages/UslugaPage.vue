@@ -56,7 +56,7 @@ export default {
   },
   created() {
     this.$store.dispatch("services/LOAD_SINGLE_SERVICE", this.name);
-    window.addEventListener("load", this.updateWidth);
+    this.updateWidth();
   },
 };
 </script>

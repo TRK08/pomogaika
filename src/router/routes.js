@@ -6,6 +6,7 @@ import ArticlePage from '../pages/ArticlePage'
 import UslugaPage from '../pages/UslugaPage'
 import PaymentPage from '../pages/PaymentPage'
 import SendPage from '../pages/SendPage'
+import GuaranteePage from '../pages/GuaranteePage'
 
 const routes = [
 	{
@@ -19,6 +20,10 @@ const routes = [
 	{
 		path: '/send',
 		component: SendPage
+	},
+	{
+		path: '/guarantee',
+		component: GuaranteePage
 	},
 	{
 		path: '/service',

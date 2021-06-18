@@ -6,7 +6,8 @@
         this.$route.path === '/' ||
         this.$route.path === '/cabinet' ||
         this.$route.path === '/send' ||
-        this.$route.path === '/payment'
+        this.$route.path === '/payment' ||
+        this.$route.path === '/guarantee'
       "
     >
       <div class="container">
@@ -110,7 +111,7 @@ export default {
           name: [
             {
               text: "Каталог",
-              link: "/catalog",
+              link: "",
             },
             {
               text: "Акции",
@@ -118,11 +119,11 @@ export default {
             },
             {
               text: "Автосервис",
-              link: "/avtoservice",
+              link: "/service",
             },
             {
               text: "Статьи",
-              link: "/stati",
+              link: "/articles",
             },
             {
               text: "О нас",
@@ -156,15 +157,15 @@ export default {
             },
             {
               text: "Доставка",
-              link: "/cabinet",
+              link: "/send",
             },
             {
               text: "Оплата",
-              link: "/cabinet",
+              link: "/payment",
             },
             {
               text: "Гарантии",
-              link: "/cabinet",
+              link: "/guarantee",
             },
           ],
         },
@@ -175,7 +176,7 @@ export default {
           name: [
             {
               text: "Каталог",
-              link: "/catalog",
+              link: "",
             },
             {
               text: "Акции",
@@ -183,11 +184,11 @@ export default {
             },
             {
               text: "Магазин запчастей",
-              link: "/avtoservice",
+              link: "/",
             },
             {
               text: "Статьи",
-              link: "/stati",
+              link: "/articles",
             },
             {
               text: "О нас",

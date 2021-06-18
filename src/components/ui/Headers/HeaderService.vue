@@ -3,7 +3,7 @@
     <div class="header-wrap black-header">
       <div class="container">
         <div class="header">
-          <router-link tag="a" to="/">
+          <router-link tag="a" to="/service">
             <img
               src="../../../assets/img/logo-yellow.png"
               alt="logo"

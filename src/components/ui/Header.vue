@@ -5,7 +5,8 @@
         this.$route.path === '/' ||
         this.$route.path === '/cabinet' ||
         this.$route.path === '/send' ||
-        this.$route.path === '/payment'
+        this.$route.path === '/payment' ||
+        this.$route.path === '/guarantee'
       "
     />
     <HeaderService v-else />
