@@ -1109,7 +1109,7 @@ table {
 }
 
 .checkbox-custom:checked + .checkbox-custom-label:before {
-  content: url("../assets/img/check-arrow.svg");
+  content: url("../img/check-arrow.svg");
   width: 20px;
   height: 20px;
   display: flex;
