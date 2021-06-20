@@ -46,7 +46,7 @@ const articles = {
         function formatDate(date){
           return new Date(date.replace(/-/g, "/"))
         }
-        let date = formatDate(item.date)
+        let date = formatDate(res.data.date)
           let options = {
             year: "numeric",
             month: "long",
