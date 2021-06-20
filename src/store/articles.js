@@ -21,7 +21,13 @@ const articles = {
       .get("https://pomogayka96.ru/wp-json/pg/v1/get/articles")
       .then(res => {
         res.data.forEach(item => {
-          let date = new Date(item.date)
+
+        function formatDate(date){
+          return new Date(date.replace(/-/g, "/"))
+        }
+        let date = formatDate(item.date)
+          // console.log(item.date);
+          // let date = new Date(item.date)
           let options = {
             year: "numeric",
             month: "long",
