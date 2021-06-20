@@ -31,6 +31,14 @@ li {
 	padding: 0;
 }
 
+label, input[type=checkbox], input[type=radio] {
+	margin: 0;
+	padding: 0;
+	font-weight: 400;
+}
+
+
+
 p {
 	margin: 0;
 	padding: 0;
@@ -1002,6 +1010,138 @@ table {
 	font-size: 15px;
 	line-height: 16px;
 	font-weight: 400;
+}
+
+/* CART FORM */
+
+.cart-form-head-text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.cart-form-head-text span {
+  color: var(--yellow-color);
+}
+
+.adress-form {
+  margin-top: 30px;
+  margin-bottom: 70px;
+}
+
+.cart-form-input__wrap {
+  margin-bottom: 25px;
+}
+
+.cart-form-input__wrap label,
+.cart-form-textarea__wrap label {
+  margin-bottom: 8px;
+  font-weight: 400;
+}
+
+.cart-form-input__wrap input {
+  width: 100%;
+  padding: 12px 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #d1d1d1;
+}
+
+.cart-form-input__wrap input::placeholder,
+.cart-form-textarea__wrap textarea::placeholder {
+  color: #000;
+  font-weight: 400;
+}
+
+.cart-form-textarea__wrap {
+  margin-top: 30px;
+}
+
+.cart-form-textarea__wrap textarea {
+  resize: none;
+  width: 100%;
+  height: 120px;
+  padding: 10px 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #d1d1d1;
+}
+
+.submit-order-form__wrap {
+  margin-top: 70px;
+}
+
+.cart-form-checkbox__wrap {
+  display: flex;
+  align-items: center;
+  padding: 11px 18px;
+  background-color: #f9f9f9;
+  border: 1px solid #c4c4c4;
+}
+
+.cart-form-checkbox__wrap {
+  width: fit-content;
+}
+
+.cart-form-checkbox__wrap:first-child {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.checkbox-custom {
+  opacity: 0;
+  position: absolute;
+}
+
+.checkbox-custom-label {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-custom + .checkbox-custom-label:before {
+  content: "";
+  background: #fff;
+  border: 1px solid #c4c4c4;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  text-align: center;
+  display: block;
+}
+
+.checkbox-custom:checked + .checkbox-custom-label:before {
+  content: url("../assets/img/check-arrow.svg");
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.submit-order-form-btn {
+  padding: 16px 50px;
+  border: none;
+  color: #fff;
+  background-color: var(--yellow-color);
+  margin-top: 17px;
+}
+
+.submit-order-form-privacy {
+  margin-top: 30px;
+}
+
+.submit-order-form-privacy img {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.submit-order-form-privacy span {
+  font-weight: 500;
+}
+
+.submit-order-form-privacy p,
+.submit-order-form-privacy span {
+  font-size: 15px;
+  line-height: 16px;
 }
 
 /*ADAPTIIIIIIIIIV*/

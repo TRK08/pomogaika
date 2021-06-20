@@ -26,8 +26,6 @@ const articles = {
           return new Date(date.replace(/-/g, "/"))
         }
         let date = formatDate(item.date)
-          // console.log(item.date);
-          // let date = new Date(item.date)
           let options = {
             year: "numeric",
             month: "long",
@@ -45,7 +43,10 @@ const articles = {
       axios
       .get(`https://pomogayka96.ru/wp-json/pg/v1/get/articles/${id}`)
       .then(res => {
-        let date = new Date(res.data.date)
+        function formatDate(date){
+          return new Date(date.replace(/-/g, "/"))
+        }
+        let date = formatDate(item.date)
           let options = {
             year: "numeric",
             month: "long",

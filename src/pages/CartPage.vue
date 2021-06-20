@@ -3,10 +3,10 @@
     <div class="container">
       <h2>Корзина</h2>
       <div class="row">
-        <div class="col-lg-7">
+        <div class="col-sm-6 col-lg-7">
           <CartForm />
         </div>
-        <div class="col-lg-5">
+        <div class="col-sm-6 col-lg-5">
           <CartOrder />
         </div>
       </div>
