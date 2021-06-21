@@ -110,8 +110,4 @@ export default {
 .date-picker {
   width: 100%;
 }
-
-button {
-  max-width: 130px;
-}
 </style>

@@ -1,6 +1,10 @@
+
+
 :root {
 	--yellow-color: #fbbb36;
 }
+
+
 
 * {
 	padding: 0;
@@ -12,6 +16,7 @@ body {
 	font-family: 'Roboto', sans-serif;
 	font-weight: 500;
 	color: #000;
+	overflow-x: hidden
 	/* font-family: 'Montserrat', sans-serif; */
 }
 
@@ -63,7 +68,7 @@ h2 {
 	font-weight: 500;
 	font-size: 35px;
 	line-height: 37px;
-	font-weight: 400;
+	font-weight: 700;
 }
 
 h3 {
@@ -485,15 +490,20 @@ p,button {
 	grid-gap: 40px;
 }
 
+.services-item__wrap {
+	max-width: 200px;
+	max-height: 200px;
+}
+
 .services-item {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	padding-top: 40px;
 	padding-bottom: 10px;
+	padding: 40px 30px 10px 30px;
 	text-align: center;
-	max-width: 200px;
-	max-height: 200px;
+	
 }
 
 .services-title {
@@ -532,30 +542,47 @@ p,button {
 	max-width: 350px;
 }
 
-
+.articles-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.articles-all {
+  display: block;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 21px;
+  color: #fbbb36;
+}
 
 .article-item-img__wrap {
 	width: 100%;
 	height: 100%;
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center center;
+	overflow: hidden;
 	min-height: 200px;
+}
+
+.article-item-img__wrap img {
+	width: 100%;
+	transform: scale(1.2);
+	min-height: inherit;
+	object-fit: cover;
 }
 
 .article-item-body {
 	padding: 0 25px;
+	margin-top: 37px;
 }
 
 .article-item-body span {
 	display: block;
-	margin: 37px 0;
+	margin-bottom: 37px;
 	
 }
 
 .article-item-body p {
 	margin-bottom: 30px;
-	min-height: 50px;
 }
 
 .article-item-body button {
@@ -636,6 +663,7 @@ p,button {
 	font-size: 15px;
 	line-height: 17px;
 	font-weight: 400;
+	max-width: 140px;
 }
 
 /* ARTICLES PAGE  */
@@ -676,15 +704,22 @@ p,button {
 }
 
 
+
+
 /* ARTICLE PAGE */
 
 .article-page__wrap .article-page-img{
-	/* background-size: cover; */
-  background-position: center center;
 	filter: drop-shadow(0px 12px 27px rgba(0, 0, 0, 0.25));
-  height: 500px;
   margin: 0 0 70px 0;
 	width: 100%;
+	overflow: hidden;
+}
+
+.article-page__wrap .article-page-img img {
+	width: 100%;
+	height: inherit;
+	object-fit: contain;
+	transform: scale(1.2);
 }
 
 .article-page__wrap span {
@@ -703,6 +738,34 @@ p,button {
 .article-page-content .wp-block-image {
 	text-align: center;
 	margin-bottom: 50px;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  padding: 30px 0;
+  font-weight: 400;
+}
+
+.main-breadcrumb {
+  font-size: 20px;
+  line-height: 22px;
+  color: #7f7b7b;
+  display: flex;
+  align-items: center;
+}
+
+.main-breadcrumb::after {
+  content: url("../../assets/img/breadcrumb-arrow.svg");
+  display: inline-block;
+  width: 19px;
+  height: 16px;
+  margin: 0 10px;
+}
+
+.breadcrumb-article-title {
+  font-size: 20px;
+  line-height: 22px;
 }
 
 /* PROFITABLE OFFER COMPONENT  */
@@ -894,7 +957,6 @@ table {
 /* PAYMENT PAGE  */
 
 .payment-page {
-  min-height: 100vh;
   padding: 30px 0;
 }
 
@@ -1200,9 +1262,24 @@ table {
 }
 
 @media (max-width: 991px) {
-	p {
+	p, span, a {
 		font-size: 10px;
 		line-height: 11px;
+	}
+
+	button {
+		font-size: 13px;
+		line-height: 14px;
+	}
+
+	h2 {
+		font-size: 30px;
+		line-height: 32px;
+	}
+
+	h3 {
+		font-size: 13px;
+		line-height: 15px;
 	}
 
 	.header-wrap {
@@ -1254,13 +1331,28 @@ table {
 		margin-bottom: 10px;
 	}
 
-
 	.footer-social a img{
 		height: 18px;
 	}
 
+	.offer-item-img-box {
+		height: 115px;
+	}
+
 	.offer-item-img-box img {
 		width: 100%;
+		height: inherit;
+		object-fit: contain;
+	}
+
+	.offer-item-body {
+		padding: 30px 13px 20px 13px;
+	}
+
+	.offer-item-btn {
+		font-size: 13px;
+		line-height: 24px;
+		padding: 2px 5px;
 	}
 
 	.yellow-cube {
@@ -1268,6 +1360,163 @@ table {
 		height: 26px;
 		margin-right: 10px;
 	}
+
+	.slide-box {
+		padding: 36px 52px;
+	}
+
+	.slider-btn {
+		padding: 7px 25px;
+	}
+
+	.slide-box h2 {
+		margin-bottom: 15px;
+	}
+
+	.slide-box p {
+		margin-bottom: 50px;
+	}
+
+	.offer-item-body p {
+		font-size: 10px;
+		line-height: 11px;
+	}
+
+	.about-component-map-left {
+		margin-bottom: 18px;
+	}
+
+	.about-component-num {
+		font-size: 25px;
+		line-height: 29px;
+		max-width: 60px;
+		margin-right: 0;
+	}
+
+	.map-instance__wrap {
+		height: 170px!important;
+	}
+
+	.about-component-map-left div h3 {
+		margin-bottom: 5px;
+	}
+
+	.payment-page * {
+		margin-bottom: 25px;
+	}
+	
+	.payment-page h3 {
+		margin-bottom: 15px;
+	}
+
+	.header-info__wrap {
+		font-size: 13px;
+		line-height: 14px;
+		width: 100%;
+	}
+
+	.header-info__wrap div:not(:last-child) {
+		margin-right: 17px;
+	}
+
+	.services-item{
+		padding: 30px 5px 5px 5px;
+	}
+
+
+	.services-item img {
+		width: 50px;
+		height: 50px;
+		margin-bottom: 13px;
+	}
+
+	.services-item span {
+		font-size: 8px;
+		line-height: 9px;
+	}
+
+	.article-item-img__wrap {
+		min-height: 120px;
+	}
+
+	.article-item-body {
+		padding: 0 10px;
+		margin-top: 20px;
+		
+	}
+
+	.article-item-body span {
+		font-size: 10px;
+		line-height: 11px;
+		margin-bottom: 20px;
+	}
+
+	.article-item-body p {
+		margin-bottom: 20px;
+	}
+
+	.article-item-body button {
+		font-size: 10px;
+		line-height: 11px;
+		padding: 10px;
+		margin-bottom: 20px;
+	}
+
+	.articles-all {
+		font-size: 13px;
+		line-height: 13px;
+	}
+
+	.online-registr-text {
+		margin-bottom: 8px;
+	}
+
+	.online-registr-contacts {
+		margin-bottom: 13px;
+	}
+
+	.online-registr-contacts a,
+	.online-registr-adress p{
+		font-size: 10px;
+		line-height: 11px;
+	}
+
+	.online-registr-form-title {
+		margin-bottom: 15px;
+	}
+
+	.online-registr-form input, 
+	.online-registr-form select {
+		padding: 7px 14px;
+		font-size: 10px;
+		line-height: 11px;
+	}
+
+	.online-registr-form button {
+		padding: 5px;
+		font-size: 10px;
+		line-height: 11px;
+		width: 100%;
+		max-width: 75px;
+	}
+
+	.breadcrumbs  {
+		padding: 20px 0;
+	}
+	.breadcrumbs * {
+		font-size: 13px;
+		line-height: 14px;
+	}
+
+	.article-page__wrap .article-page-img {
+		margin-bottom: 25px;
+	}
+
+	.article-page__wrap h2 {
+		font-weight: 500;
+	}
+
+
 }
 @media (max-width: 786px) {
 }
@@ -1321,6 +1570,7 @@ table {
 		font-size: 13px;
 		line-height: 14px;
 	}
+	
 }
 @media (max-width: 512px) {
 	.header-shop-right {

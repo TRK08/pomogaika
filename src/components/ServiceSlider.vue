@@ -33,7 +33,7 @@
         </swiper>
         <!-- swiper2 Right -->
         <swiper
-          class="swiper gallery-Right visible-lg"
+          class="swiper gallery-Right"
           :options="swiperOptionRight"
           ref="swiperRight"
         >
@@ -43,7 +43,7 @@
             :key="slide.image"
           >
             <div
-              class="slide-box"
+              class="slide-box slide-box-right-slider"
               :style="{
                 'background-image': 'url(' + slide.image + ')',
               }"
@@ -75,11 +75,19 @@ export default {
         },
       },
       swiperOptionRight: {
-        slidesPerView: 3,
         loop: true,
         loopedSlides: 25,
         spaceBetween: 30,
-        direction: "vertical",
+        breakpoints: {
+          768: {
+            direction: "horizontal",
+            slidesPerView: 4,
+          },
+          1199: {
+            direction: "vertical",
+            slidesPerView: 3,
+          },
+        },
       },
     };
   },
@@ -147,10 +155,6 @@ export default {
   padding: 0 18px;
 }
 
-/* .gallery-Right {
-  width: 100%;
-} */
-
 .gallery-Right .swiper-slide .slide-box h2 {
   font-size: 15px;
   line-height: 16px;
@@ -164,6 +168,34 @@ export default {
 @media (max-width: 1199px) {
   .gallery-top {
     max-width: none;
+    margin-right: 0;
+    margin-bottom: 30px;
+  }
+
+  .swiper__wrap {
+    flex-wrap: wrap;
+    max-height: unset;
+  }
+}
+
+@media (max-width: 991px) {
+  .slide-box {
+    padding: 30px 50px;
+    min-height: 300px;
+  }
+
+  .slide-box-right-slider {
+    min-height: 55px !important;
+  }
+
+  .slide-box-right-slider h2 {
+    padding: 10px 4px !important;
+    font-size: 8px !important;
+    line-height: 8px !important;
+  }
+
+  .gallery-top {
+    height: 300px;
   }
 }
 </style>

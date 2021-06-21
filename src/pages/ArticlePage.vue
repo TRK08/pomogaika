@@ -3,15 +3,9 @@
     <div class="container">
       <Breadcrumbs :articleTitle="singleArticle.title" />
       <div class="article-page__wrap">
-        <div
-          class="article-page-img"
-          :style="{
-            backgroundImage:
-              'linear-gradient(180deg, #030405 0%, rgba(255, 255, 255, 0) 100%),url(' +
-              singleArticle.image +
-              ')',
-          }"
-        ></div>
+        <div class="article-page-img">
+          <img :src="singleArticle.image" alt="" />
+        </div>
         <span> {{ singleArticle.date }} </span>
         <h2>{{ singleArticle.title }}</h2>
         <div class="article-page-content" v-html="singleArticle.content"></div>

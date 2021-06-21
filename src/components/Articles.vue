@@ -42,17 +42,4 @@ export default {
 </script>
 
 <style scoped>
-.articles-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 30px;
-}
-.articles-all {
-  display: block;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 21px;
-  color: #fbbb36;
-}
 </style>

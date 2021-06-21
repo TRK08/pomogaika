@@ -14,9 +14,9 @@
               <div class="offer-item-discount">- {{ offer.discount }}</div>
             </div>
             <div class="offer-item-body">
-              <div class="offer-item-title">{{ offer.title }}</div>
-              <div class="offer-item-descr">{{ offer.descr }}</div>
-              <div class="offer-item-price">{{ offer.price }}</div>
+              <p class="offer-item-title">{{ offer.title }}</p>
+              <p class="offer-item-descr">{{ offer.descr }}</p>
+              <p class="offer-item-price">{{ offer.price }}</p>
               <button class="offer-item-btn">Подробнее</button>
             </div>
           </div>

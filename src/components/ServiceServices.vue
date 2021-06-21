@@ -6,12 +6,14 @@
         <router-link
           :to="`/service/${item.id}`"
           tag="div"
-          class="services-item"
+          class="services-item__wrap"
           v-for="item in services"
           :key="item.id"
         >
-          <img :src="item.icon" alt="" />
-          <span> {{ item.title }} </span>
+          <div class="services-item">
+            <img :src="item.icon" alt="" />
+            <span> {{ item.title }} </span>
+          </div>
         </router-link>
       </div>
     </div>

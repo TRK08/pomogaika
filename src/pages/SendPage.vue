@@ -18,7 +18,7 @@
         заказа (при наличии свободных курьеров).
       </p>
       <h3>Доставка по России и СНГ</h3>
-      <p>
+      <p class="mb-custom">
         Доставка осуществляется Курьерской компанией СДЭК, ТК "Деловые Линии"
         (или любой другой ТК на ваш выбор), а также через ФГУП «Почта России» Во
         многих городах есть пункты выдачи, где можно забрать заказ
@@ -43,7 +43,10 @@ export default {
 <style scoped>
 .send-page {
   padding: 30px 0;
-  min-height: 100vh;
+}
+
+.send-page p:last-child {
+  margin-bottom: 0;
 }
 
 .send-page * {
@@ -52,5 +55,19 @@ export default {
 
 .send-page h3 {
   color: #fbbb36;
+}
+
+@media (max-width: 991px) {
+  .send-page * {
+    margin-bottom: 25px;
+  }
+
+  .send-page h3 {
+    margin-bottom: 15px;
+  }
+
+  .mb-custom {
+    margin-bottom: 15px;
+  }
 }
 </style>
