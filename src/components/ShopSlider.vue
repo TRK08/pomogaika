@@ -5,13 +5,18 @@
         <swiper-slide v-for="item in slides" :key="item.img">
           <div
             class="slide-box"
-            :style="{ 'background-image': 'url(' + item.img + ')' }"
+            :style="{ 'background-image': 'url(' + item.image + ')' }"
           >
-            <h2 data-swiper-parallax="-700" v-html="item.title"></h2>
-            <p data-swiper-parallax="-500" v-html="item.subtitle"></p>
-            <button class="slider-btn" data-swiper-parallax="-300">
-              Получить
-            </button>
+            <h2 data-swiper-parallax="-700" v-html="item.headder"></h2>
+            <p data-swiper-parallax="-500" v-html="item.subheader"></p>
+            <router-link
+              tag="button"
+              :to="item.button.button_link"
+              class="slider-btn"
+              data-swiper-parallax="-300"
+            >
+              {{ item.button.button_text }}
+            </router-link>
           </div>
         </swiper-slide>
       </swiper>
@@ -32,6 +37,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "ShopSlider",
   data() {
@@ -50,21 +56,6 @@ export default {
         speed: 800,
       },
 
-      slides: [
-        {
-          title: "Дисконтная карта <br> в подарок!",
-          subtitle:
-            "Карта выдается при покупке <br> от 15000 рублей и является <br> накопительной",
-          img: require("../assets/img/shop-slide-1.png"),
-        },
-        {
-          title: "Бесплатная доставка <br> по Екатеринбургу",
-          subtitle:
-            "Акция действует при покупке <br> запасных частей и комплектующих <br> от 20000 рублей",
-          img: require("../assets/img/shop-slide-2.png"),
-        },
-      ],
-
       underSlider: [
         {
           text: "Широкий ассортимент запчастей <br> в наличии и под заказ",
@@ -82,9 +73,14 @@ export default {
     swiper() {
       return this.$refs.mySwiper.$swiper;
     },
+
+    ...mapGetters({
+      slides: "info/getShopSlides",
+    }),
   },
   mounted() {
     this.swiper.slideTo(1, false, false);
+    this.$store.dispatch("info/LOAD_SHOP_SLIDES");
   },
 };
 </script>

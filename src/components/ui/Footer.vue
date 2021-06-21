@@ -16,10 +16,10 @@
           <div class="footer-left col-xs-4">
             <img src="../../assets/img/logo-black.png" alt="" />
             <p class="footer-left-text">
-              г. Екатеринбург <br />
-              ул. Депутатская, д. 84 <br />
-              <a href="tel:+79923402383">Tel: +7 (992) 340-23-83</a> <br />
-              <a href="mailto:pomogaika96@yandex.ru">pomogaika96@yandex.ru</a>
+              <span> {{ contacts.adress }} </span>
+              <a :href="`tel:${contacts.phone}`">Tel: {{ contacts.phone }}</a>
+              <br />
+              <a :href="`mailto:${contacts.email}`"> {{ contacts.email }} </a>
             </p>
           </div>
           <div class="footer-center col-xs-8">
@@ -43,10 +43,10 @@
           </div>
         </div>
         <div class="footer-social">
-          <a href="https://vk.com/pomogayka96"
+          <a :href="`${contacts.vk}`"
             ><img src="../../assets/img/vk-black.svg" alt="vk"
           /></a>
-          <a href=""
+          <a :href="`${contacts.instagram}`"
             ><img src="../../assets/img/instagram-black.svg" alt="inst"
           /></a>
         </div>
@@ -59,10 +59,10 @@
           <div class="footer-left col-xs-4">
             <img src="../../assets/img/logo-yellow.png" alt="" />
             <p class="footer-left-text">
-              г. Екатеринбург <br />
-              ул. Депутатская, д. 84 <br />
-              <a href="tel:+79923402383">Tel: +7 (992) 340-23-83</a> <br />
-              <a href="mailto:pomogaika96@yandex.ru">pomogaika96@yandex.ru</a>
+              <span> {{ contacts.adress }} </span>
+              <a :href="`tel:${contacts.phone}`">Tel: {{ contacts.phone }}</a>
+              <br />
+              <a href="mailto:pomogaika96@yandex.ru"> {{ contacts.email }} </a>
             </p>
           </div>
           <div class="footer-center col-xs-8">
@@ -87,10 +87,10 @@
         </div>
 
         <div class="footer-social">
-          <a href="https://vk.com/pomogayka96"
+          <a :href="`${contacts.vk}`"
             ><img src="../../assets/img/vk-yellow.svg" alt="vk"
           /></a>
-          <a href=""
+          <a :href="`${contacts.instagram}`"
             ><img src="../../assets/img/instagram-yellow.svg" alt="inst"
           /></a>
         </div>
@@ -102,6 +102,8 @@
 
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "Footer",
   data() {
@@ -221,6 +223,14 @@ export default {
         },
       },
     };
+  },
+  computed: {
+    ...mapGetters({
+      contacts: "info/getContacts",
+    }),
+  },
+  created() {
+    this.$store.dispatch("info/LOAD_CONTACTS");
   },
 };
 </script>

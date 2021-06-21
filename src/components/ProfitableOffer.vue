@@ -41,14 +41,14 @@ export default {
         },
         {
           img: require("../assets/img/vozdushniy-filtr.png"),
-          discount: "10%",
+          discount: "20%",
           title: "Воздушные фильтры",
           descr: "Воздушный фильтр для Toyota Camry",
           price: "2 500 ₽ ",
         },
         {
           img: require("../assets/img/vozdushniy-filtr.png"),
-          discount: "10%",
+          discount: "30%",
           title: "Воздушные фильтры",
           descr: "Воздушный фильтр для Toyota Camry",
           price: "3 500 ₽ ",

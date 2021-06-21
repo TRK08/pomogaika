@@ -16,21 +16,21 @@
               <img src="../../../assets/img/clock-yellow.svg" alt="" />
               <div>
                 <span>Режим работы</span>
-                <span>10:00 - 20:00</span>
+                <span> {{ contacts.work_time }} </span>
               </div>
             </div>
             <div class="header-contacts">
               <img src="../../../assets/img/phone-yellow.svg" alt="" />
               <div>
                 <span>Свяжитесь с нами</span>
-                <a href="">+7 (992) 340-23-83</a>
+                <a href=""> {{ contacts.phone }} </a>
               </div>
             </div>
             <div class="header-adress">
               <img src="../../../assets/img/point-yellow.svg" alt="" />
               <div>
                 <span>Адрес</span>
-                <span>г. Екатеринбург, ул. Депутатская, д. 95 </span>
+                <span> {{ contacts.adress }} </span>
               </div>
             </div>
           </div>
@@ -65,6 +65,12 @@
 <script>
 export default {
   name: "HeaderService",
+  props: {
+    contacts: {
+      type: Object,
+      required: true,
+    },
+  },
   data() {
     return {
       navs: [

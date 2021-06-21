@@ -12,11 +12,11 @@
           </p>
           <div class="online-registr-contacts">
             <span>Свяжитесь с нами</span>
-            <a href="tel:+79923402383">+7 (992) 340-23-83</a>
+            <a :href="`tel:${contacts.phone}`">{{ contacts.phone }}</a>
           </div>
           <div class="online-registr-adress">
             <span>Адрес</span>
-            <p>г. Екатеринбург, ул. Депутатская д. 95</p>
+            <p>{{ contacts.adress }}</p>
           </div>
         </div>
         <div class="col-sm-6 online-registr-form__wrap">
@@ -48,6 +48,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import Datepicker from "vuejs-datepicker";
 import { ru } from "vuejs-datepicker/dist/locale";
 export default {
@@ -93,6 +94,14 @@ export default {
         },
       ],
     };
+  },
+  computed: {
+    ...mapGetters({
+      contacts: "info/getContacts",
+    }),
+  },
+  created() {
+    this.$store.dispatch("info/LOAD_CONTACTS");
   },
 };
 </script>

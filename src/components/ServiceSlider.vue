@@ -15,13 +15,18 @@
           >
             <div
               class="slide-box"
-              :style="{ 'background-image': 'url(' + slide.img + ')' }"
+              :style="{ 'background-image': 'url(' + slide.image + ')' }"
             >
-              <h2 data-swiper-parallax="-700" v-html="slide.title"></h2>
-              <p data-swiper-parallax="-500" v-html="slide.subtitle"></p>
-              <button class="slider-btn" data-swiper-parallax="-300">
-                Получить
-              </button>
+              <h2 data-swiper-parallax="-700" v-html="slide.headder"></h2>
+              <p data-swiper-parallax="-500" v-html="slide.subheader"></p>
+              <router-link
+                tag="button"
+                :to="slide.button.button_link"
+                class="slider-btn"
+                data-swiper-parallax="-300"
+              >
+                {{ slide.button.button_text || "Получить" }}
+              </router-link>
             </div>
           </swiper-slide>
           <div class="swiper-pagination" slot="pagination"></div>
@@ -34,14 +39,16 @@
         >
           <swiper-slide
             class="swiper-slide"
-            v-for="(slide, index) in slides"
-            :key="index"
+            v-for="slide in slides"
+            :key="slide.image"
           >
             <div
               class="slide-box"
-              :style="{ 'background-image': 'url(' + slide.img + ')' }"
+              :style="{
+                'background-image': 'url(' + slide.image + ')',
+              }"
             >
-              <h2 v-html="slide.title"></h2>
+              <h2 v-html="slide.headder"></h2>
             </div>
           </swiper-slide>
         </swiper>
@@ -51,44 +58,12 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "ServiceSlider",
   data() {
     return {
-      isDisable: false,
-      slides: [
-        {
-          title: "Новым клиентам <br> скидка 10%",
-          subtitle:
-            "Скидка действует только на <br> техническое обслуживание <br> и слесарные работы",
-          img: require("../assets/img/service-slide-1.png"),
-        },
-        {
-          title: "Новым клиентам <br> скидка 10%",
-          subtitle:
-            "Скидка действует только на <br> техническое обслуживание <br> и слесарные работы",
-          img: require("../assets/img/service-slide-2.png"),
-        },
-        {
-          title: "Новым клиентам <br> скидка 10%",
-          subtitle:
-            "Скидка действует только на <br> техническое обслуживание <br> и слесарные работы",
-          img: require("../assets/img/service-slide-3.png"),
-        },
-        {
-          title: "Новым клиентам <br> скидка 10%",
-          subtitle:
-            "Скидка действует только на <br> техническое обслуживание <br> и слесарные работы",
-          img: require("../assets/img/service-slide-4.png"),
-        },
-        {
-          title: "Новым клиентам <br> скидка 10%",
-          subtitle:
-            "Скидка действует только на <br> техническое обслуживание <br> и слесарные работы",
-          img: require("../assets/img/service-slide-5.png"),
-        },
-      ],
-
       swiperOptionTop: {
         slidesPerView: 1,
         autoplay: true,
@@ -108,6 +83,11 @@ export default {
       },
     };
   },
+  computed: {
+    ...mapGetters({
+      slides: "info/getServiceSlides",
+    }),
+  },
   mounted() {
     this.$nextTick(() => {
       const swiperTop = this.$refs.swiperTop.$swiper;
@@ -115,6 +95,7 @@ export default {
       swiperTop.controller.control = swiperRight;
       swiperRight.controller.control = swiperTop;
     });
+    this.$store.dispatch("info/LOAD_SERVICE_SLIDES");
   },
   methods: {},
 };
@@ -142,8 +123,9 @@ export default {
 }
 
 .slide-box {
-  padding: 90px 0 60px 60px;
+  padding: 90px 60px 60px 60px;
   overflow: hidden;
+  min-height: 390px;
 }
 
 .slide-box h2 {

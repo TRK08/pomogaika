@@ -8,60 +8,71 @@
         О нас
       </h2>
       <div class="about-component-text row col-12" v-if="routePath === '/'">
-        <div
-          class="col-sm-6 col-6"
-          v-for="(text, index) in aboutShop.mainText"
-          :key="index"
-        >
-          <p v-html="text.parag"></p>
+        <div class="col-sm-6 col-6">
+          <p v-html="aboutShop.txt1"></p>
+        </div>
+        <div class="col-sm-6 col-6">
+          <p v-html="aboutShop.txt2"></p>
         </div>
       </div>
       <div class="about-component-text row col-12" v-else>
-        <div
-          class="col-sm-6 col-6"
-          v-for="(text, index) in aboutService.mainText"
-          :key="index"
-        >
-          <p v-html="text.parag"></p>
+        <div class="col-sm-6 col-6">
+          <p v-html="aboutService.txt1"></p>
+        </div>
+        <div class="col-sm-6 col-6">
+          <p v-html="aboutService.txt2"></p>
         </div>
       </div>
       <div class="about-component-map row col-12">
         <div class="col-sm-4" v-if="routePath === '/'">
           <div
             class="about-component-map-left"
-            v-for="item in aboutShop.items"
-            :key="item.title"
+            v-for="item in aboutShop.numbers"
+            :key="item.txt1"
           >
             <span class="about-component-num about-component--yellow-text">
-              {{ item.num }}
+              {{ item.number }}
             </span>
             <div>
               <h3 class="about-component--yellow-text">
-                {{ item.title }}
+                {{ item.txt.headder }}
               </h3>
-              <p>{{ item.text }}</p>
+              <p>{{ item.txt.description }}</p>
             </div>
           </div>
         </div>
         <div class="col-sm-4" v-else>
           <div
             class="about-component-map-left"
-            v-for="item in aboutService.items"
-            :key="item.title"
+            v-for="item in aboutService.numbers"
+            :key="item.txt1"
           >
             <span class="about-component-num">
-              {{ item.num }}
+              {{ item.number }}
             </span>
             <div>
               <h3 class="">
-                {{ item.title }}
+                {{ item.txt.headder }}
               </h3>
-              <p>{{ item.text }}</p>
+              <p>{{ item.txt.description }}</p>
             </div>
           </div>
         </div>
         <div class="map__wrap col-sm-8">
-          <div id="map"></div>
+          <!-- <div id="map"></div> -->
+          <yandex-map
+            :coords="coords"
+            :zoom="16"
+            ymap-class="map-instance__wrap"
+            :controls="controls"
+            :scroll-zoom="scrollZoom"
+          >
+            <ymap-marker
+              :coords="markerCoords"
+              marker-id="123"
+              :icon="markerIcon"
+            />
+          </yandex-map>
         </div>
       </div>
     </div>
@@ -69,117 +80,36 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "AboutUs",
   data() {
     return {
       routePath: this.$route.path,
-      aboutShop: {
-        mainText: [
-          {
-            parag:
-              "Интернет-магазин автозапчастей “Помогайка” - компания, занимающаяся розничной продажей запчастей, расходных материалов, аксессуаров и комплектующих для автомобилей иностранного производства. <br /> В нашем ассортименте продукция ведущих европейских, корейских, японских марок, а так же большой выбор неоригинальных автомобильных запчастей.",
-          },
-          {
-            parag:
-              "Мы предлагаем быстрый и удобный сервис по поиску, подбору и заказу необходимых запчастей для вашего автомобиля, накопительную систему скидок, отличный сервис и максимально короткие сроки доставки.",
-          },
-        ],
-        items: [
-          {
-            num: 15,
-            title: "Поставщиков",
-            text: "Проверенные временем поставщики, которые не подводят.",
-          },
-          {
-            num: 9000,
-            title: "Запчастей",
-            text: "Ассортимент, который мы постоянно пополняем.",
-          },
-          {
-            num: 200,
-            title: "Отзывов",
-            text: "И тысячи довольных клиентов, которые выбирают нас.",
-          },
-        ],
-      },
-      aboutService: {
-        mainText: [
-          {
-            parag:
-              "Команда сервисного центра «Помогайка» занимается обслуживанием автомобилей японского, корейского, европейского производства и предлагает клиентам широкий спектр услуг: от проведения компьютерной диагностики на профессиональном диагностическом оборудовании до капитального ремонта ДВС, тормозной системы, МКПП.",
-          },
-          {
-            parag:
-              "Для выполнения работ сотрудники используют современное оборудование, новейшие инструменты, качественные расходные материалы. <br> Перед началом каких-либо процедур вам проведут компьютерную диагностику, чтобы выявить существующие проблемы, предложат способы их устранения. Богатый опыт мастеров позволяет браться за решение даже самых сложных случаев.",
-          },
-        ],
-        items: [
-          {
-            num: 76,
-            title: "Автомобилей",
-            text: "Обслужили в прошлом месяце",
-          },
-          {
-            num: 341,
-            title: "Отзыв",
-            text: "От счастливых клиентов за прошлый год",
-          },
-          {
-            num: 4,
-            title: "Года",
-            text: "Мы работаем для вас",
-          },
-        ],
+      coords: [56.80982010179984, 60.579143003767754],
+      markerCoords: [56.810026077591026, 60.57891459690633],
+      controls: ["zoomControl"],
+      scrollZoom: false,
+      markerIcon: {
+        layout: "default#imageWithContent",
+        imageHref: require("../assets/img/map-point.svg"),
+        imageSize: [30, 30],
+        imageOffset: [0, -30],
       },
     };
   },
-  methods: {
-    yaMapInit() {
-      var myMap = new ymaps.Map(
-        "map",
-        {
-          center: [56.81112924593115, 60.57892605602271],
-          zoom: 15,
-          controls: [],
-        },
-        { suppressMapOpenBlock: true }
-      );
-      myMap.geoObjects.add(
-        new ymaps.Placemark(
-          [56.81012924593115, 60.578926056022719],
-          {
-            hintContent: "Собственный значок метки",
-            balloonContent: "Это красивая метка",
-          },
-          {
-            iconLayout: "default#image",
-            iconImageHref:
-              "https://image.flaticon.com/icons/svg/787/787433.svg",
-            iconImageSize: [50, 50],
-          }
-        )
-      );
-      myMap.behaviors.disable("scrollZoom");
-    },
+  computed: {
+    ...mapGetters({
+      aboutShop: "info/getShopText",
+      aboutService: "info/getServiceText",
+    }),
   },
   created() {
-    const script = document.createElement("script");
-    script.onload = () => {
-      ymaps.ready(() => this.yaMapInit());
-    };
-    script.id = "ymaps";
-    script.src =
-      "https://api-maps.yandex.ru/2.1/?apikey=8c4059db-3b8d-4535-a15e-569ee80fc827&lang=ru_RU";
-    document.head.append(script);
+    this.$store.dispatch("info/LOAD_SHOP_TEXT");
+    this.$store.dispatch("info/LOAD_SERVICE_TEXT");
   },
 };
 </script>
 
 <style scoped>
-#map {
-  height: 100%;
-  width: 100%;
-  min-height: 265px;
-}
 </style>

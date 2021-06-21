@@ -8,6 +8,7 @@ import PaymentPage from '../pages/PaymentPage'
 import SendPage from '../pages/SendPage'
 import GuaranteePage from '../pages/GuaranteePage'
 import CartPage from '../pages/CartPage'
+import CabinetPage from '../pages/CabinetPage'
 
 const routes = [
 	{
@@ -17,6 +18,10 @@ const routes = [
 	{
 		path: '/cart',
 		component: CartPage
+	},
+	{
+		path: '/cabinet',
+		component: CabinetPage
 	},
 	{
 		path: '/payment',

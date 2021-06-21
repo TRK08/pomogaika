@@ -8,10 +8,18 @@ import VueTheMask from 'vue-the-mask'
 import Vuelidate from 'vuelidate'
 import VueScrollTo from 'vue-scrollto'
 import VueTyperPlugin from 'vue-typer'
-import Ymaps from 'vue-yandex-maps'
+import YmapPlugin from 'vue-yandex-maps'
 
 
 import 'swiper/css/swiper.css'
+
+
+const settings = {
+  apiKey: 'e422ee4c-d64b-4823-81cd-e3460e50f7d4',
+  lang: 'ru_RU',
+  coordorder: 'latlong',
+  version: '2.1'
+}
 
 
 Vue.use(VueTyperPlugin)
@@ -21,7 +29,10 @@ Vue.use(require('vue-cookies'))
 Vue.use(VueAwesomeSwiper)
 Vue.use(VueScrollTo)
 Vue.use(VueTheMask)
-Vue.use(Ymaps)
+Vue.use(YmapPlugin, settings)
+
+
+
 
 
 

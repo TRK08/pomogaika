@@ -39,9 +39,12 @@ label, input[type=checkbox], input[type=radio] {
 
 
 
-p {
+p, span {
 	margin: 0;
 	padding: 0;
+	font-size: 15px;
+	line-height: 16px;
+	font-weight: 400;
 }
 
 a,
@@ -59,12 +62,27 @@ a:active {
 h2 {
 	font-weight: 500;
 	font-size: 35px;
+	line-height: 37px;
+	font-weight: 400;
 }
 
-p {
+h3 {
+	font-size: 20px;
+	line-height: 21px;
+	font-weight: 400;
+}
+
+p,button {
 	font-weight: 400;
 	font-size: 15px;
+	line-height: 16px;
 }
+
+.vdp-datepicker__calendar {
+	right: 30px;
+	padding: 20px;
+}
+
 
 /* Header */
 
@@ -268,6 +286,13 @@ p {
 	margin-top: 30px;
 }
 
+.footer-left-text span {
+	display: block;
+	max-width: 150px;
+	font-size: inherit;
+	line-height: inherit;
+}
+
 .footer-menu__wrap {
 	display: flex;
 	justify-content: flex-end;
@@ -324,6 +349,7 @@ p {
 
 .swiper-slide p {
 	margin-bottom: 73px;
+	/* max-width: 220px; */
 }
 
 .slider-btn {
@@ -394,16 +420,27 @@ p {
 
 .about-component-num {
 	font-size: 35px;
+	line-height: 41px;
 	font-weight: 700;
 	min-width: 83px;
 	margin-right: 20px;
+}
+
+.about-component-map-left div h3 {
+	margin-bottom: 10px;
 }
 
 .about-component--yellow-text {
 	color: var(--yellow-color);
 }
 
+.map-instance__wrap {
+  width: 100%;
+  height: 260px !important;
+}
 
+
+/* SWIPER PAGINATION */
 
 .swiper-pagination {
   bottom: 20px !important;
@@ -556,6 +593,10 @@ p {
 .online-registr-adress {
 	display: flex;
 	flex-direction: column;
+}
+
+.online-registr-adress p {
+	font-size: inherit;
 }
 
 .online-registr-contacts a {
@@ -1143,6 +1184,9 @@ table {
   font-size: 15px;
   line-height: 16px;
 }
+
+
+
 
 /*ADAPTIIIIIIIIIV*/
 

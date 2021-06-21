@@ -22,7 +22,7 @@
               <img src="../../../assets/img/phone-black.svg" alt="" />
               <div>
                 <span>Свяжитесь с нами</span>
-                <a href="">+7 (992) 340-23-83</a>
+                <a href=""> {{ contacts.phone }}</a>
               </div>
             </div>
             <router-link tag="div" to="/cart" class="header-cart">
@@ -72,6 +72,12 @@
 <script>
 export default {
   name: "HeaderShop",
+  props: {
+    contacts: {
+      type: Object,
+      required: true,
+    },
+  },
   data() {
     return {
       navs: [
