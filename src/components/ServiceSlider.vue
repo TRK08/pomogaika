@@ -120,6 +120,7 @@ export default {
 .gallery-top {
   max-width: 850px;
   margin-right: 30px;
+  width: 100%;
 }
 
 .slide-box {
@@ -146,9 +147,9 @@ export default {
   padding: 0 18px;
 }
 
-.gallery-Right {
+/* .gallery-Right {
   width: 100%;
-}
+} */
 
 .gallery-Right .swiper-slide .slide-box h2 {
   font-size: 15px;
