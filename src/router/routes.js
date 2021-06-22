@@ -9,6 +9,7 @@ import SendPage from '../pages/SendPage'
 import GuaranteePage from '../pages/GuaranteePage'
 import CartPage from '../pages/CartPage'
 import CabinetPage from '../pages/CabinetPage'
+import LoginPage from '../pages/LoginPage'
 
 const routes = [
 	{
@@ -22,6 +23,10 @@ const routes = [
 	{
 		path: '/cabinet',
 		component: CabinetPage
+	},
+	{
+		path: '/login',
+		component: LoginPage
 	},
 	{
 		path: '/payment',

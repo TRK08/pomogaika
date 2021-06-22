@@ -68,7 +68,6 @@ h2 {
 	font-weight: 500;
 	font-size: 35px;
 	line-height: 37px;
-	font-weight: 700;
 }
 
 h3 {
@@ -160,6 +159,7 @@ p,button {
 
 .header-cart {
 	display: flex;
+	align-items: center;
 }
 
 .cart-price {
@@ -426,7 +426,7 @@ p,button {
 .about-component-num {
 	font-size: 35px;
 	line-height: 41px;
-	font-weight: 700;
+	font-weight: 500;
 	min-width: 83px;
 	margin-right: 20px;
 }
@@ -987,6 +987,10 @@ table {
   margin-bottom: 30px;
 }
 
+.guarantee-page-block:last-child {
+	margin-bottom: 0;
+}
+
 .guarantee-page-block p {
   margin-top: 30px;
   font-size: 15px;
@@ -1263,8 +1267,8 @@ table {
 
 @media (max-width: 991px) {
 	p, span, a {
-		font-size: 10px;
-		line-height: 11px;
+		font-size: 10px!important;
+		line-height: 11px!important;
 	}
 
 	button {
@@ -1280,6 +1284,11 @@ table {
 	h3 {
 		font-size: 13px;
 		line-height: 15px;
+	}
+
+	h4 {
+		font-size: 13px;
+		line-height: 14px;
 	}
 
 	.header-wrap {
@@ -1574,7 +1583,7 @@ table {
 }
 @media (max-width: 512px) {
 	.header-shop-right {
-		margin-left: 35px;
+		margin-left: 50px;
 	}
 
 	.head-footer .row {

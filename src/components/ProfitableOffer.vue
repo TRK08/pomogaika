@@ -4,7 +4,7 @@
       <h2 class="profitable-offer-title">Выгодные предложения</h2>
       <div class="row">
         <div
-          class="offer__wrap col-xs-4"
+          class="offer__wrap col-xs-6 col-sm-4"
           v-for="offer in offers"
           :key="offer.price"
         >
@@ -55,6 +55,16 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    setMobileOffers() {
+      if (window.innerWidth < 768) {
+        this.offers = this.offers.slice(0, 2);
+      }
+    },
+  },
+  created() {
+    this.setMobileOffers();
   },
 };
 </script>

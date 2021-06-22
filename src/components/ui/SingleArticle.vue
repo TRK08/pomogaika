@@ -1,5 +1,5 @@
 <template>
-  <div class="article-item__wrap col-sm-4">
+  <div class="article-item__wrap col-sm-4 col-xs-6">
     <div class="article-item">
       <div class="article-item-img__wrap">
         <img :src="singleArticle.image" alt="" />

@@ -33,7 +33,7 @@
         </swiper>
         <!-- swiper2 Right -->
         <swiper
-          class="swiper gallery-Right"
+          class="swiper gallery-Right hidden-xs"
           :options="swiperOptionRight"
           ref="swiperRight"
         >
