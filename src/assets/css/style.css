@@ -87,6 +87,12 @@ p,button {
 	padding: 20px;
 }
 
+input, select {
+	-webkit-appearance: none;
+-webkit-border-radius: 0px;
+border-radius:0;
+}
+
 
 /* Header */
 
@@ -1252,6 +1258,64 @@ table {
 }
 
 
+/* LOGIN PAGE */
+
+.login-page {
+  padding: 130px 0;
+}
+
+.login-page__wrap {
+  display: flex;
+  justify-content: center;
+  height: 320px;
+}
+
+.login-page-left,
+.login-page-right {
+  width: 100%;
+}
+
+.login-page-separator {
+  height: 100%;
+  width: 1px;
+  background-color: #6b6963;
+  margin: 0 110px;
+}
+
+.login-form {
+  margin-top: 30px;
+}
+
+.login-form input {
+  width: 100%;
+  margin-bottom: 30px;
+  padding: 12px 16px;
+  background-color: rgba(9, 19, 33, 0.0638304);
+  border: none;
+}
+
+.login-page-left h2,
+.login-page-right h2 {
+  margin-bottom: 30px;
+}
+
+.login-page-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.login-btn {
+  padding: 12px;
+  width: 100%;
+  border: none;
+  color: #fff;
+  background-color: var(--yellow-color);
+}
+
+.registr-btn {
+  background-color: #000;
+}
 
 
 /*ADAPTIIIIIIIIIV*/

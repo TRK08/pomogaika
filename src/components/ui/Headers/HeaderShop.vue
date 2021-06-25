@@ -22,7 +22,7 @@
               <img src="../../../assets/img/phone-black.svg" alt="" />
               <div>
                 <span>Свяжитесь с нами</span>
-                <a href=""> {{ contacts.phone }}</a>
+                <a :href="`tel:${contacts.phone}`"> {{ contacts.phone }}</a>
               </div>
             </div>
             <router-link tag="div" to="/cart" class="header-cart">
@@ -70,6 +70,8 @@
 
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "HeaderShop",
   props: {
@@ -80,6 +82,7 @@ export default {
   },
   data() {
     return {
+      cabinetLink: "",
       navs: [
         {
           text: "Каталог",
@@ -120,6 +123,11 @@ export default {
         },
       ],
     };
+  },
+  computed: {
+    ...mapGetters({
+      isLog: "auth/getStatus",
+    }),
   },
 };
 </script>	

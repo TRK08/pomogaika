@@ -8,7 +8,8 @@
         this.$route.path === '/payment' ||
         this.$route.path === '/guarantee' ||
         this.$route.path === '/cart' ||
-        this.$route.path === '/login'
+        this.$route.path === '/login' ||
+        this.$route.path === '/registr'
       "
       :contacts="contacts"
     />

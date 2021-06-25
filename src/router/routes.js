@@ -10,11 +10,17 @@ import GuaranteePage from '../pages/GuaranteePage'
 import CartPage from '../pages/CartPage'
 import CabinetPage from '../pages/CabinetPage'
 import LoginPage from '../pages/LoginPage'
+import RegistrPage from '../pages/RegistrPage'
+import NotFound from '../pages/NotFound'
 
 const routes = [
 	{
 		path: '/',
 		component: HomeShop,
+	},
+	{
+		path: '*',
+		component: NotFound
 	},
 	{
 		path: '/cart',
@@ -27,6 +33,10 @@ const routes = [
 	{
 		path: '/login',
 		component: LoginPage
+	},
+	{
+		path: '/registr',
+		component: RegistrPage
 	},
 	{
 		path: '/payment',
