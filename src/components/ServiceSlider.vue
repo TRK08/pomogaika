@@ -1,7 +1,7 @@
 <template>
   <section class="service-slider">
     <div class="container">
-      <div class="swiper__wrap row">
+      <div class="swiper__wrap">
         <!-- swiper1 -->
         <swiper
           class="swiper-container gallery-top"

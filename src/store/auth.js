@@ -3,7 +3,7 @@ import axios from "axios";
 const auth = {
   namespaced: true,
   state : {
-    isLoggined: false
+    isLoggined: true
   },
   mutations: {},
   actions: {},

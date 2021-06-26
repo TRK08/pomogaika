@@ -3,7 +3,7 @@
     <div class="header-wrap black-header">
       <div class="container">
         <div class="header">
-          <router-link tag="a" to="/service">
+          <router-link tag="a" to="/service" class="service-logo">
             <img
               src="../../../assets/img/logo-yellow.png"
               alt="logo"
@@ -19,7 +19,7 @@
                 <span> {{ contacts.work_time }} </span>
               </div>
             </div>
-            <div class="header-contacts">
+            <div class="header-contacts header-contacts-service">
               <img src="../../../assets/img/phone-yellow.svg" alt="" />
               <div>
                 <span>Свяжитесь с нами</span>

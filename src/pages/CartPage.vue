@@ -2,7 +2,7 @@
   <div class="cart-page">
     <div class="container">
       <h2>Корзина</h2>
-      <div class="row">
+      <div class="row cart-page__wrap">
         <div class="col-sm-6 col-lg-7">
           <CartForm />
         </div>
@@ -30,5 +30,11 @@ export default {
 
 .cart-page h2 {
   margin-bottom: 70px;
+}
+
+@media (max-width: 767px) {
+  .cart-page h2 {
+    margin-bottom: 30px;
+  }
 }
 </style>

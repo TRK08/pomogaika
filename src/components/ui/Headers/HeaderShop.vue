@@ -124,10 +124,22 @@ export default {
       ],
     };
   },
+  methods: {
+    changeLink() {
+      if (this.isLog) {
+        this.cabinet[0].link = "/cabinet";
+      } else {
+        this.cabinet[0].link = "/login";
+      }
+    },
+  },
   computed: {
     ...mapGetters({
       isLog: "auth/getStatus",
     }),
+  },
+  created() {
+    this.changeLink();
   },
 };
 </script>	
