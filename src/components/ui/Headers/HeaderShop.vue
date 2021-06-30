@@ -109,7 +109,7 @@ export default {
         {
           img: require("../../../assets/img/cabinet.svg"),
           text: "Личный кабинет",
-          link: "/cabinet",
+          link: "/login",
         },
         {
           img: require("../../../assets/img/dostavka.svg"),
@@ -124,15 +124,7 @@ export default {
       ],
     };
   },
-  methods: {
-    changeLink() {
-      if (this.isLog) {
-        this.cabinet[0].link = "/cabinet";
-      } else {
-        this.cabinet[0].link = "/login";
-      }
-    },
-  },
+  methods: {},
   computed: {
     ...mapGetters({
       isLog: "auth/getStatus",
