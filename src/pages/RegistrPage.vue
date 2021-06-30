@@ -2,33 +2,38 @@
   <div class="registr-page">
     <div class="container">
       <h2>Регистрация</h2>
-      <form action="" class="registr-page-form">
+      <form action="" @submit.prevent="registr()" class="registr-page-form">
         <div class="registr-form-inputs-box">
           <input
             type="text"
             placeholder="Имя"
             class="registr-form-input registr-form-name"
+            v-model="name"
           />
           <input
             type="text"
             placeholder="Фамилия"
             class="registr-form-input registr-form-surname"
+            v-model="surname"
           />
         </div>
         <input
           type="text"
           placeholder="Email"
           class="registr-form-input registr-form-email"
+          v-model="email"
         />
         <input
           type="text"
           placeholder="Пароль"
           class="registr-form-input registr-form-pass"
+          v-model="password"
         />
         <input
           type="text"
           placeholder="Повторите пароль"
           class="registr-form-input registr-form-pass-repeat"
+          v-model="passwordConfirm"
         />
         <input
           class="checkbox-custom"
@@ -41,9 +46,7 @@
           >Я принимаю условия политики обработки данных и
           конфиденциальности</label
         >
-        <router-link tag="button" to="/login" type="submit"
-          >Зарегистрироваться</router-link
-        >
+        <button type="submit">Зарегистрироваться</button>
         <p>
           Нажимая кнопку “Зарегистрироваться”, вы подтверждаете согласение на
           обработку персональных данных и ознакомление с политикой
@@ -55,8 +58,30 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "RegistrPage",
+  data() {
+    return {
+      name: "",
+      surname: "",
+      email: "",
+      password: "",
+      passwordConfirm: "",
+      load: false,
+    };
+  },
+  methods: {
+    registr() {
+      let form = {
+        name: this.name,
+        surname: this.surname,
+        email: this.email,
+        password: this.password,
+      };
+      this.$store.dispatch("auth/REGISTR", form);
+    },
+  },
 };
 </script>
 

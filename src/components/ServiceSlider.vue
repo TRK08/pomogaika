@@ -161,7 +161,7 @@ export default {
   margin-bottom: 0;
 }
 
-.swiper-slide:nth-child(odd) .slide-box h2 {
+.swiper-slide .slide-box h2 {
   color: #fff;
 }
 

@@ -2,7 +2,7 @@
   <div>
     <ServiceSlider />
     <ServiceServices />
-    <AboutUs />
+    <AboutUs v-if="!isMobile" />
     <Articles />
     <OnlineRegistr />
   </div>
@@ -22,6 +22,24 @@ export default {
     ServiceServices,
     Articles,
     OnlineRegistr,
+  },
+  data() {
+    return {
+      isMobile: false,
+    };
+  },
+  methods: {
+    checkWidthScreen() {
+      if (window.innerWidth < 768) {
+        this.isMobile = true;
+      } else {
+        this.isMobile = false;
+      }
+    },
+  },
+  created() {
+    this.checkWidthScreen();
+    window.addEventListener("resize", this.checkWidthScreen);
   },
 };
 </script>

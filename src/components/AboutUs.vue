@@ -59,10 +59,9 @@
           </div>
         </div>
         <div class="map__wrap col-sm-8">
-          <!-- <div id="map"></div> -->
           <yandex-map
             :coords="coords"
-            :zoom="16"
+            :zoom="14"
             ymap-class="map-instance__wrap"
             :controls="controls"
             :scroll-zoom="scrollZoom"

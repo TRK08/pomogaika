@@ -5,12 +5,10 @@
         <div class="login-page-left">
           <h2>Войти</h2>
           <p>Войдите в существующий аккаунт, используя логин и пароль</p>
-          <form class="login-form" action="">
-            <input type="text" placeholder="Email" />
-            <input type="text" placeholder="Пароль" />
-            <router-link tag="button" to="/cabinet" class="login-btn"
-              >Войти</router-link
-            >
+          <form class="login-form" action="" @submit.prevent="login">
+            <input v-model="email" type="text" placeholder="Email" />
+            <input v-model="password" type="text" placeholder="Пароль" />
+            <button class="login-btn">Войти</button>
           </form>
         </div>
         <div class="login-page-separator"></div>
@@ -32,8 +30,31 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   name: "LoginPage",
+  data() {
+    return {
+      email: "",
+      password: "",
+    };
+  },
+  methods: {
+    ...mapActions({
+      AUTH_REQUEST: "auth/AUTH_REQUEST",
+    }),
+    login() {
+      let form = {
+        email: this.email,
+        password: this.password,
+      };
+
+      this.AUTH_REQUEST(form).then(() => {
+        this.load = false;
+        this.$router.replace("/cabinet");
+      });
+    },
+  },
 };
 </script>
 

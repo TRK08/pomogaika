@@ -2,7 +2,7 @@
   <section class="home-shop">
     <ShopSlider />
     <ProfitableOffer />
-    <AboutUs />
+    <AboutUs v-if="!isMobile" />
   </section>
 </template>
 
@@ -14,7 +14,22 @@ export default {
   components: { ShopSlider, AboutUs, ProfitableOffer },
   name: "HomeShop",
   data() {
-    return {};
+    return {
+      isMobile: false,
+    };
+  },
+  methods: {
+    checkWidthScreen() {
+      if (window.innerWidth < 768) {
+        this.isMobile = true;
+      } else {
+        this.isMobile = false;
+      }
+    },
+  },
+  created() {
+    this.checkWidthScreen();
+    window.addEventListener("resize", this.checkWidthScreen);
   },
 };
 </script>

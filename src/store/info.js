@@ -40,7 +40,6 @@ const info = {
       .get('https://pomogayka96.ru/wp-json/pg/v1/get/main/shop-about')
       .then(res => {
         commit('SET_SHOP_TEXT', res.data)
-        console.log(res.data.map.center_lat);
       })
     },
     LOAD_SERVICE_TEXT ({commit}) {

@@ -13,13 +13,17 @@ import YmapPlugin from 'vue-yandex-maps'
 
 import 'swiper/css/swiper.css'
 
-
+// Yandex map settings
 const settings = {
   apiKey: 'e422ee4c-d64b-4823-81cd-e3460e50f7d4',
   lang: 'ru_RU',
   coordorder: 'latlong',
   version: '2.1'
 }
+
+
+// const user = JSON.parse(localStorage.getItem("user"))
+// store.dispatch("auth/VALIDATE", user);
 
 
 Vue.use(VueTyperPlugin)
