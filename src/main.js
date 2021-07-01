@@ -22,8 +22,8 @@ const settings = {
 }
 
 
-// const user = JSON.parse(localStorage.getItem("user"))
-// store.dispatch("auth/VALIDATE", user);
+const user = JSON.parse(localStorage.getItem("user"))
+store.dispatch("auth/VALIDATE", user);
 
 
 Vue.use(VueTyperPlugin)

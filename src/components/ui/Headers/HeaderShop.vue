@@ -130,9 +130,7 @@ export default {
       isLog: "auth/getStatus",
     }),
   },
-  created() {
-    this.changeLink();
-  },
+  created() {},
 };
 </script>	
 <style scoped>

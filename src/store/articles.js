@@ -63,6 +63,7 @@ const articles = {
 		},
 
     getSingleArticle (state) {
+      // return state.articles.find(item => item.name === id)
       return state.singleArticle
     }
 		}

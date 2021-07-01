@@ -45,12 +45,11 @@ export default {
     }),
     login() {
       let form = {
-        email: this.email,
+        username: this.email,
         password: this.password,
       };
 
       this.AUTH_REQUEST(form).then(() => {
-        this.load = false;
         this.$router.replace("/cabinet");
       });
     },

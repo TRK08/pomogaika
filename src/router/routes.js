@@ -13,6 +13,8 @@ import LoginPage from '../pages/LoginPage'
 import RegistrPage from '../pages/RegistrPage'
 import NotFound from '../pages/NotFound'
 
+import store from '../store'
+
 const routes = [
 	{
 		path: '/',
@@ -28,7 +30,19 @@ const routes = [
 	},
 	{
 		path: '/cabinet',
-		component: CabinetPage
+		component: CabinetPage,
+		beforeEnter: (to, from, next) => {
+			if (store.getters["auth/getAuthenticated"]) {
+				next()
+			} else {
+				if (to.path != "/login") {
+					next("/login")
+				}
+				else {
+					next()
+				}
+			}
+		}
 	},
 	{
 		path: '/login',
