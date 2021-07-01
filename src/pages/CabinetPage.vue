@@ -1,8 +1,9 @@
 <template>
-  <div class="cabinet-page">
+  <div class="cabinet-page" v-if="user">
     <div class="container">
       <h2 class="cabinet-page-title">Личный кабинет</h2>
       <h3 class="cabinet-user-name">Здравствуйте, {{ user.user_nicename }}</h3>
+      <button @click="signOut">выйти</button>
       <div class="cabinet-page__wrap">
         <div class="cabinet-photo">
           <div class="cabinet-img">
@@ -59,7 +60,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 export default {
   name: "CabinetPage",
   data() {
@@ -70,6 +71,15 @@ export default {
   methods: {
     loadImg() {
       this.profileImg = this.$refs.loadFile.value;
+    },
+    ...mapActions({
+      SIGN_OUT: "auth/SIGN_OUT",
+    }),
+
+    signOut() {
+      this.SIGN_OUT().then(() => {
+        this.$router.replace("/");
+      });
     },
   },
   computed: {

@@ -73,7 +73,12 @@ const auth = {
           commit("SET_TOKEN", null);
           commit("SET_USER", null);
       }
-  },
+    },
+    async SIGN_OUT({ commit }) {
+      localStorage.removeItem("user");
+      commit("SET_TOKEN", null);
+      commit("SET_USER", null);
+    },
   },
   getters: {
     getAuthenticated(state){
