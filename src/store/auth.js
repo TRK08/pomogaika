@@ -48,7 +48,6 @@ const auth = {
       }
       catch (err) {
         if(err.message.slice(-3) === '403') {
-          console.log(1);
           let error = true
           commit('SET_ERROR', error)
         }

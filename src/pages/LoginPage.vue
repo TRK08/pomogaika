@@ -84,7 +84,9 @@ export default {
       };
 
       this.AUTH_REQUEST(form).then(() => {
-        this.$router.replace("/cabinet");
+        if (!this.error) {
+          this.$router.replace("/cabinet");
+        }
       });
     },
   },
