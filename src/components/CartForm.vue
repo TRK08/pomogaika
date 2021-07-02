@@ -13,7 +13,9 @@
             :class="{ 'form-group--error': $v.name.$error }"
           >
             <label for="adress-form-name form__label">Имя*</label>
+
             <input
+              ref="nameInput"
               type="text"
               class="form__input"
               placeholder="Введите имя"
@@ -161,6 +163,7 @@
 
 <script>
 import { required, minLength, email } from "vuelidate/lib/validators";
+import { mapGetters } from "vuex";
 export default {
   name: "CartForm",
   data() {
@@ -188,6 +191,22 @@ export default {
       required,
       minLength: minLength(18),
     },
+  },
+  methods: {
+    fillInputsValue() {
+      if (this.isLoginUser) {
+        this.name = this.isLoginUser.user_nicename;
+        this.email = this.isLoginUser.user_email;
+      }
+    },
+  },
+  computed: {
+    ...mapGetters({
+      isLoginUser: "auth/getAuthenticated",
+    }),
+  },
+  created() {
+    this.fillInputsValue();
   },
 };
 </script>

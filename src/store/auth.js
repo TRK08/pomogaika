@@ -4,7 +4,8 @@ const auth = {
   namespaced: true,
   state : {
     token: null,
-    user: null
+    user: null,
+    error: false
   },
   mutations: {
 		SET_USER(state, user){
@@ -12,6 +13,9 @@ const auth = {
 		},
 		SET_TOKEN(state, token) {
       state.token = token;
+    },
+    SET_ERROR(state, err) {
+      state.error = err
     }
   },
   actions: {
@@ -35,14 +39,23 @@ const auth = {
       }
     },
 
-    async AUTH_REQUEST({dispatch }, payload) {
+    async AUTH_REQUEST({commit, dispatch }, payload) {
       try {
           const {data} = await axios.post(`https://pomogayka96.ru/wp-json/jwt-auth/v1/token`, payload)
-          console.log(data);
+          let error = false
+          commit('SET_ERROR', error)
           return dispatch('VALIDATE', data)
       }
       catch (err) {
-        alert('что-то пошло не так')
+        if(err.message.slice(-3) === '403') {
+          console.log(1);
+          let error = true
+          commit('SET_ERROR', error)
+        }
+        else {
+          alert('Что-то пошло не так')
+        }
+        
       }
     },
     async VALIDATE({ commit, state }, user) {
@@ -57,9 +70,6 @@ const auth = {
           const response = await axios({
               url: 'https://pomogayka96.ru/wp-json/jwt-auth/v1/token/validate',
               method: 'post',
-              // params: {
-              //   rest_route: '/jwt-auth/v1/auth/validate',
-              // },
               headers: {
                   'Authorization': `Bearer ${user.token}`
               }
@@ -83,7 +93,10 @@ const auth = {
   getters: {
     getAuthenticated(state){
       return state.user
-  }
+    },
+    getError(state) {
+      return state.error
+    }
   }
 }
 

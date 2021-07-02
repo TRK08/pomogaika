@@ -1320,7 +1320,7 @@ table {
 }
 
 .login-form {
-  margin-top: 30px;
+	width: 100%;
 }
 
 .login-form input {
@@ -1329,6 +1329,12 @@ table {
   padding: 12px 16px;
   background-color: rgba(9, 19, 33, 0.0638304);
   border: none;
+}
+
+.login-form-error {
+	display: block;
+	text-align: center;
+	margin-bottom: 10px;
 }
 
 

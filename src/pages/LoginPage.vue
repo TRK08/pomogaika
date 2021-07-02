@@ -6,8 +6,30 @@
           <h2>Войти</h2>
           <p>Войдите в существующий аккаунт, используя логин и пароль</p>
           <form class="login-form" action="" @submit.prevent="login">
-            <input v-model="email" type="text" placeholder="Email" />
-            <input v-model="password" type="password" placeholder="Пароль" />
+            <small class="login-form-error" v-if="error"
+              >Неверный логин или пароль</small
+            >
+            <div
+              class="form-group"
+              :class="{ 'form-group--error': $v.email.$error }"
+            >
+              <input
+                v-model.trim="$v.email.$model"
+                class="form__input"
+                type="text"
+                placeholder="Email"
+              />
+            </div>
+            <div
+              class="form-group"
+              :class="{ 'form-group--error': $v.password.$error }"
+            >
+              <input
+                v-model.trim="$v.password.$model"
+                type="password"
+                placeholder="Пароль"
+              />
+            </div>
             <button class="login-btn">Войти</button>
           </form>
         </div>
@@ -30,7 +52,8 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
+import { required, minLength, email } from "vuelidate/lib/validators";
 export default {
   name: "LoginPage",
   data() {
@@ -38,6 +61,17 @@ export default {
       email: "",
       password: "",
     };
+  },
+  validations: {
+    email: {
+      required,
+      email,
+      minLength: minLength(3),
+    },
+    password: {
+      required,
+      minLength: minLength(3),
+    },
   },
   methods: {
     ...mapActions({
@@ -54,6 +88,11 @@ export default {
       });
     },
   },
+  computed: {
+    ...mapGetters({
+      error: "auth/getError",
+    }),
+  },
 };
 </script>
 
@@ -61,5 +100,13 @@ export default {
 .container {
   max-width: 950px !important;
   margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 0;
+}
+
+.form-group--error input {
+  border-right: 5px solid red;
 }
 </style>
