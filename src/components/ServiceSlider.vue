@@ -15,7 +15,13 @@
           >
             <div
               class="slide-box"
-              :style="{ 'background-image': 'url(' + slide.image + ')' }"
+              :style="{
+                background:
+                  'linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(' +
+                  slide.image +
+                  ') no-repeat ',
+                'background-size': 'cover',
+              }"
             >
               <h2 data-swiper-parallax="-700" v-html="slide.headder"></h2>
               <p data-swiper-parallax="-500" v-html="slide.subheader"></p>
@@ -45,7 +51,11 @@
             <div
               class="slide-box slide-box-right-slider"
               :style="{
-                'background-image': 'url(' + slide.image + ')',
+                background:
+                  'linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(' +
+                  slide.image +
+                  ') no-repeat ',
+                'background-size': 'cover',
               }"
             >
               <h2 v-html="slide.headder"></h2>
@@ -135,6 +145,7 @@ export default {
   padding: 90px 60px 60px 60px;
   overflow: hidden;
   min-height: 390px;
+  background-repeat: no-repeat;
 }
 
 .slide-box h2 {
@@ -197,5 +208,52 @@ export default {
   .gallery-top {
     height: 300px;
   }
+
+  .slide-box p {
+    margin-bottom: 20px;
+    line-height: 13px;
+  }
+}
+
+@media (max-width: 512px) {
+  .gallery-top {
+    height: 200px;
+    margin-bottom: 0;
+  }
+
+  .slide-box {
+    padding: 20px 30px;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .slider-btn {
+    max-width: 100px;
+    padding: 4px 13px;
+  }
+
+  .swiper-slide .slide-box h2 {
+    font-size: 20px;
+    line-height: 21px;
+  }
+
+  .swiper-slide .slide-box p {
+    font-size: 10px;
+    line-height: 11px;
+  }
+
+  .swiper-slide .slide-box h2,
+  .swiper-slide .slide-box p {
+    margin-bottom: 10px;
+  }
+
+  .swiper-pagination {
+    bottom: 17px !important;
+    right: 30px !important;
+  }
+}
+@media (max-width: 390px) {
 }
 </style>

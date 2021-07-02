@@ -7,7 +7,7 @@
           <p>Войдите в существующий аккаунт, используя логин и пароль</p>
           <form class="login-form" action="" @submit.prevent="login">
             <input v-model="email" type="text" placeholder="Email" />
-            <input v-model="password" type="text" placeholder="Пароль" />
+            <input v-model="password" type="password" placeholder="Пароль" />
             <button class="login-btn">Войти</button>
           </form>
         </div>

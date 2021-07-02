@@ -24,13 +24,13 @@
           v-model="email"
         />
         <input
-          type="text"
+          type="password"
           placeholder="Пароль"
           class="registr-form-input registr-form-pass"
           v-model="password"
         />
         <input
-          type="text"
+          type="password"
           placeholder="Повторите пароль"
           class="registr-form-input registr-form-pass-repeat"
           v-model="passwordConfirm"
