@@ -2,7 +2,9 @@
   <div class="cabinet-page" v-if="user">
     <div class="container">
       <h2 class="cabinet-page-title">Личный кабинет</h2>
-      <h3 class="cabinet-user-name">Здравствуйте, {{ user.user_nicename }}</h3>
+      <h3 class="cabinet-user-name">
+        Здравствуйте, {{ user.user_display_name }}
+      </h3>
       <button @click="signOut">выйти</button>
       <div class="cabinet-page__wrap">
         <div class="cabinet-photo">

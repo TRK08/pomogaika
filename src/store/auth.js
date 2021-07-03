@@ -22,14 +22,17 @@ const auth = {
     async REGISTR({commit}, user) {
       try {
         let requestParams = {
-          rest_route: "/jwt-auth/v1/users",
+          name: user.name,
+          surname: user.surname,
           email: user.email,
           password: user.password,
-          AUTH_KEY: ";)XI(-c MzAYphrmW*5~e2s-F=5:N!9/(/%,*@6k8Z?y;PBHC),x-VM:f^-pfbWi",
         }
 
+        console.log(requestParams);
+
+
         await axios
-        .post('https://pomogayka96.ru', user, {params: requestParams})
+        .post(`https://pomogayka96.ru/wp-json/pg/v1/registration?`, user, {params: requestParams})
         .then(res => {
           console.log(res)
         })
