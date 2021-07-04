@@ -85,7 +85,7 @@ export default {
 
       if (!this.error && !this.$v.$invalid) {
         this.AUTH_REQUEST(form).then(() => {
-          this.$router.push("/cabinet");
+          this.$router.replace("/cabinet");
         });
       }
     },

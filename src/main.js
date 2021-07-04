@@ -40,20 +40,19 @@ Vue.use(YmapPlugin, settings)
 
 router.beforeEach((to, from, next) => {
   store.dispatch('auth/SET_PRELOAD')
-  if (to.path != 'login') {
+  if (to.path !== 'login') {
     setTimeout(function(){
       next()
-    }, 1000);
+    }, 500);
     setTimeout(function(){
       store.dispatch('auth/SET_PRELOAD')
-    }, 1000);
+    }, 1500);
   }
   else {
       setTimeout(function(){
         store.dispatch('auth/SET_PRELOAD')
-      }, 1000);
+      }, 1500);
   }
-  
 })
 
 

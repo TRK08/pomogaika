@@ -34,7 +34,9 @@ const routes = [
 		beforeEnter: (to, from, next) => {
 			if (store.getters["auth/getAuthenticated"] && !store.getters["auth/getError"]) {
 				next()
-			} else {
+			}
+		
+			else {
 				if (to.path != "/login") {
 					next("/login")
 				}
