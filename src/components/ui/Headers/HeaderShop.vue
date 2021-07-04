@@ -54,9 +54,19 @@
         <div class="header-menu-cabinet__wrap">
           <router-link
             tag="div"
+            :to="isLog ? '/cabinet' : '/login'"
+            class="header-menu-cabinet"
+            v-for="item in cabinet.slice(0, 1)"
+            :key="item.text"
+          >
+            <img :src="item.img" alt="" />
+            <span class="hidden-sm hidden-xs">{{ item.text }}</span>
+          </router-link>
+          <router-link
+            tag="div"
             :to="item.link"
             class="header-menu-cabinet"
-            v-for="item in cabinet"
+            v-for="item in cabinet.slice(1, cabinet.length)"
             :key="item.text"
           >
             <img :src="item.img" alt="" />
@@ -82,7 +92,6 @@ export default {
   },
   data() {
     return {
-      cabinetLink: "",
       navs: [
         {
           text: "Каталог",
@@ -109,7 +118,7 @@ export default {
         {
           img: require("../../../assets/img/cabinet.svg"),
           text: "Личный кабинет",
-          link: this.changeLink(),
+          link: "/login",
         },
         {
           img: require("../../../assets/img/dostavka.svg"),
@@ -124,21 +133,12 @@ export default {
       ],
     };
   },
-  methods: {
-    changeLink() {
-      if (this.isLog === null) {
-        return "/login";
-      } else {
-        return "/cabinet";
-      }
-    },
-  },
+  methods: {},
   computed: {
     ...mapGetters({
       isLog: "auth/getAuthenticated",
     }),
   },
-  created() {},
 };
 </script>	
 <style scoped>

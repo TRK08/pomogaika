@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <!-- <Preloader :activate="preload" /> -->
+    <Preloader :activate="preload" />
 
     <Header />
 

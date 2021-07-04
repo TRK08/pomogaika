@@ -35,7 +35,6 @@ const routes = [
 			if (store.getters["auth/getAuthenticated"] && !store.getters["auth/getError"]) {
 				next()
 			}
-		
 			else {
 				if (to.path != "/login") {
 					next("/login")
@@ -48,7 +47,20 @@ const routes = [
 	},
 	{
 		path: '/login',
-		component: LoginPage
+		component: LoginPage,
+		beforeEnter: (to, from, next) => {
+			if (!store.getters["auth/getAuthenticated"]) {
+				next()
+			}
+			else {
+				if (to.path != "/cabinet") {
+					next("/cabinet")
+				}
+				else {
+					next()
+				}
+			}
+		}
 	},
 	{
 		path: '/registr',

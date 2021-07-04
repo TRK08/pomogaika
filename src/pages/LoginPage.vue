@@ -66,11 +66,10 @@ export default {
     email: {
       required,
       email,
-      minLength: minLength(3),
     },
     password: {
       required,
-      minLength: minLength(3),
+      minLength: minLength(6),
     },
   },
   methods: {
@@ -82,10 +81,11 @@ export default {
         username: this.email,
         password: this.password,
       };
-
       if (!this.error && !this.$v.$invalid) {
         this.AUTH_REQUEST(form).then(() => {
-          this.$router.replace("/cabinet");
+          if (!this.error && !this.$v.$invalid) {
+            this.$router.replace("/cabinet");
+          }
         });
       }
     },
