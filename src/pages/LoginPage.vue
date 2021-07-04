@@ -83,11 +83,11 @@ export default {
         password: this.password,
       };
 
-      this.AUTH_REQUEST(form).then(() => {
-        if (!this.error && !this.$v.$invalid) {
+      if (!this.error && !this.$v.$invalid) {
+        this.AUTH_REQUEST(form).then(() => {
           this.$router.push("/cabinet");
-        }
-      });
+        });
+      }
     },
   },
   computed: {

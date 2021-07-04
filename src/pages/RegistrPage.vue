@@ -3,6 +3,7 @@
     <div class="container">
       <h2>Регистрация</h2>
       <form action="" @submit.prevent="registr" class="registr-page-form">
+        <small v-if="errorFlag">Все поля должны быть заполнены правильно</small>
         <div class="registr-form-inputs-box">
           <div
             class="form-group"
@@ -66,8 +67,10 @@
           id="registr-form-checkbox"
         />
         <label
+          ref="rulesCheckbox"
           class="checkbox-custom-label registr-form-checkbox"
           for="registr-form-checkbox"
+          @click="confidenceRules = !confidenceRules"
           >Я принимаю условия политики обработки данных и
           конфиденциальности</label
         >
@@ -95,6 +98,7 @@ export default {
       password: "",
       passwordConfirm: "",
       confidenceRules: false,
+      errorFlag: false,
       load: false,
     };
   },
@@ -132,9 +136,20 @@ export default {
         email: this.email,
         password: this.password,
       };
-      this.REGISTR(form).then(() => {
-        this.$router.push("/login");
-      });
+
+      this.$v.$invalid ? (this.errorFlag = true) : (this.errorFlag = false);
+
+      if (this.confidenceRules && !this.$v.$invalid) {
+        this.REGISTR(form).then(() => {
+          this.$router.push("/login");
+        });
+      } else {
+        if (!this.confidenceRules) {
+          this.$refs.rulesCheckbox.classList.add("checkbox-error");
+        } else {
+          this.$refs.rulesCheckbox.classList.remove("checkbox-error");
+        }
+      }
     },
   },
 };
@@ -158,5 +173,18 @@ export default {
 
 .form-group--error input {
   border-right: 5px solid red;
+}
+
+.checkbox-error {
+  color: red;
+}
+
+small {
+  display: block;
+  margin-bottom: 15px;
+  font-size: 15px;
+  line-height: 16px;
+  text-align: center;
+  color: red;
 }
 </style>

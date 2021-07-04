@@ -38,9 +38,23 @@ Vue.use(YmapPlugin, settings)
 
 
 
-
-
-// const basicScroll = require('basicscroll')
+router.beforeEach((to, from, next) => {
+  store.dispatch('auth/SET_PRELOAD')
+  if (to.path != 'login') {
+    setTimeout(function(){
+      next()
+    }, 1000);
+    setTimeout(function(){
+      store.dispatch('auth/SET_PRELOAD')
+    }, 1000);
+  }
+  else {
+      setTimeout(function(){
+        store.dispatch('auth/SET_PRELOAD')
+      }, 1000);
+  }
+  
+})
 
 
 

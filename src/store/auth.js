@@ -5,7 +5,8 @@ const auth = {
   state : {
     token: null,
     user: null,
-    error: false
+    error: false,
+    preload: false
   },
   mutations: {
 		SET_USER(state, user){
@@ -16,9 +17,15 @@ const auth = {
     },
     SET_ERROR(state, err) {
       state.error = err
+    },
+    PRELOADER(state) {
+      state.preload = !state.preload
     }
   },
   actions: {
+    SET_PRELOAD ({commit}) {
+      commit('PRELOADER')
+    },
     async REGISTR({commit}, user) {
       try {
         let requestParams = {
@@ -27,9 +34,6 @@ const auth = {
           email: user.email,
           password: user.password,
         }
-
-        console.log(requestParams);
-
 
         await axios
         .post(`https://pomogayka96.ru/wp-json/pg/v1/registration?`, user, {params: requestParams})
