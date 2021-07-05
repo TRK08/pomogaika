@@ -17,7 +17,7 @@
               class="slide-box"
               :style="{
                 background:
-                  'linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(' +
+                  'linear-gradient(0deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url(' +
                   slide.image +
                   ') no-repeat ',
                 'background-size': 'cover',
@@ -52,7 +52,7 @@
               class="slide-box slide-box-right-slider"
               :style="{
                 background:
-                  'linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(' +
+                  'linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(' +
                   slide.image +
                   ') no-repeat ',
                 'background-size': 'cover',
@@ -86,6 +86,7 @@ export default {
       },
       swiperOptionRight: {
         loop: true,
+        slideToClickedSlide: true,
         loopedSlides: 25,
         spaceBetween: 30,
         breakpoints: {

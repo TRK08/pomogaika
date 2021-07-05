@@ -21,25 +21,41 @@
         </div>
         <div class="col-sm-6 online-registr-form__wrap">
           <h3 class="online-registr-form-title">Записаться</h3>
-          <form class="online-registr-form">
-            <input type="text" placeholder="Имя" />
-            <select value="">
+          <form class="online-registr-form" @submit.prevent="submitForm()">
+            <input type="text" placeholder="Имя" v-model="emailBody.client" />
+            <select value="" v-model="emailBody.service">
               <option value="" selected disabled>Услуга</option>
-              <option value="" v-for="(option, index) in options" :key="index">
+              <option
+                :value="option.name"
+                v-for="(option, index) in options"
+                :key="index"
+              >
                 {{ option.name }}
               </option>
             </select>
-            <input type="text" placeholder="E-mail" />
+            <input type="text" placeholder="E-mail" v-model="emailBody.email" />
             <datepicker
               :disabled-dates="this.disabledDates"
               class="date-picker"
               :monday-first="true"
               :language="ru"
               :placeholder="placeholder"
+              v-model="emailBody.date"
             ></datepicker>
-            <input type="text" placeholder="Телефон" />
-            <input type="text" placeholder="Кратко опишите проблему" />
-            <button @click.prevent type="submit">Отправить</button>
+            <input
+              type="text"
+              placeholder="Телефон"
+              v-model="emailBody.phone"
+            />
+            <input
+              type="text"
+              placeholder="Кратко опишите проблему"
+              v-model="emailBody.problem"
+            />
+            <div class="online-registr-btn__wrap">
+              <button>Отправить</button>
+              <a href="mailto:pomogaika96@yandex.ru">pomogaika96@yandex.ru</a>
+            </div>
           </form>
         </div>
       </div>
@@ -48,6 +64,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import { mapGetters } from "vuex";
 import Datepicker from "vuejs-datepicker";
 import { ru } from "vuejs-datepicker/dist/locale";
@@ -93,8 +110,18 @@ export default {
           name: "Ремонт двигателя",
         },
       ],
+      url: "https://pomogayka96.ru/wp-json/contact-form-7/v1/contact-forms/246/feedback",
+      emailBody: {
+        client: "",
+        email: "",
+        phone: "",
+        service: "",
+        date: "",
+        problem: "",
+      },
     };
   },
+
   computed: {
     ...mapGetters({
       contacts: "info/getContacts",
@@ -102,6 +129,34 @@ export default {
   },
   created() {
     this.$store.dispatch("info/LOAD_CONTACTS");
+  },
+  methods: {
+    submitForm() {
+      var form1 = new FormData();
+
+      for (let field in this.emailBody) {
+        form1.append(field, this.emailBody[field]);
+      }
+      axios
+        .post(this.url, form1)
+        .then((response) => {
+          console.log(response);
+          this.errors = response.data;
+          if (response.data.status === "mail_sent") {
+            this.emailBody = {
+              client: "",
+              email: "",
+              phone: "",
+              service: "",
+              date: "",
+              problem: "",
+            };
+          }
+        })
+        .catch((error) => {
+          this.errors = error.response.data;
+        });
+    },
   },
 };
 </script>

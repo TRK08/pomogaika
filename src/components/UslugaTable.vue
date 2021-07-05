@@ -6,6 +6,10 @@
         Цена зависит от марки и модификации автомобиля. Узнайте точную цену у
         специалистов по телефону или через контактную форму.
       </p>
+      <div class="usluga-table-head">
+        <span>Наименование услуги</span>
+        <span>Стоимость</span>
+      </div>
       <table class="usluga-table">
         <tr>
           <td v-for="model in serviceTable.header">{{ model.c }}</td>

@@ -43,10 +43,10 @@ router.beforeEach((to, from, next) => {
     store.dispatch('auth/SET_PRELOAD')
     setTimeout(function(){
       next()
-    }, 300);
+    }, 200);
     setTimeout(function(){
       store.dispatch('auth/SET_PRELOAD')
-    }, 300);
+    }, 700);
   }
   else {
     store.dispatch('auth/SET_PRELOAD')
