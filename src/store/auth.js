@@ -59,6 +59,8 @@ const auth = {
           commit('SET_ERROR', error)
         }
         else {
+          let error = true
+          commit('SET_ERROR', error)
           alert('Что-то пошло не так')
         }
         
@@ -80,6 +82,8 @@ const auth = {
                   'Authorization': `Bearer ${user.token}`
               }
           });
+          let error = false
+          commit('SET_ERROR', error)
           localStorage.setItem("user", JSON.stringify(user));
           commit("SET_TOKEN", user.token);
           commit("SET_USER", user);

@@ -42,9 +42,7 @@
               2-х минут
             </p>
           </div>
-          <router-link tag="button" to="/registr" class="login-btn registr-btn"
-            >Зарегистрироваться</router-link
-          >
+          <button class="login-btn registr-btn">Зарегистрироваться</button>
         </div>
       </div>
     </div>
@@ -81,13 +79,11 @@ export default {
         username: this.email,
         password: this.password,
       };
-      if (!this.error && !this.$v.$invalid) {
-        this.AUTH_REQUEST(form).then(() => {
-          if (!this.error && !this.$v.$invalid) {
-            this.$router.replace("/cabinet");
-          }
-        });
-      }
+      this.AUTH_REQUEST(form).then(() => {
+        if (!this.error && !this.$v.$invalid) {
+          this.$router.replace("/cabinet");
+        }
+      });
     },
   },
   computed: {

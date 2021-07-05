@@ -32,7 +32,7 @@ const routes = [
 		path: '/cabinet',
 		component: CabinetPage,
 		beforeEnter: (to, from, next) => {
-			if (store.getters["auth/getAuthenticated"] && !store.getters["auth/getError"]) {
+			if (store.getters["auth/getAuthenticated"]) {
 				next()
 			}
 			else {
