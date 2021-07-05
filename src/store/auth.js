@@ -92,7 +92,6 @@ const auth = {
           localStorage.setItem("user", JSON.stringify(user));
           commit("SET_TOKEN", user.token);
           commit("SET_USER", user);
-          console.log(user);
       }
       catch (err) {
           localStorage.removeItem("user");

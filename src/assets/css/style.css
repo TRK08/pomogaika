@@ -1923,6 +1923,10 @@ input[type="file"] {
 		max-width: 423px;
 		margin-top: 30px;
 	}
+
+	.login-page-right h2 {
+		margin-bottom: 35px;
+	}
 }
 @media (max-width: 672px) {
 	
