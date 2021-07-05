@@ -2,10 +2,12 @@
   <div class="cabinet-page" v-if="user">
     <div class="container">
       <h2 class="cabinet-page-title">Личный кабинет</h2>
-      <h3 class="cabinet-user-name">
-        Здравствуйте, {{ user.user_display_name }}
-      </h3>
-      <button @click="signOut">выйти</button>
+      <div class="user-name-block__wrap">
+        <h3 class="cabinet-user-name">
+          Здравствуйте, {{ user.user_display_name }}
+        </h3>
+        <button @click="signOut">Выйти</button>
+      </div>
       <div class="cabinet-page__wrap">
         <div class="cabinet-photo">
           <div class="cabinet-img">
@@ -86,7 +88,7 @@ export default {
       this.file = this.$refs.file.files[0];
       let userData = {
         avatar: this.file,
-        user_id: 17,
+        user_id: this.user.id,
       };
       console.log(userData);
       var form2 = new FormData();
@@ -112,91 +114,4 @@ export default {
 
 
 <style scoped>
-.cabinet-page {
-  padding: 30px 0;
-}
-
-.cabinet-page-title {
-  margin-bottom: 70px;
-}
-
-.cabinet-user-name {
-  margin-bottom: 30px;
-}
-
-.cabinet-page__wrap {
-  display: flex;
-  justify-content: space-between;
-}
-
-.cabinet-photo {
-  max-width: 400px;
-  width: 100%;
-  margin-right: 80px;
-}
-
-.cabinet-photo small {
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 16px;
-  margin-bottom: 10px;
-  display: block;
-}
-
-input[type="file"] {
-  display: none;
-}
-
-.custom-load-profile-img {
-  display: block;
-  padding: 13px;
-  text-align: center;
-  color: #fff;
-  cursor: pointer;
-  background-color: #000;
-}
-
-.cabinet-img {
-  margin-bottom: 30px;
-}
-
-.cabinet-img__wrap {
-  width: inherit;
-  height: 400px;
-  background-color: #c4c4c4;
-}
-
-.cabinet-info {
-  width: 100%;
-}
-
-.cabinet-offers-table {
-  border-collapse: collapse;
-}
-
-.cabinet-offers-table td {
-  padding: 15px 0;
-  text-align: left;
-}
-
-.cabinet-offers-table tr,
-.cabinet-offers-table thead {
-  border-bottom: 1px solid #c4c4c4;
-}
-
-@media (max-width: 991px) {
-  .cabinet-img__wrap {
-    height: 320px;
-  }
-}
-
-@media (max-width: 767px) {
-  .cabinet-offers-table td {
-    text-align: center;
-  }
-
-  .cabinet-photo {
-    margin-right: 30px;
-  }
-}
 </style>

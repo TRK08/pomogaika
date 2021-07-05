@@ -21,6 +21,10 @@
           </div>
         </div>
       </div>
+      <div class="usluga-table-head">
+        <span>Наименование услуги</span>
+        <span>Стоимость</span>
+      </div>
       <div class="mobile-table__wrap">
         <table class="mobile-table">
           <tr v-for="tabInfo in serviceTable.body" :key="tabInfo.c">

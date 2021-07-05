@@ -1334,6 +1334,104 @@ table {
   line-height: 16px;
 }
 
+/* CABINET PAGE */
+
+.cabinet-page {
+  padding: 30px 0;
+}
+
+.cabinet-page-title {
+  margin-bottom: 70px;
+}
+
+.user-name-block__wrap {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-name-block__wrap button {
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid #000;
+}
+
+.user-name-block__wrap button:hover {
+  color: var(--yellow-color);
+  border-bottom: 1px solid var(--yellow-color);
+}
+
+.cabinet-page__wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cabinet-photo {
+  max-width: 400px;
+  width: 100%;
+  margin-right: 80px;
+}
+
+.cabinet-photo small {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 16px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.custom-load-profile-img {
+  display: block;
+  padding: 13px;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  background-color: #000;
+}
+
+.cabinet-img {
+  margin-bottom: 30px;
+}
+
+.cabinet-img__wrap {
+  width: inherit;
+  height: 400px;
+  background-color: #c4c4c4;
+}
+
+.cabinet-info {
+  width: 100%;
+}
+
+.cabinet-offers-table {
+  border-collapse: collapse;
+}
+
+.cabinet-offers-table thead td:not(:first-child),
+.cabinet-offers-table tbody tr td:not(:first-child) {
+  text-align: center;
+}
+
+.cabinet-offers-table thead td:last-child,
+.cabinet-offers-table tbody tr td:last-child {
+  text-align: right;
+}
+
+.cabinet-offers-table td {
+  padding: 15px 0;
+  text-align: left;
+}
+
+.cabinet-offers-table tr,
+.cabinet-offers-table thead {
+  border-bottom: 1px solid #c4c4c4;
+}
+
 
 /* LOGIN PAGE */
 
@@ -1737,6 +1835,18 @@ table {
 		height: 120px;
 	}
 
+	.cabinet-img__wrap {
+    height: 320px;
+  }
+
+	.cabinet-page-title {
+		margin-bottom: 30px;
+	}
+
+	.login-page-right h2 {
+		margin-bottom: 50px;
+	}
+
 }
 @media (max-width: 786px) {
 }
@@ -1788,6 +1898,30 @@ table {
 	.cabinet-page__wrap {
 		flex-direction: column;
 		align-items: center;
+	}
+
+	.usluga-table-head span {
+		font-weight: 500;
+		font-size: 13px;
+		line-height: 14px;
+	}
+
+	.mobile-table {
+		font-weight: 400;
+	}
+
+	.cabinet-photo {
+		margin-right: 0;
+		margin-bottom: 30px;
+	}
+
+	.cabinet-photo {
+    margin-right: 0;
+  }
+
+	.login-form {
+		max-width: 423px;
+		margin-top: 30px;
 	}
 }
 @media (max-width: 672px) {
