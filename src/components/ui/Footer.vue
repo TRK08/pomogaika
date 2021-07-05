@@ -120,7 +120,7 @@ export default {
             },
             {
               text: "Акции",
-              link: "/akcii",
+              link: "/#shop-slider",
             },
             {
               text: "Автосервис",
@@ -132,7 +132,7 @@ export default {
             },
             {
               text: "О нас",
-              link: "/about",
+              link: "/#articles-block",
             },
           ],
         },
@@ -180,12 +180,12 @@ export default {
           title: "Информация",
           name: [
             {
-              text: "Каталог",
-              link: "",
+              text: "Услуги",
+              link: "/service/#services-block",
             },
             {
               text: "Акции",
-              link: "/akcii",
+              link: "/service/#service-slider",
             },
             {
               text: "Магазин запчастей",
@@ -193,11 +193,11 @@ export default {
             },
             {
               text: "Статьи",
-              link: "/articles",
+              link: "/service/#articles-block",
             },
             {
               text: "О нас",
-              link: "/about",
+              link: "/service/#about-us",
             },
           ],
         },
@@ -219,7 +219,7 @@ export default {
           name: [
             {
               text: "Онлайн-запись",
-              link: "/cabinet",
+              link: "/service/#online-registr",
             },
           ],
         },

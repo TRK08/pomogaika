@@ -1,5 +1,5 @@
 <template>
-  <section class="about-component">
+  <section class="about-component" id="about-us">
     <div class="container">
       <h2
         class="about-component-title col-12"

@@ -1,5 +1,5 @@
 <template>
-  <section class="articles">
+  <section class="articles" id="articles-block">
     <div class="container">
       <div class="articles-wrap">
         <h2 class="articles-title">Статьи</h2>

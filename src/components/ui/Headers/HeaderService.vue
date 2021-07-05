@@ -76,7 +76,7 @@ export default {
       navs: [
         {
           text: "Услуги",
-          link: "",
+          link: "/service/#services-block",
         },
         {
           text: "Акции",

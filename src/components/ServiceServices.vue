@@ -1,5 +1,5 @@
 <template>
-  <div class="services">
+  <div class="services" id="services-block">
     <div class="container">
       <h2 class="services-title">Услуги</h2>
       <div class="services__wrap">

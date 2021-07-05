@@ -165,4 +165,20 @@ input[type="file"] {
 .cabinet-offers-table thead {
   border-bottom: 1px solid #c4c4c4;
 }
+
+@media (max-width: 991px) {
+  .cabinet-img__wrap {
+    height: 320px;
+  }
+}
+
+@media (max-width: 767px) {
+  .cabinet-offers-table td {
+    text-align: center;
+  }
+
+  .cabinet-photo {
+    margin-right: 30px;
+  }
+}
 </style>

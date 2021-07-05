@@ -1678,6 +1678,12 @@ table {
 		grid-gap: 25px;
 	}
 
+	.cabinet-offers-table {
+		font-size: 10px;
+		line-height: 11px;
+	}
+
+
 }
 @media (max-width: 786px) {
 }
@@ -1720,6 +1726,15 @@ table {
 	.big-article span {
 		font-size: 13px;
 		line-height: 14px;
+	}
+
+	.about-component {
+		display: none;
+	}
+
+	.cabinet-page__wrap {
+		flex-direction: column;
+		align-items: center;
 	}
 }
 @media (max-width: 672px) {
@@ -1827,9 +1842,23 @@ table {
 	.registr-btn {
 		max-width: 423px;
 	}
+
+	.swiper-slide h2 {
+		font-size: 30px;
+	}
 	
 }
 @media (max-width: 512px) {
+
+	.mobile-table-tab{
+		width: 50%;
+	}
+
+	.mobile-table-tab div {
+		max-width: unset;
+		width: 100%;
+	}
+
 	.header-shop-right {
 		margin-left: 50px;
 	}

@@ -7,12 +7,14 @@ import articles from '../store/articles'
 import services from '../store/services'
 import info from '../store/info'
 import auth from '../store/auth'
+import catalog from '../store/catalog'
 
 export default new Vuex.Store({
 	modules: {	
 		articles,
 		services,
 		info,
-		auth
+		auth,
+		catalog
 	}
 }) 

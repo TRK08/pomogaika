@@ -1,5 +1,5 @@
 <template>
-  <section class="online-registr">
+  <section class="online-registr" id="online-registr">
     <div class="container">
       <h2 class="online-registr-title">Онлайн-запись</h2>
       <div class="row">

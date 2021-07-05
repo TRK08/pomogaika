@@ -20,7 +20,7 @@ export default {
 .prlder {
   height: 100%;
   width: 100%;
-  background-color: rgba(0, 0, 0, 1);
+  background-color: rgba(0, 0, 0, 0.95);
   position: fixed;
   z-index: -15;
   left: 0;

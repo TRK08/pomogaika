@@ -99,7 +99,7 @@ export default {
         },
         {
           text: "Акции",
-          link: "/",
+          link: "/#shop-slider",
         },
         {
           text: "Автосервис",
@@ -111,7 +111,7 @@ export default {
         },
         {
           text: "О нас",
-          link: "/",
+          link: "/#about-us",
         },
       ],
       cabinet: [

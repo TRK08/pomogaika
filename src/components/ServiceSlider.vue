@@ -1,5 +1,5 @@
 <template>
-  <section class="service-slider">
+  <section class="service-slider" id="service-slider">
     <div class="container">
       <div class="swiper__wrap">
         <!-- swiper1 -->

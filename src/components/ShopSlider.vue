@@ -1,5 +1,5 @@
 <template>
-  <div class="shop-slider">
+  <div class="shop-slider" id="shop-slider">
     <div class="container">
       <swiper class="swiper-container" ref="mySwiper" :options="swiperOptions">
         <swiper-slide v-for="item in slides" :key="item.img">

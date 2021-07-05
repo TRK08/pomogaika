@@ -1,35 +1,22 @@
 <template>
   <section class="home-shop">
     <ShopSlider />
+    <CarBrandsList />
     <ProfitableOffer />
-    <AboutUs v-if="!isMobile" />
+    <AboutUs />
   </section>
 </template>
 
 <script>
 import AboutUs from "../components/AboutUs.vue";
+import CarBrandsList from "../components/CarBrandsList.vue";
 import ProfitableOffer from "../components/ProfitableOffer.vue";
 import ShopSlider from "../components/ShopSlider.vue";
 export default {
-  components: { ShopSlider, AboutUs, ProfitableOffer },
+  components: { ShopSlider, AboutUs, ProfitableOffer, CarBrandsList },
   name: "HomeShop",
   data() {
-    return {
-      isMobile: false,
-    };
-  },
-  methods: {
-    checkWidthScreen() {
-      if (window.innerWidth < 768) {
-        this.isMobile = true;
-      } else {
-        this.isMobile = false;
-      }
-    },
-  },
-  created() {
-    this.checkWidthScreen();
-    window.addEventListener("resize", this.checkWidthScreen);
+    return {};
   },
 };
 </script>
