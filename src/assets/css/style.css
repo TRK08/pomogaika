@@ -2,7 +2,19 @@
 	--yellow-color: #fbbb36;
 }
 
+@font-face {
+	font-family: "Noah"; 
+	src: url("../fonts/Noahbold.ttf") format("truetype"); 
+	font-style: normal; 
+	font-weight: 700; 
+} 
 
+@font-face {
+	font-family: "Noah"; 
+	src: url("../fonts/Noahregular.ttf") format("truetype"); 
+	font-style: normal; 
+	font-weight: 400; 
+} 
 
 * {
 	padding: 0;
@@ -130,6 +142,8 @@ border-radius:0;
 	width: 100%;
 	padding: 14px 20px;
 	border: none;
+	font-family: 'Noah';
+	font-weight: 400;
 }
 
 .header-search button {
@@ -137,6 +151,8 @@ border-radius:0;
 	background-color: #030405;
 	color: #fff;
 	border: none;
+	font-family: 'Noah';
+	font-weight: 700;
 }
 
 .header-shop-right {
