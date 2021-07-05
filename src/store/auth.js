@@ -20,7 +20,11 @@ const auth = {
     },
     PRELOADER(state) {
       state.preload = !state.preload
-    }
+    },
+    CHANGE_AVATAR(state, avatar){
+      state.user.avatar = avatar
+      localStorage.setItem("user", JSON.stringify(state.user));
+  }
   },
   actions: {
     SET_PRELOAD ({commit}) {
@@ -82,11 +86,13 @@ const auth = {
                   'Authorization': `Bearer ${user.token}`
               }
           });
+          
           let error = false
           commit('SET_ERROR', error)
           localStorage.setItem("user", JSON.stringify(user));
           commit("SET_TOKEN", user.token);
           commit("SET_USER", user);
+          console.log(user);
       }
       catch (err) {
           localStorage.removeItem("user");
@@ -99,6 +105,10 @@ const auth = {
       commit("SET_TOKEN", null);
       commit("SET_USER", null);
     },
+    changeAvatar({commit}, avatar){
+      localStorage.removeItem("user");
+      commit("CHANGE_AVATAR", avatar)
+  }
   },
   getters: {
     getAuthenticated(state){

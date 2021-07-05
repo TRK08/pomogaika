@@ -11,20 +11,21 @@
           <div class="cabinet-img">
             <small>Фотография</small>
             <div class="cabinet-img__wrap">
-              <img :src="profileImg" alt="" />
+              <img :src="user.avatar" alt="" />
             </div>
           </div>
           <div class="cabinet-load-img">
-            <small @click="loadImg">Загрузить фотографию</small>
+            <small>Загрузить фотографию</small>
             <label class="custom-load-profile-img" for="load-profile-img"
               >Выбрать файл</label
             >
             <input
-              ref="loadFile"
+              ref="file"
               type="file"
-              name=""
+              name="upload"
               placeholder="Выбрать файл"
               id="load-profile-img"
+              @change="changeAvatar"
             />
           </div>
         </div>
@@ -63,17 +64,15 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+import axios from "axios";
 export default {
   name: "CabinetPage",
   data() {
     return {
-      profileImg: "",
+      file: "null",
     };
   },
   methods: {
-    loadImg() {
-      this.profileImg = this.$refs.loadFile.value;
-    },
     ...mapActions({
       SIGN_OUT: "auth/SIGN_OUT",
     }),
@@ -82,6 +81,25 @@ export default {
       this.SIGN_OUT().then(() => {
         this.$router.replace("/");
       });
+    },
+    changeAvatar() {
+      this.file = this.$refs.file.files[0];
+      let userData = {
+        avatar: this.file,
+        user_id: 17,
+      };
+      console.log(userData);
+      var form2 = new FormData();
+      for (var field in userData) {
+        form2.append(field, userData[field]);
+      }
+
+      axios
+        .post("https://pomogayka96.ru/wp-json/pg/v1/set/avatar", form2)
+        .then((res) => {
+          console.log(res);
+          this.$store.dispatch("auth/changeAvatar", res.data.avatar);
+        });
     },
   },
   computed: {
