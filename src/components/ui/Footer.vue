@@ -32,14 +32,26 @@
                 :key="menu.title"
               >
                 <h4 class="footer-menu-title">{{ menu.title }}</h4>
-                <router-link
+                <li
+                  class="footer-menu-item"
+                  v-for="item in menu.name"
+                  :key="item.text"
+                >
+                  <a v-if="item.href" :href="`mailto:${contacts.email}`">{{
+                    item.text
+                  }}</a>
+                  <router-link v-else tag="div" :to="item.link">{{
+                    item.text
+                  }}</router-link>
+                </li>
+                <!-- <router-link
                   v-for="item in menu.name"
                   :key="item.text"
                   tag="li"
                   :to="item.link"
                   class="footer-menu-item"
                   >{{ item.text }}</router-link
-                >
+                > -->
               </ul>
             </div>
           </div>
@@ -75,14 +87,26 @@
                 :key="menu.title"
               >
                 <h4 class="footer-menu-title">{{ menu.title }}</h4>
-                <router-link
+                <li
+                  class="footer-menu-item"
+                  v-for="item in menu.name"
+                  :key="item.text"
+                >
+                  <a v-if="item.href" :href="`mailto:${contacts.email}`">{{
+                    item.text
+                  }}</a>
+                  <router-link v-else tag="div" :to="item.link">{{
+                    item.text
+                  }}</router-link>
+                </li>
+                <!-- <router-link
                   v-for="item in menu.name"
                   :key="item.text"
                   tag="li"
                   :to="item.link"
                   class="footer-menu-item"
                   >{{ item.text }}</router-link
-                >
+                > -->
               </ul>
             </div>
           </div>
@@ -141,15 +165,15 @@ export default {
           name: [
             {
               text: "Поставщикам",
-              link: "/catalog",
+              href: true,
             },
             {
               text: "Автосервисам",
-              link: "/akcii",
+              href: true,
             },
             {
               text: "Вакансии",
-              link: "/vakansii",
+              href: true,
             },
           ],
         },
@@ -206,11 +230,11 @@ export default {
           name: [
             {
               text: "Поставщикам",
-              link: "/catalog",
+              href: true,
             },
             {
               text: "Вакансии",
-              link: "/vakansii",
+              href: true,
             },
           ],
         },

@@ -340,6 +340,7 @@ border-radius:0;
 	font-weight: 400;
 	margin-bottom: 20px;
 	white-space: nowrap;
+	cursor: pointer;
 }
 
 .footer-social {

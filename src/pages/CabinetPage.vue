@@ -85,22 +85,35 @@ export default {
       });
     },
     changeAvatar() {
-      this.file = this.$refs.file.files[0];
-      let userData = {
-        avatar: this.file,
-        user_id: this.user.id,
-      };
-      console.log(userData);
-      var form2 = new FormData();
-      for (var field in userData) {
-        form2.append(field, userData[field]);
-      }
-
+      console.log(this.user);
       axios
-        .post("https://pomogayka96.ru/wp-json/pg/v1/set/avatar", form2)
+        .get(
+          `https://pomogayka96.ru/wp-json/pg/v1/get/user?email=${this.user.user_email}`
+        )
         .then((res) => {
-          console.log(res);
-          this.$store.dispatch("auth/changeAvatar", res.data.avatar);
+          this.file = this.$refs.file.files[0];
+          let userData = {
+            avatar: this.file,
+            user_id: res.data.ID,
+          };
+          console.log(userData);
+          var form2 = new FormData();
+          for (var field in userData) {
+            form2.append(field, userData[field]);
+          }
+          console.log(form2);
+          return form2;
+        })
+        .then((form2) => {
+          axios
+            .post("https://pomogayka96.ru/wp-json/pg/v1/set/avatar", form2)
+            .then((res) => {
+              console.log(res.data);
+              this.$store.dispatch("auth/changeAvatar", res.data.avatar);
+            });
+        })
+        .catch((err) => {
+          console.log(err);
         });
     },
   },
