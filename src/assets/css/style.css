@@ -1405,6 +1405,12 @@ input[type="file"] {
   background-color: #c4c4c4;
 }
 
+.cabinet-img__wrap img {
+	width: 100%;
+	height: inherit;
+	object-fit: cover;
+}
+
 .cabinet-info {
   width: 100%;
 }
