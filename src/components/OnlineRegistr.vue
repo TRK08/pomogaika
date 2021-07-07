@@ -133,6 +133,8 @@ export default {
   methods: {
     submitForm() {
       var form1 = new FormData();
+      let date = new Date(this.emailBody.date);
+      this.emailBody.date = date.toLocaleDateString();
 
       for (let field in this.emailBody) {
         form1.append(field, this.emailBody[field]);
@@ -140,7 +142,6 @@ export default {
       axios
         .post(this.url, form1)
         .then((response) => {
-          console.log(response);
           this.errors = response.data;
           if (response.data.status === "mail_sent") {
             this.emailBody = {
