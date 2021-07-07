@@ -15,6 +15,8 @@
           class="article-page-nav-prev"
           :style="{ disabled: disabled }"
           @click="prevArticle"
+          ref="btnPrev"
+          :disabled="disablePrevBtn"
         >
           Предыдущая статья
         </button>
@@ -22,6 +24,8 @@
           class="article-page-nav-next"
           :style="{ disabled: disabled }"
           @click="nextArticle"
+          ref="btnNext"
+          :disabled="disableNextBtn"
         >
           Следующая статья
         </button>
@@ -45,12 +49,8 @@ export default {
   methods: {
     prevArticle() {
       this.$store.dispatch("articles/PREV_ARTICLE", this.id);
-      if (this.singleArticle) {
-        this.disabled = false;
-        this.$router.replace(`/articles/${this.singleArticle.id}`);
-      } else {
-        this.disabled = true;
-      }
+      this.disabled = false;
+      this.$router.replace(`/articles/${this.singleArticle.id}`);
     },
     nextArticle() {
       this.$store.dispatch("articles/NEXT_ARTICLE", this.id);
@@ -67,6 +67,22 @@ export default {
       singleArticle: "articles/getSingleArticle",
       articles: "articles/getArticles",
     }),
+    disablePrevBtn() {
+      if (this.singleArticle.id !== this.articles[0].id) {
+        return false;
+      } else {
+        return true;
+      }
+    },
+    disableNextBtn() {
+      if (
+        this.singleArticle.id !== this.articles[this.articles.length - 1].id
+      ) {
+        return false;
+      } else {
+        return true;
+      }
+    },
   },
   created() {
     this.$store.dispatch("articles/LOAD_SINGLE_ARTICLE", this.id);
@@ -101,6 +117,12 @@ export default {
   display: flex;
   align-items: center;
   color: #7f7b7b;
+  transition: all 0.3s ease;
+}
+
+.article-page-nav button:not(:disabled):hover {
+  color: #000;
+  transition: all 0.3s ease;
 }
 
 .article-page-nav-prev::before {

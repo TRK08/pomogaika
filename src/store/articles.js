@@ -59,7 +59,7 @@ const articles = {
 
     PREV_ARTICLE({commit, state}, id) {
       state.articles.forEach((item, index) => {
-        if (item.id === +id && index >= 0) {
+        if (item.id === +id && index - 1 >= 0) {
           commit('SET_SINGLE_ARTICLE', state.articles[index - 1])
         }
       })
@@ -67,11 +67,8 @@ const articles = {
 
     NEXT_ARTICLE({commit, state}, id) {
       state.articles.forEach((item, index) => {
-        if (item.id === +id && index < state.articles.length) {
+        if (item.id === +id && index + 1 < state.articles.length) {
           commit('SET_SINGLE_ARTICLE', state.articles[index + 1])
-        }
-        else {
-          console.log('error');
         }
       })
     },
