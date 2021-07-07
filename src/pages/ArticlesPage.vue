@@ -67,8 +67,4 @@ h2 {
 .container {
   margin-bottom: 70px;
 }
-
-.row {
-  margin-right: -30px;
-}
 </style>

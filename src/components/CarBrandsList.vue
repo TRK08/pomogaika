@@ -60,6 +60,7 @@ export default {
 .car-brands-item {
   margin-bottom: 30px;
   transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 .car-brands-item:hover {

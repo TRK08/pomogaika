@@ -195,7 +195,9 @@ export default {
   methods: {
     fillInputsValue() {
       if (this.isLoginUser) {
-        this.name = this.isLoginUser.user_nicename;
+        let userName = this.isLoginUser.user_display_name.split(" ");
+        this.name = userName[0];
+        this.surname = userName[1];
         this.email = this.isLoginUser.user_email;
       }
     },

@@ -42,11 +42,10 @@ const auth = {
         await axios
         .post(`https://pomogayka96.ru/wp-json/pg/v1/registration?`, user, {params: requestParams})
         .then(res => {
-          console.log(res)
         })
       }
       catch (err) {
-        console.log(err);
+        alert('Произошла ошибка, попробуйте позже')
       }
     },
 
@@ -70,7 +69,6 @@ const auth = {
     },
     async VALIDATE({ commit, state }, user) {
       if (user) {
-        console.log(user);
           commit("SET_TOKEN", user.token);
           commit("SET_USER", user);
       }
@@ -85,7 +83,6 @@ const auth = {
                   'Authorization': `Bearer ${user.token}`
               }
           });
-          console.log(user);
           let error = false
           commit('SET_ERROR', error)
           localStorage.setItem("user", JSON.stringify(user));

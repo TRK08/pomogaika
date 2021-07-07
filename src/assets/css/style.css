@@ -805,6 +805,53 @@ border-radius:0;
 	margin-bottom: 50px;
 }
 
+.article-page {
+  padding-bottom: 70px;
+}
+
+.article-page-content {
+  color: #000;
+}
+
+
+.article-page-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 70px;
+}
+
+.article-page-nav button {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  color: #7f7b7b;
+  transition: all 0.3s ease;
+}
+
+.article-page-nav button:not(:disabled):hover {
+  color: #000;
+  transition: all 0.3s ease;
+}
+
+.article-page-nav-prev::before {
+  content: url("../img/breadcrumb-arrow.svg");
+  display: inline-block;
+  width: 19px;
+  height: 16px;
+  margin-right: 30px;
+  transform: rotate(180deg);
+}
+
+.article-page-nav-next::after {
+  content: url("../img/breadcrumb-arrow.svg");
+  display: inline-block;
+  width: 19px;
+  height: 16px;
+  margin-left: 30px;
+}
+
 .breadcrumbs {
   display: flex;
   align-items: center;
@@ -818,6 +865,7 @@ border-radius:0;
   color: #7f7b7b;
   display: flex;
   align-items: center;
+	cursor: pointer;
 }
 
 .main-breadcrumb::after {
@@ -1854,6 +1902,10 @@ input[type="file"] {
 		margin-bottom: 50px;
 	}
 
+	.big-article {
+		min-height: 350px;
+	}
+
 }
 @media (max-width: 786px) {
 }
@@ -1882,7 +1934,7 @@ input[type="file"] {
 
 	.big-article {
 		min-height: 275px;
-		background-size: 160%;
+		background-size: 140%;
 		margin-bottom: 30px;
 		padding: 18px 35px;
 	}
@@ -2048,9 +2100,25 @@ input[type="file"] {
 	.services__wrap {
 		grid-template-columns: repeat(3, 1fr)
 	}
+
+	.slide-box {
+		padding: 20px 30px;
+		min-height: 190px;
+	}
+
+	
 	
 }
 @media (max-width: 512px) {
+
+	.swiper-slide h2 {
+		font-size: 20px;
+		line-height: 21px;
+	}
+
+	.slide-box p {
+		margin-bottom: 15px;
+	}
 
 	.mobile-table-tab{
 		width: 50%;
@@ -2164,6 +2232,27 @@ input[type="file"] {
 	.cart-form-checkbox__wrap label {
 		font-size: 13px;
 		line-height: 14px;
+	}
+
+	.article-page {
+		padding-bottom: 30px;
+	}
+
+	.article-page-nav {
+		margin-top: 30px;
+	}
+
+	.article-page-nav button {
+		font-size: 11px;
+		line-height: 12px;
+	}
+
+	.article-page-nav-next::after {
+		margin-left: 10px;
+	}
+
+	.article-page-nav-prev::before {
+		margin-right: 10px;
 	}
 }
 @media (max-width: 390px) {
