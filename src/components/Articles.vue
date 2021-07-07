@@ -9,10 +9,9 @@
       </div>
       <div class="row">
         <SingleArticle
-          v-for="singleArticle in articles.slice(0, articlesToShow)"
+          v-for="singleArticle in articles.slice(0, itemToShow)"
           :key="singleArticle.date"
           :singleArticle="singleArticle"
-          :artId="singleArticle.id"
         />
       </div>
     </div>
@@ -25,10 +24,14 @@ import SingleArticle from "./ui/SingleArticle.vue";
 export default {
   components: { SingleArticle },
   name: "Articles",
+  props: {
+    itemToShow: {
+      type: Number,
+      required: true,
+    },
+  },
   data() {
-    return {
-      articlesToShow: 3,
-    };
+    return {};
   },
   computed: {
     ...mapGetters({

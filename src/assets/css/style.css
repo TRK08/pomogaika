@@ -583,6 +583,7 @@ border-radius:0;
 	height: 100%;
 	overflow: hidden;
 	min-height: 200px;
+	max-height: 200px;
 }
 
 .article-item-img__wrap img {
@@ -606,6 +607,7 @@ border-radius:0;
 
 .article-item-body p {
 	margin-bottom: 30px;
+	height: 40px;
 }
 
 .article-item-body button {
@@ -1793,6 +1795,7 @@ input[type="file"] {
 
 	.article-item-img__wrap {
 		min-height: 120px;
+		max-height: 120px;
 	}
 
 	.article-item-body {
@@ -1985,6 +1988,10 @@ input[type="file"] {
 
 	.login-page-right h2 {
 		margin-bottom: 35px;
+	}
+
+	.online-registr-form__wrap {
+		margin-top: 25px;
 	}
 }
 @media (max-width: 672px) {

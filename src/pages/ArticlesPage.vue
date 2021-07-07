@@ -23,7 +23,6 @@
         v-for="singleArticle in articles.slice(1, itemsToShow + 1)"
         :key="singleArticle.id"
         :singleArticle="singleArticle"
-        :artId="singleArticle.id"
       />
     </div>
     <button @click="loadMore" v-if="itemsToShow < articles.length">

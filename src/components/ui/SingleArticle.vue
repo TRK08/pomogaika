@@ -7,7 +7,7 @@
       <div class="article-item-body">
         <span> {{ singleArticle.date }} </span>
         <p>{{ singleArticle.title }}</p>
-        <router-link tag="button" :to="`/articles/${artId}`"
+        <router-link tag="button" :to="`/articles/${singleArticle.id}`"
           >Читать</router-link
         >
       </div>
@@ -21,10 +21,6 @@ export default {
   props: {
     singleArticle: {
       type: Object,
-      required: true,
-    },
-    artId: {
-      type: Number,
       required: true,
     },
   },

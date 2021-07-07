@@ -3,7 +3,7 @@
     <ServiceSlider />
     <ServiceServices />
     <AboutUs v-if="!isMobile" />
-    <Articles />
+    <Articles :itemToShow="itemToShow" />
     <OnlineRegistr />
   </div>
 </template>
@@ -26,13 +26,16 @@ export default {
   data() {
     return {
       isMobile: false,
+      itemToShow: 3,
     };
   },
   methods: {
     checkWidthScreen() {
       if (window.innerWidth < 768) {
+        this.itemToShow = 2;
         this.isMobile = true;
       } else {
+        this.itemToShow = 3;
         this.isMobile = false;
       }
     },
