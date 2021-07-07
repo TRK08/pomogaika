@@ -56,6 +56,25 @@ const articles = {
         commit('SET_SINGLE_ARTICLE', res.data)
       })
     },
+
+    PREV_ARTICLE({commit, state}, id) {
+      state.articles.forEach((item, index) => {
+        if (item.id === +id && index >= 0) {
+          commit('SET_SINGLE_ARTICLE', state.articles[index - 1])
+        }
+      })
+    },
+
+    NEXT_ARTICLE({commit, state}, id) {
+      state.articles.forEach((item, index) => {
+        if (item.id === +id && index < state.articles.length) {
+          commit('SET_SINGLE_ARTICLE', state.articles[index + 1])
+        }
+        else {
+          console.log('error');
+        }
+      })
+    },
 	},
 	getters: {
 		getArticles (state) {

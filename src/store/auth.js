@@ -63,8 +63,6 @@ const auth = {
           commit('SET_ERROR', error)
         }
         else {
-          let error = true
-          commit('SET_ERROR', error)
           alert('Что-то пошло не так')
         }
         
@@ -72,6 +70,7 @@ const auth = {
     },
     async VALIDATE({ commit, state }, user) {
       if (user) {
+        console.log(user);
           commit("SET_TOKEN", user.token);
           commit("SET_USER", user);
       }
@@ -86,7 +85,7 @@ const auth = {
                   'Authorization': `Bearer ${user.token}`
               }
           });
-          
+          console.log(user);
           let error = false
           commit('SET_ERROR', error)
           localStorage.setItem("user", JSON.stringify(user));
@@ -105,6 +104,7 @@ const auth = {
       commit("SET_USER", null);
     },
     changeAvatar({commit}, avatar){
+      console.log(avatar);
       localStorage.removeItem("user");
       commit("CHANGE_AVATAR", avatar)
   }

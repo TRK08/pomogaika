@@ -96,7 +96,6 @@ export default {
             avatar: this.file,
             user_id: res.data.ID,
           };
-          console.log(userData);
           var form2 = new FormData();
           for (var field in userData) {
             form2.append(field, userData[field]);
@@ -108,7 +107,6 @@ export default {
           axios
             .post("https://pomogayka96.ru/wp-json/pg/v1/set/avatar", form2)
             .then((res) => {
-              console.log(res.data);
               this.$store.dispatch("auth/changeAvatar", res.data.avatar);
             });
         })
