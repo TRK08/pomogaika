@@ -10,7 +10,8 @@
         this.$route.path === '/guarantee' ||
         this.$route.path === '/cart' ||
         this.$route.path === '/login' ||
-        this.$route.path === '/registr'
+        this.$route.path === '/registr' ||
+        this.$route.path === '/good'
       "
     >
       <div class="container">

@@ -11,73 +11,73 @@ const info = {
 
   },
   mutations: {
-    SET_CONTACTS (state, contacts) {
+    SET_CONTACTS(state, contacts) {
       state.contacts = contacts
     },
-    SET_SHOP_TEXT (state, text) {
+    SET_SHOP_TEXT(state, text) {
       state.shopText = text
     },
-    SET_SERVICE_TEXT (state, text) {
+    SET_SERVICE_TEXT(state, text) {
       state.serviceText = text
     },
-    SET_SHOP_SLIDES (state, slides) {
+    SET_SHOP_SLIDES(state, slides) {
       state.shopSlides = slides
     },
-    SET_SERVICE_SLIDES (state, slides) {
+    SET_SERVICE_SLIDES(state, slides) {
       state.serviceSlides = slides
     }
   },
   actions: {
-    LOAD_CONTACTS ({commit}) {
+    LOAD_CONTACTS({ commit }) {
       axios
-      .get('https://pomogayka96.ru/wp-json/pg/v1/get/main/contacts')
-      .then(res => {
-        commit('SET_CONTACTS', res.data)
-      })
+        .get('https://pomogayka96.ru/wp-json/pg/v1/get/main/contacts')
+        .then(res => {
+          commit('SET_CONTACTS', res.data)
+        })
     },
-    LOAD_SHOP_TEXT ({commit}) {
+    LOAD_SHOP_TEXT({ commit }) {
       axios
-      .get('https://pomogayka96.ru/wp-json/pg/v1/get/main/shop-about')
-      .then(res => {
-        commit('SET_SHOP_TEXT', res.data)
-      })
+        .get('https://pomogayka96.ru/wp-json/pg/v1/get/main/shop-about')
+        .then(res => {
+          commit('SET_SHOP_TEXT', res.data)
+        })
     },
-    LOAD_SERVICE_TEXT ({commit}) {
+    LOAD_SERVICE_TEXT({ commit }) {
       axios
-      .get('https://pomogayka96.ru/wp-json/pg/v1/get/main/about')
-      .then(res => {
-        commit('SET_SERVICE_TEXT', res.data)
-      })
+        .get('https://pomogayka96.ru/wp-json/pg/v1/get/main/about')
+        .then(res => {
+          commit('SET_SERVICE_TEXT', res.data)
+        })
     },
-    LOAD_SHOP_SLIDES ({commit}) {
+    LOAD_SHOP_SLIDES({ commit }) {
       axios
-      .get('https://pomogayka96.ru/wp-json/pg/v1/get/main/shop-slider')
-      .then(res => {
-        commit('SET_SHOP_SLIDES', res.data)
-      })
+        .get('https://pomogayka96.ru/wp-json/pg/v1/get/main/shop-slider')
+        .then(res => {
+          commit('SET_SHOP_SLIDES', res.data)
+        })
     },
-    LOAD_SERVICE_SLIDES ({commit}) {
+    LOAD_SERVICE_SLIDES({ commit }) {
       axios
-      .get('https://pomogayka96.ru/wp-json/pg/v1/get/main/slider')
-      .then(res => {
-        commit('SET_SERVICE_SLIDES', res.data)
-      })
+        .get('https://pomogayka96.ru/wp-json/pg/v1/get/main/slider')
+        .then(res => {
+          commit('SET_SERVICE_SLIDES', res.data)
+        })
     }
   },
   getters: {
-    getContacts (state) {
+    getContacts(state) {
       return state.contacts
     },
-    getShopSlides (state) {
+    getShopSlides(state) {
       return state.shopSlides
     },
-    getShopText (state) {
+    getShopText(state) {
       return state.shopText
     },
-    getServiceSlides (state) {
+    getServiceSlides(state) {
       return state.serviceSlides
     },
-    getServiceText (state) {
+    getServiceText(state) {
       return state.serviceText
     }
   },

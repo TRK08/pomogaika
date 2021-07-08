@@ -11,6 +11,7 @@ import CartPage from '../pages/CartPage'
 import CabinetPage from '../pages/CabinetPage'
 import LoginPage from '../pages/LoginPage'
 import RegistrPage from '../pages/RegistrPage'
+import SingleGood from '../pages/SingleGood'
 import NotFound from '../pages/NotFound'
 
 import store from '../store'
@@ -95,6 +96,11 @@ const routes = [
 		path: '/articles/:id',
 		component: ArticlePage,
 		props: true
+	},
+	{
+		path: '/good',
+		component: SingleGood,
+		// props: true
 	}
 ]
 

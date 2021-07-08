@@ -13,7 +13,6 @@
       <div class="article-page-nav">
         <button
           class="article-page-nav-prev"
-          :style="{ disabled: disabled }"
           @click="
             prevArticle();
             disablePrevBtn;
@@ -24,7 +23,6 @@
         </button>
         <button
           class="article-page-nav-next"
-          :style="{ disabled: disabled }"
           @click="
             nextArticle();
             disableNextBtn;
@@ -95,4 +93,7 @@ export default {
 </script>
 
 <style scoped>
+.article-page-nav button:disabled {
+  visibility: hidden;
+}
 </style>
