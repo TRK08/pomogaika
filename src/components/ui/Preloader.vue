@@ -20,7 +20,7 @@ export default {
 .prlder {
   height: 100%;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.95);
+  background-color: rgba(0, 0, 0, 1);
   position: fixed;
   z-index: -15;
   left: 0;
@@ -36,7 +36,7 @@ export default {
 .prlder img {
   height: 80px;
   animation-name: spin;
-  animation-duration: 2s;
+  animation-duration: 0.5s;
   animation-iteration-count: infinite;
   transition: cubic-bezier(0.5, 0.8, 0.5, 0.2);
 }
@@ -44,7 +44,7 @@ export default {
   height: 50px;
   margin: 20px 0;
   animation-name: spin;
-  animation-duration: 2s;
+  animation-duration: 0.5s;
   animation-iteration-count: infinite;
   transition: cubic-bezier(0.5, 0.8, 0.5, 0.2);
 }

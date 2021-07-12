@@ -6,7 +6,7 @@ const auth = {
     token: null,
     user: null,
     error: false,
-    preload: false
+    preload: true
   },
   mutations: {
     SET_USER(state, user) {
@@ -18,7 +18,7 @@ const auth = {
     SET_ERROR(state, err) {
       state.error = err
     },
-    PRELOADER(state) {
+    PRELOADER(state, flag) {
       state.preload = !state.preload
     },
     CHANGE_AVATAR(state, avatar) {
@@ -28,7 +28,20 @@ const auth = {
   },
   actions: {
     SET_PRELOAD({ commit }) {
+
+      document.addEventListener('DOMContentLoaded', () => {
+        commit('PRELOADER')
+      })
       commit('PRELOADER')
+
+      // document.addEventListener('readystatechange', event => {
+      //   if (event.target.readyState === "interactive") {
+      //     commit('PRELOADER')
+      //   }
+      // })
+
+      // commit('PRELOADER')
+
     },
 
     async REGISTR({ commit }, user) {
