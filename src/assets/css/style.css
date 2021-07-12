@@ -376,17 +376,16 @@ border-radius:0;
 
 .swiper-slide p {
 	margin-bottom: 73px;
-	/* max-width: 220px; */
 }
 
-.slider-btn {
+.slide-box .slider-btn {
 	padding: 15px 56px;
 	border: 1px solid #FFFAFA;
 	background-color: transparent;
 	transition: all .5s ease;
 }
 
-.slider-btn:hover {
+.slide-box .slider-btn:hover {
 	border: 1px solid #000;
 	background-color: #000;
 	transition: all .5s ease;
@@ -958,6 +957,15 @@ border-radius:0;
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
+	transition: all .3s ease
+}
+
+.offer-item-btn:hover {
+	/* background-color: var(--yellow-color); */
+	background-color: #000;
+	border: 2px solid #000;
+	color: #fff;
+	transition: all .3s ease
 }
 
 

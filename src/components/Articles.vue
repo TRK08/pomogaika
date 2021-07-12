@@ -7,7 +7,7 @@
           >Все статьи</router-link
         >
       </div>
-      <div class="row">
+      <div class="row wow fadeIn">
         <SingleArticle
           v-for="singleArticle in articles.slice(0, itemToShow)"
           :key="singleArticle.date"

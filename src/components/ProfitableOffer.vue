@@ -1,5 +1,5 @@
 <template>
-  <section class="profitable-offer">
+  <section class="profitable-offer wow fadeIn">
     <div class="container">
       <h2 class="profitable-offer-title">Выгодные предложения</h2>
       <div class="row">

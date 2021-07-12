@@ -1,5 +1,5 @@
 <template>
-  <div class="shop-slider" id="shop-slider">
+  <div class="shop-slider wow fadeIn" data-wow-delay=".5s" id="shop-slider">
     <div class="container">
       <swiper class="swiper-container" ref="mySwiper" :options="swiperOptions">
         <swiper-slide v-for="item in slides" :key="item.img">
@@ -7,15 +7,14 @@
             class="slide-box"
             :style="{ 'background-image': 'url(' + item.image + ')' }"
           >
-            <h2 data-swiper-parallax="-700" v-html="item.headder"></h2>
-            <p data-swiper-parallax="-500" v-html="item.subheader"></p>
+            <h2 v-html="item.headder" data-swiper-parallax="-700"></h2>
+            <p v-html="item.subheader" data-swiper-parallax="-500"></p>
             <router-link
               tag="button"
               :to="item.button.button_link"
               class="slider-btn"
-              data-swiper-parallax="-300"
             >
-              {{ item.button.button_text }}
+              {{ item.button.button_text || "Получить" }}
             </router-link>
           </div>
         </swiper-slide>
@@ -45,7 +44,6 @@ export default {
       swiperOptions: {
         slidesPerView: 1,
         parallax: true,
-        autoheight: true,
         autoplay: {
           delay: 5000,
         },
@@ -79,7 +77,6 @@ export default {
     }),
   },
   mounted() {
-    this.swiper.slideTo(1, false, false);
     this.$store.dispatch("info/LOAD_SHOP_SLIDES");
   },
 };

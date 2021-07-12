@@ -1,5 +1,5 @@
 <template>
-  <div class="car-brands-list" v-if="brands">
+  <div class="car-brands-list wow fadeInDown" v-if="brands">
     <div class="container">
       <h2 class="car-brands-title">Каталог автозапчастей</h2>
       <div class="car-brands__wrap">
