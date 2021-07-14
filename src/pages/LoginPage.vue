@@ -42,7 +42,9 @@
               2-х минут
             </p>
           </div>
-          <button class="login-btn registr-btn">Зарегистрироваться</button>
+          <router-link tag="button" to="/registr" class="login-btn registr-btn"
+            >Зарегистрироваться</router-link
+          >
         </div>
       </div>
     </div>

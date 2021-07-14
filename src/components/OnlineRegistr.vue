@@ -1,9 +1,9 @@
 <template>
   <section class="online-registr" id="online-registr">
     <div class="container">
-      <h2 class="online-registr-title">Онлайн-запись</h2>
+      <h2 class="online-registr-title wow fadeIn">Онлайн-запись</h2>
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-6 wow fadeInLeft">
           <p class="online-registr-text">
             Здесь вы можете оформить онлайн-запись на любое удобное для вас
             время, предварительно выбрав необходимую услугу. В рабочее время с
@@ -19,7 +19,7 @@
             <p>{{ contacts.adress }}</p>
           </div>
         </div>
-        <div class="col-sm-6 online-registr-form__wrap">
+        <div class="col-sm-6 wow fadeInRight online-registr-form__wrap">
           <h3 class="online-registr-form-title">Записаться</h3>
           <form class="online-registr-form" @submit.prevent="submitForm()">
             <input type="text" placeholder="Имя" v-model="emailBody.client" />

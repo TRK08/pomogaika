@@ -31,12 +31,17 @@ const auth = {
 
       document.addEventListener('DOMContentLoaded', () => {
         commit('PRELOADER')
+        console.log(123)
       })
+
       commit('PRELOADER')
 
       // document.addEventListener('readystatechange', event => {
       //   if (event.target.readyState === "interactive") {
-      //     commit('PRELOADER')
+      //     commit('PRELOADER', true)
+      //   }
+      //   if (event.target.readyState === "complete") {
+      //     commit('PRELOADER', false)
       //   }
       // })
 

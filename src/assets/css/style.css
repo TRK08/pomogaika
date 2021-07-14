@@ -378,14 +378,14 @@ border-radius:0;
 	margin-bottom: 73px;
 }
 
-.slide-box .slider-btn {
+.slider-btn {
 	padding: 15px 56px;
 	border: 1px solid #FFFAFA;
 	background-color: transparent;
 	transition: all .5s ease;
 }
 
-.slide-box .slider-btn:hover {
+.slider-btn:hover {
 	border: 1px solid #000;
 	background-color: #000;
 	transition: all .5s ease;

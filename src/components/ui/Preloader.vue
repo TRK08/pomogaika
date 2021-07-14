@@ -1,6 +1,6 @@
 <template>
   <div class="prlder" :class="{ activate: activate }">
-    <img src="../../assets/img/logo-yellow.png" alt="" />
+    <img src="../../assets/img/preloader-logo.png" alt="" />
   </div>
 </template>
 
@@ -28,28 +28,21 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  -webkit-backdrop-filter: saturate(180%) blur(5px);
-  backdrop-filter: saturate(180%) blur(5px);
-  transition: 0.2s ease opacity;
+  /* -webkit-backdrop-filter: saturate(180%) blur(5px); */
+  /* backdrop-filter: saturate(180%) blur(5px); */
+  transition: opacity 0.2s ease-out;
   opacity: 0;
 }
 .prlder img {
   height: 80px;
   animation-name: spin;
-  animation-duration: 0.5s;
-  animation-iteration-count: infinite;
-  transition: cubic-bezier(0.5, 0.8, 0.5, 0.2);
-}
-.prlder-bl {
-  height: 50px;
-  margin: 20px 0;
-  animation-name: spin;
-  animation-duration: 0.5s;
+  animation-duration: 2s;
   animation-iteration-count: infinite;
   transition: cubic-bezier(0.5, 0.8, 0.5, 0.2);
 }
 .activate {
   z-index: 15;
   opacity: 1;
+  transition: opacity 0.2s ease-in;
 }
 </style>
