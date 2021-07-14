@@ -57,7 +57,6 @@ export default {
   data() {
     return {
       id: 1,
-      isActive: false,
     };
   },
   methods: {

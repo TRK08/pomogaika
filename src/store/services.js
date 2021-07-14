@@ -30,7 +30,8 @@ const serv = {
             item.isActive = false
           })
 
-          console.log(res.data['']);
+          res.data[''].prices.header[1].isActive = true
+
           commit('SET_SINGLE_SERVICE', res.data[''])
         })
     }
