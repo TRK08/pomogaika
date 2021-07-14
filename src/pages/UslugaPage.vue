@@ -9,6 +9,7 @@
     <MobileUslugaTable
       v-if="isMobile && singleService"
       :serviceTable="singleService.prices"
+      @activate="activateTab"
     />
     <OnlineRegistr />
     <AboutUs />
@@ -47,6 +48,16 @@ export default {
       } else {
         this.isMobile = false;
       }
+    },
+    activateTab(index) {
+      // let tab = this.singleService.prices.header[index].isActive;
+      return this.singleService.prices.header.map((item, i) => {
+        if (index + 1 === i) {
+          return (item.isActive = !item.isActive);
+        } else {
+          return (item.isActive = false);
+        }
+      });
     },
   },
   computed: {

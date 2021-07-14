@@ -13,10 +13,14 @@
             serviceTable.header.length
           )"
           :key="tab.c.name"
+          :v-model="tab.isActive"
           @click="activateTab(index)"
           class="mobile-table-tab col-xs-4"
         >
-          <div class="mobile-table-tab-btn" :class="{ activeTab: isActive }">
+          <div
+            class="mobile-table-tab-btn"
+            :class="{ 'mobile-table-tab-btn--active': tab.isActive }"
+          >
             {{ tab.c }}
           </div>
         </div>
@@ -59,10 +63,14 @@ export default {
   methods: {
     activateTab(index) {
       this.id = index + 1;
+      this.$emit("activate", index);
     },
   },
 };
 </script>
 
 <style scoped>
+.mobile-table-tab-btn--active {
+  background-color: #bf830d !important;
+}
 </style>
