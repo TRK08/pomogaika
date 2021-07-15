@@ -19,6 +19,7 @@ const serv = {
       axios
         .get("https://pomogayka96.ru/wp-json/pg/v1/get/main/services")
         .then(res => {
+          console.log(res.data);
           commit('SET_SERVICES_CARD', res.data)
         })
     },
@@ -29,6 +30,8 @@ const serv = {
           res.data[''].prices.header.map(item => {
             item.isActive = false
           })
+
+          console.log(res.data['']);
 
           res.data[''].prices.header[1].isActive = true
 

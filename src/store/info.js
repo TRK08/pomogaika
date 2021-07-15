@@ -7,7 +7,9 @@ const info = {
     shopSlides: [],
     shopText: [],
     serviceSlides: [],
-    serviceText: []
+    serviceText: [],
+    sendText: [],
+    paymentText: []
 
   },
   mutations: {
@@ -25,6 +27,12 @@ const info = {
     },
     SET_SERVICE_SLIDES(state, slides) {
       state.serviceSlides = slides
+    },
+    SET_SEND_INFO(state, text) {
+      state.sendText = text
+    },
+    SET_PAYMENT_INFO(state, text) {
+      state.paymentText = text
     }
   },
   actions: {
@@ -62,6 +70,22 @@ const info = {
         .then(res => {
           commit('SET_SERVICE_SLIDES', res.data)
         })
+    },
+    LOAD_SEND_INFO({ commit }) {
+      axios
+        .get('https://pomogayka96.ru/wp-json/pg/v1/get/pages/?id=297')
+        .then(res => {
+          console.log(res.data);
+          commit('SET_SEND_INFO', res.data)
+        })
+    },
+    LOAD_PAYMENT_INFO({ commit }) {
+      axios
+        .get('https://pomogayka96.ru/wp-json/pg/v1/get/pages/?id=299')
+        .then(res => {
+          console.log(res.data);
+          commit('SET_PAYMENT_INFO', res.data)
+        })
     }
   },
   getters: {
@@ -79,6 +103,12 @@ const info = {
     },
     getServiceText(state) {
       return state.serviceText
+    },
+    getSendText(state) {
+      return state.sendText
+    },
+    getPaymentText(state) {
+      return state.paymentText
     }
   },
 }

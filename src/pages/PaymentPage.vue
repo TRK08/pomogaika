@@ -2,27 +2,31 @@
   <div class="payment-page">
     <div class="container">
       <h2>Информация об оплате</h2>
-      <h3>Для физических лиц</h3>
-      <p>
-        Вы можете оплатить заказ на нашем сайте с помощью любых удобных
-        способов:
-      </p>
-      <img src="../assets/img/payment-methods.png" alt="" />
-      <h3>Для юридических лиц</h3>
-      <p>
-        Условия по поставке запчастей, покупке оптом и другие предложения вы
-        можете обсудить, написав нам на почту: pomogaika@mail.ru Либо позвонить
-        по контактным номерам:
-        <a href="tel:+79923402383">+7 (992) 340-23-83</a> или
-        <a href="tel:+79923402383">+7 (992) 340-23-83</a>
-      </p>
+
+      <div
+        class="payment-page-block"
+        v-for="text in paymentText"
+        :key="text.title"
+      >
+        <h3 v-html="text.title"></h3>
+        <p v-html="text.text"></p>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "PaymentPage",
+  computed: {
+    ...mapGetters({
+      paymentText: "info/getPaymentText",
+    }),
+  },
+  created() {
+    this.$store.dispatch("info/LOAD_PAYMENT_INFO");
+  },
 };
 </script>
 

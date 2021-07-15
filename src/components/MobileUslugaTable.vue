@@ -71,5 +71,6 @@ export default {
 <style scoped>
 .mobile-table-tab-btn--active {
   background-color: #bf830d !important;
+  transition: all 0.3s ease-in;
 }
 </style>
