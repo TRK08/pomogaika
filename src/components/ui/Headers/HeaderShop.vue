@@ -37,10 +37,9 @@
     <div class="container">
       <div class="header-menu">
         <ul class="header-menu-block">
-          <router-link
-            tag="li"
-            :to="nav.link"
-            v-for="nav in navs"
+          <li
+            @click="changeLinks(index)"
+            v-for="(nav, index) in navs"
             :key="nav.text"
           >
             <div class="burger-menu" v-if="nav.text === 'Каталог'">
@@ -49,7 +48,7 @@
               <span></span>
             </div>
             {{ nav.text }}
-          </router-link>
+          </li>
         </ul>
         <div class="header-menu-cabinet__wrap">
           <router-link
@@ -95,23 +94,23 @@ export default {
       navs: [
         {
           text: "Каталог",
-          link: "",
+          link: "#catalog",
         },
         {
           text: "Акции",
-          link: "/#shop-slider",
+          link: "#shop-slider",
         },
         {
           text: "Автосервис",
-          link: "/service",
+          path: "/service",
         },
         {
           text: "Статьи",
-          link: "/articles",
+          path: "/articles",
         },
         {
           text: "О нас",
-          link: "/#about-us",
+          link: "#about-us",
         },
       ],
       cabinet: [
@@ -133,7 +132,22 @@ export default {
       ],
     };
   },
-  methods: {},
+  methods: {
+    changeLinks(i) {
+      if (this.$route.path === "/") {
+        if (this.navs[i].link) {
+          this.$scrollTo(this.navs[i].link);
+        } else {
+          this.$router.push(this.navs[i].path);
+        }
+      } else {
+        this.$router.push("/");
+        setTimeout(() => {
+          this.$scrollTo(this.navs[i].link);
+        }, 1000);
+      }
+    },
+  },
   computed: {
     ...mapGetters({
       isLog: "auth/getAuthenticated",

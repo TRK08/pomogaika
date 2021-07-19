@@ -25,14 +25,13 @@
             >
               <h2 data-swiper-parallax="-700" v-html="slide.headder"></h2>
               <p data-swiper-parallax="-500" v-html="slide.subheader"></p>
-              <router-link
-                tag="button"
-                :to="slide.button.button_link"
+              <button
+                v-scroll-to="'#online-registr'"
                 class="slider-btn"
                 data-swiper-parallax="-300"
               >
                 {{ slide.button.button_text || "Получить" }}
-              </router-link>
+              </button>
             </div>
           </swiper-slide>
           <div class="swiper-pagination" slot="pagination"></div>

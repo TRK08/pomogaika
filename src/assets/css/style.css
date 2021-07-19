@@ -576,6 +576,7 @@ border-radius:0;
   font-size: 20px;
   line-height: 21px;
   color: #fbbb36;
+	cursor: pointer;
 }
 
 .article-item-img__wrap {

@@ -23,7 +23,7 @@
               <img src="../../../assets/img/phone-yellow.svg" alt="" />
               <div>
                 <span>Свяжитесь с нами</span>
-                <a href=""> {{ contacts.phone }} </a>
+                <a :href="`tel:${contacts.phone}`"> {{ contacts.phone }} </a>
               </div>
             </div>
             <div class="header-adress">
@@ -41,10 +41,9 @@
       <div class="container">
         <div class="header-menu">
           <ul class="header-menu-block">
-            <router-link
-              tag="li"
-              :to="nav.link"
-              v-for="nav in navs"
+            <li
+              @click="changeLinks(index)"
+              v-for="(nav, index) in navs"
               :key="nav.text"
             >
               <div class="burger-menu" v-if="nav.text === 'Услуги'">
@@ -53,7 +52,7 @@
                 <span></span>
               </div>
               {{ nav.text }}
-            </router-link>
+            </li>
           </ul>
         </div>
       </div>
@@ -76,26 +75,42 @@ export default {
       navs: [
         {
           text: "Услуги",
-          link: "/service/#services-block",
+          link: "#services-block",
         },
         {
           text: "Акции",
-          link: "/",
+          link: "#service-slider",
         },
         {
           text: "Магазин автозапчастей",
-          link: "/",
+          path: "/",
         },
         {
           text: "Статьи",
-          link: "/articles",
+          link: "#articles-block",
         },
         {
           text: "О нас",
-          link: "/",
+          link: "#about-us",
         },
       ],
     };
+  },
+  methods: {
+    changeLinks(i) {
+      if (this.$route.path === "/service") {
+        if (this.navs[i].link) {
+          this.$scrollTo(this.navs[i].link);
+        } else {
+          this.$router.push(this.navs[i].path);
+        }
+      } else {
+        this.$router.push("/service");
+        setTimeout(() => {
+          this.$scrollTo(this.navs[i].link);
+        }, 1000);
+      }
+    },
   },
 };
 </script>	
