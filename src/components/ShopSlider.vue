@@ -11,7 +11,7 @@
             <p v-html="item.subheader" data-swiper-parallax="-500"></p>
             <router-link
               tag="button"
-              :to="item.button.button_link"
+              to="https://vk.com/im?peers=16903181_15726544"
               class="slider-btn"
             >
               {{ item.button.button_text || "Получить" }}

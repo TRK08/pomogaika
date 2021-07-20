@@ -350,6 +350,37 @@ border-radius:0;
 	right: 15px;
 }
 
+.footer-bottom__wrap {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px 0;
+	font-size: 15px;
+	line-height: 16px;
+	
+}
+
+.footer-bottom__wrap * {
+	color: #9C9C9C;
+}
+
+.footer-privacy a:first-child {
+	margin-right: 30px;
+}
+
+.footer-logo {
+	font-family: "Noah"; 
+	font-weight: 400;
+}
+
+.footer-logo span {
+	color: #000!important;
+	border-bottom: 1px solid #000;
+	margin-left: 10px;
+	font-size: 24px;
+	line-height: 25px;
+}
+
 /* SHOP SLIDER */
 
 .shop-slider {

@@ -119,6 +119,23 @@
         </div>
       </div>
     </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="footer-bottom__wrap">
+          <div class="footer-copyright">
+            © 2021 ПОМОГАЙКА. All right reserved.
+          </div>
+          <a href="" class="footer-logo">
+            <img src="../../assets/img/hypermission-logo.png" alt="" />
+            <span>by HyperMission</span>
+          </a>
+          <div class="footer-privacy">
+            <a href="">Политика обработки данных</a>
+            <a href="">Конфиденциальность</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </footer>
 </template>
 
