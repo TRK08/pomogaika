@@ -1700,6 +1700,10 @@ input[type="file"] {
 		margin-bottom: 10px;
 	}
 
+	.footer-menu-item:last-child {
+		margin-bottom: 0;
+	}
+
 	.footer-social a img{
 		height: 18px;
 	}
@@ -2153,30 +2157,34 @@ input[type="file"] {
 		margin-left: 50px;
 	}
 
-	.head-footer .row {
-		display: flex;
-    flex-direction: column;
-    justify-content: center;
-	}
-
-	.footer-left {
-		display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 100%;
-		margin-bottom: 30px;
-	}
-
-	.footer-center {
-		width: 100%;
-	}
-
 	.footer-menu__wrap {
-		justify-content: center;
+		display: grid;
+    grid-template-columns: repeat(2, 1fr);
+		grid-template-areas: "first second"
+												"first third";
+	}
+
+	.footer-menu:nth-child(1) {
+		grid-area: first;
+	}
+	.footer-menu:nth-child(2) {
+		grid-area: second;
+		margin-bottom: 10px;
+	}
+	.footer-menu:nth-child(3) {
+		grid-area: third;
+	}
+
+	.footer-menu-title {
+		margin-bottom: 5px;
 	}
 
 	.footer-menu:not(:last-child) {
-		margin-right: 12px;
+		margin-right: 0;
+	}
+
+	.footer-center  {
+		margin-bottom: 30px;
 	}
 
 	.header-menu-block li {
@@ -2324,6 +2332,10 @@ input[type="file"] {
 
 	.header-menu-block li:not(:last-child) {
 		margin-right: 10px;
+	}
+
+	.footer-left-text a {
+		font-size: 9px;
 	}
 }
 @media (max-width: 320px) {
