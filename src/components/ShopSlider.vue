@@ -9,13 +9,13 @@
           >
             <h2 v-html="item.headder" data-swiper-parallax="-700"></h2>
             <p v-html="item.subheader" data-swiper-parallax="-500"></p>
-            <router-link
-              tag="button"
-              to="https://vk.com/im?peers=16903181_15726544"
+            <button
+              v-scroll-to="'#catalog'"
               class="slider-btn"
+              data-swiper-parallax="-300"
             >
               {{ item.button.button_text || "Получить" }}
-            </router-link>
+            </button>
           </div>
         </swiper-slide>
       </swiper>

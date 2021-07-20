@@ -47,7 +47,11 @@
                     v-else-if="item.path"
                     >{{ item.text }}</router-link
                   >
-                  <div v-else @click="changeShopLinks(index, item.text)">
+                  <div
+                    :class="{ 'hide-nav': item.text === 'О нас' }"
+                    v-else
+                    @click="changeShopLinks(index, item.text)"
+                  >
                     {{ item.text }}
                   </div>
                 </li>
@@ -100,7 +104,11 @@
                     v-else-if="item.path"
                     >{{ item.text }}</router-link
                   >
-                  <div v-else @click="changeServiceLinks(index, item.text)">
+                  <div
+                    :class="{ 'hide-nav': item.text === 'О нас' }"
+                    v-else
+                    @click="changeServiceLinks(index, item.text)"
+                  >
                     {{ item.text }}
                   </div>
                 </li>
@@ -123,7 +131,7 @@
       <div class="container">
         <div class="footer-bottom__wrap">
           <div class="footer-copyright">
-            © 2021 ПОМОГАЙКА. All right reserved.
+            © {{ getFullYear() }} ПОМОГАЙКА. All right reserved.
           </div>
           <a href="" class="footer-logo">
             <img src="../../assets/img/hypermission-logo.png" alt="" />
@@ -310,6 +318,9 @@ export default {
           this.$scrollTo(this.shopMenu.info.name[i].link);
         }, 1000);
       }
+    },
+    getFullYear() {
+      return new Date().getFullYear();
     },
   },
   created() {

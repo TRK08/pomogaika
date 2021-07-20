@@ -45,6 +45,7 @@
               @click="changeLinks(index)"
               v-for="(nav, index) in navs"
               :key="nav.text"
+              :class="{ 'hide-nav': nav.text === 'О нас' }"
             >
               <div class="burger-menu" v-if="nav.text === 'Услуги'">
                 <span></span>
