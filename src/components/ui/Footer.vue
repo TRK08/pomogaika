@@ -35,24 +35,22 @@
                 <h4 class="footer-menu-title">{{ menu.title }}</h4>
                 <li
                   class="footer-menu-item"
-                  v-for="item in menu.name"
+                  v-for="(item, index) in menu.name"
                   :key="item.text"
                 >
                   <a v-if="item.href" :href="`mailto:${contacts.email}`">{{
                     item.text
                   }}</a>
-                  <router-link v-else tag="div" :to="item.link">{{
-                    item.text
-                  }}</router-link>
+                  <router-link
+                    tag="div"
+                    :to="item.path"
+                    v-else-if="item.path"
+                    >{{ item.text }}</router-link
+                  >
+                  <div v-else @click="changeShopLinks(index, item.text)">
+                    {{ item.text }}
+                  </div>
                 </li>
-                <!-- <router-link
-                  v-for="item in menu.name"
-                  :key="item.text"
-                  tag="li"
-                  :to="item.link"
-                  class="footer-menu-item"
-                  >{{ item.text }}</router-link
-                > -->
               </ul>
             </div>
           </div>
@@ -90,24 +88,22 @@
                 <h4 class="footer-menu-title">{{ menu.title }}</h4>
                 <li
                   class="footer-menu-item"
-                  v-for="item in menu.name"
+                  v-for="(item, index) in menu.name"
                   :key="item.text"
                 >
                   <a v-if="item.href" :href="`mailto:${contacts.email}`">{{
                     item.text
                   }}</a>
-                  <router-link v-else tag="div" :to="item.link">{{
-                    item.text
-                  }}</router-link>
+                  <router-link
+                    tag="div"
+                    :to="item.path"
+                    v-else-if="item.path"
+                    >{{ item.text }}</router-link
+                  >
+                  <div v-else @click="changeServiceLinks(index, item.text)">
+                    {{ item.text }}
+                  </div>
                 </li>
-                <!-- <router-link
-                  v-for="item in menu.name"
-                  :key="item.text"
-                  tag="li"
-                  :to="item.link"
-                  class="footer-menu-item"
-                  >{{ item.text }}</router-link
-                > -->
               </ul>
             </div>
           </div>
@@ -141,23 +137,23 @@ export default {
           name: [
             {
               text: "Каталог",
-              link: "",
+              link: "#catalog",
             },
             {
               text: "Акции",
-              link: "/#shop-slider",
+              link: "#shop-slider",
             },
             {
               text: "Автосервис",
-              link: "/service",
+              path: "/service",
             },
             {
               text: "Статьи",
-              link: "/articles",
+              path: "/articles",
             },
             {
               text: "О нас",
-              link: "/#articles-block",
+              link: "#about-us",
             },
           ],
         },
@@ -183,19 +179,19 @@ export default {
           name: [
             {
               text: "Личный кабинет",
-              link: "/cabinet",
+              path: "/cabinet",
             },
             {
               text: "Доставка",
-              link: "/send",
+              path: "/send",
             },
             {
               text: "Оплата",
-              link: "/payment",
+              path: "/payment",
             },
             {
               text: "Гарантии",
-              link: "/guarantee",
+              path: "/guarantee",
             },
           ],
         },
@@ -206,23 +202,23 @@ export default {
           name: [
             {
               text: "Услуги",
-              link: "/service/#services-block",
+              link: "#services-block",
             },
             {
               text: "Акции",
-              link: "/service/#service-slider",
+              link: "#service-slider",
             },
             {
               text: "Магазин запчастей",
-              link: "/",
+              path: "/",
             },
             {
               text: "Статьи",
-              link: "/service/#articles-block",
+              link: "#articles-block",
             },
             {
               text: "О нас",
-              link: "/service/#about-us",
+              link: "#about-us",
             },
           ],
         },
@@ -244,7 +240,7 @@ export default {
           name: [
             {
               text: "Онлайн-запись",
-              link: "/service/#online-registr",
+              link: "#online-registr",
             },
           ],
         },
@@ -255,6 +251,49 @@ export default {
     ...mapGetters({
       contacts: "info/getContacts",
     }),
+  },
+  methods: {
+    changeServiceLinks(i, text) {
+      if (this.$route.path === "/service") {
+        if (
+          this.serviceMenu.info.name[i].text === text &&
+          this.serviceMenu.info.name[i].link
+        ) {
+          this.$scrollTo(this.serviceMenu.info.name[i].link);
+        } else if (
+          this.serviceMenu.carOwners.name[i].text === text &&
+          this.serviceMenu.carOwners.name[i].link
+        ) {
+          this.$scrollTo(this.serviceMenu.carOwners.name[i].link);
+        } else {
+          this.$router.push(this.serviceMenu.info.name[i].path);
+        }
+      } else {
+        this.$router.push("/service");
+        setTimeout(() => {
+          if (this.serviceMenu.info.name[i].text === text) {
+            this.$scrollTo(this.serviceMenu.info.name[i].link);
+          } else {
+            this.$scrollTo(this.serviceMenu.carOwners.name[i].link);
+          }
+        }, 1000);
+      }
+    },
+    changeShopLinks(i, text) {
+      if (this.$route.path === "/") {
+        if (
+          this.shopMenu.info.name[i].text === text &&
+          this.shopMenu.info.name[i].link
+        ) {
+          this.$scrollTo(this.shopMenu.info.name[i].link);
+        }
+      } else {
+        this.$router.push("/");
+        setTimeout(() => {
+          this.$scrollTo(this.shopMenu.info.name[i].link);
+        }, 1000);
+      }
+    },
   },
   created() {
     this.$store.dispatch("info/LOAD_CONTACTS");
