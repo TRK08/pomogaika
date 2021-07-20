@@ -1093,6 +1093,17 @@ border-radius:0;
 	display: block;
 }
 
+.table-descr {
+	margin-top: 30px;
+}
+
+.table-descr-item {
+	font-weight: 400;
+	margin-bottom: 15px;
+	font-size: 15px;
+	line-height: 16px;
+}
+
 
 /* MOBILE USLUGA TABLE  */
 

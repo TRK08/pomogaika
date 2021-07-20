@@ -50,7 +50,6 @@ export default {
       }
     },
     activateTab(index) {
-      // let tab = this.singleService.prices.header[index].isActive;
       return this.singleService.prices.header.map((item, i) => {
         if (index + 1 === i) {
           return (item.isActive = !item.isActive);

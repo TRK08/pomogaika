@@ -31,7 +31,12 @@
       </div>
       <div class="mobile-table__wrap">
         <table class="mobile-table">
-          <tr v-for="tabInfo in serviceTable.body" :key="tabInfo.c">
+          <tr
+            v-for="tabInfo in serviceTable.body.filter(
+              (item) => item[1].c !== '==='
+            )"
+            :key="tabInfo.c"
+          >
             <td>
               {{ tabInfo[0].c }}
             </td>
@@ -40,6 +45,17 @@
             </td>
           </tr>
         </table>
+        <div class="table-descr">
+          <div
+            class="table-descr-item"
+            v-for="(item, index) in serviceTable.body.filter(
+              (item) => item[1].c === '==='
+            )"
+            :key="index"
+          >
+            <div>{{ item[0].c }}</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>

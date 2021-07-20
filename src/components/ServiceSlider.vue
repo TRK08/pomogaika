@@ -172,6 +172,10 @@ export default {
   margin-bottom: 0;
 }
 
+.gallery-Right .slide-box {
+  cursor: pointer;
+}
+
 .swiper-slide .slide-box h2 {
   color: #fff;
 }
