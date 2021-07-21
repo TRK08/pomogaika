@@ -141,6 +141,8 @@ export default {
         } else {
           this.$router.push(this.navs[i].path);
         }
+      } else if (this.$route.path !== "/" && this.navs[i].path) {
+        this.$router.push(this.navs[i].path);
       } else {
         this.$router.push("/");
         setTimeout(() => {

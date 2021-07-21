@@ -60,10 +60,10 @@
           </div>
         </div>
         <div class="footer-social">
-          <a :href="`${contacts.vk}`"
+          <a :href="`${contacts.vk}`" target="blank"
             ><img src="../../assets/img/vk-black.svg" alt="vk"
           /></a>
-          <a :href="`${contacts.instagram}`"
+          <a :href="`${contacts.instagram}`" target="blank"
             ><img src="../../assets/img/instagram-black.svg" alt="inst"
           /></a>
         </div>
@@ -118,10 +118,10 @@
         </div>
 
         <div class="footer-social">
-          <a :href="`${contacts.vk}`"
+          <a :href="`${contacts.vk}`" target="blank"
             ><img src="../../assets/img/vk-yellow.svg" alt="vk"
           /></a>
-          <a :href="`${contacts.instagram}`"
+          <a :href="`${contacts.instagram}`" target="blank"
             ><img src="../../assets/img/instagram-yellow.svg" alt="inst"
           /></a>
         </div>

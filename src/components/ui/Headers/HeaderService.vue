@@ -105,6 +105,8 @@ export default {
         } else {
           this.$router.push(this.navs[i].path);
         }
+      } else if (this.$route.path !== "/service" && this.navs[i].path) {
+        this.$router.push(this.navs[i].path);
       } else {
         this.$router.push("/service");
         setTimeout(() => {
