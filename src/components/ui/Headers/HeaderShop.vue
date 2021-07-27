@@ -169,8 +169,10 @@ export default {
       }
     },
     goToGood(result, index) {
-      this.$router.push(`/good/${result.number}`);
       this.$store.dispatch("goods/TAKE_GOOD_INDEX", index);
+      this.$router.replace(`/good/${result.number}`);
+      this.$store.dispatch("goods/LOAD_GOODS");
+      this.searchValue = "";
     },
   },
   computed: {
@@ -182,17 +184,17 @@ export default {
 };
 </script>	
 <style scoped>
-.header-search {
+.header-search input {
   position: relative;
+  display: block;
 }
 
 .header-search-results {
   position: absolute;
-  top: 42px;
-  left: 0;
-  width: 100%;
+  top: 70px;
+  width: 450px;
   background-color: #fff;
-  z-index: 99;
+  z-index: 1;
 }
 
 .header-search-results li {

@@ -100,7 +100,8 @@ const routes = [
 	{
 		path: '/good/:id',
 		component: SingleGood,
-		props: true
+		props: true,
+		name: 'goods'
 	}
 ]
 

@@ -25,6 +25,7 @@ const goods = {
         num = state.brands[id].number
       axios.get(`https://pomogayka96.ru/wp-json/pg/v1/shop/product/?brand=${brand}&article=${num}`).then((res => {
         commit('SET_GOODS', res.data)
+        console.log(res.data);
       })).catch((err) => {
         console.log(err);
       })
@@ -36,7 +37,6 @@ const goods = {
         )
         .then((res) => {
           commit('SET_BRANDS', res.data)
-          console.log(res);
         });
     },
     TAKE_GOOD_INDEX({ commit }, index) {
