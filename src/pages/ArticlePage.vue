@@ -85,7 +85,7 @@ export default {
     }),
   },
 
-  async mounted() {
+  mounted() {
     this.$store.dispatch("articles/LOAD_SINGLE_ARTICLE", this.id);
     this.$store.dispatch("articles/LOAD_ARTICLES");
   },

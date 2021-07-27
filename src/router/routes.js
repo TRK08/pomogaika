@@ -98,9 +98,9 @@ const routes = [
 		props: true
 	},
 	{
-		path: '/good',
+		path: '/good/:id',
 		component: SingleGood,
-		// props: true
+		props: true
 	}
 ]
 

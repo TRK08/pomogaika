@@ -1,11 +1,11 @@
 <template>
-  <div class="good-page">
+  <div class="good-page" v-if="good">
     <div class="container">
       <h2 class="good-title">Информация о товаре</h2>
       <div class="good-info row">
         <div class="col-sm-8 good-info-text">
-          <h2>{{ item.name }}</h2>
-          <p>{{ item.descr }}</p>
+          <h2 v-if="good.descr">{{ good.descr }}</h2>
+          <p></p>
           <div class="good-info-block">
             <div class="good-info-names">
               <span>Артикул: </span>
@@ -13,35 +13,41 @@
               <span>Наличие: </span>
             </div>
             <div class="good-info-value">
-              <span>{{ item.article }} </span>
-              <span>{{ item.brand }} </span>
-              <span>{{ item.availability }} </span>
+              <span v-if="good.number">{{ good.number }} </span>
+              <span v-if="good.brand">{{ good.brand }} </span>
+              <span v-if="good.availability">{{ good.availability }} </span>
             </div>
           </div>
         </div>
-        <div class="col-sm-4 good-info-img"></div>
+        <div class="col-sm-4 good-info-img">
+          <img
+            v-if="good.images.length"
+            :src="`https://pubimg.4mycar.ru/images/preview/${good.images[0].name}`"
+            :alt="good.descr"
+          />
+        </div>
       </div>
-      <GoodPrices />
+      <GoodPrices :goodCrosses="good.crosses" />
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import GoodPrices from "../components/GoodPrices.vue";
 export default {
   components: { GoodPrices },
   name: "SingleGood",
   data() {
-    return {
-      item: {
-        name: "Бензобак для Nissan GTR 2007 года",
-        descr:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque viverra gravida nec, orci, risus amet. Rutrum pellentesque vitae tempus neque, dictum pharetra. Convallis ullamcorper dolor vestibulum viverra et orci. Habitant facilisis iaculis ullamcorper at semper pulvinar convallis aliquam.",
-        article: "65894238481",
-        brand: "Nissan",
-        availability: "В наличии",
-      },
-    };
+    return {};
+  },
+  computed: {
+    ...mapGetters({
+      good: "goods/getGoods",
+    }),
+  },
+  created() {
+    this.$store.dispatch("goods/LOAD_GOODS");
   },
 };
 </script>

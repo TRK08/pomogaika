@@ -13,9 +13,21 @@
           <form action="" class="header-search">
             <input
               type="text"
+              v-model="searchValue"
+              @input="liveSearch"
               placeholder="Поиск деталей по номеру, наименованию или бренду"
             />
             <button @click.prevent>Найти</button>
+            <ul v-if="searchValue !== ''" class="header-search-results">
+              <li
+                v-for="(result, index) in brands"
+                :key="index"
+                @click="goToGood(result, index)"
+              >
+                <span>{{ result.brand }}</span>
+                <span>{{ result.number }}</span>
+              </li>
+            </ul>
           </form>
           <div class="header-shop-right">
             <div class="header-contacts">
@@ -92,6 +104,7 @@ export default {
   },
   data() {
     return {
+      searchValue: "",
       navs: [
         {
           text: "Каталог",
@@ -150,15 +163,49 @@ export default {
         }, 1000);
       }
     },
+    liveSearch() {
+      if (this.searchValue !== "") {
+        this.$store.dispatch("goods/LIVE_SEARCH", this.searchValue);
+      }
+    },
+    goToGood(result, index) {
+      this.$router.push(`/good/${result.number}`);
+      this.$store.dispatch("goods/TAKE_GOOD_INDEX", index);
+    },
   },
   computed: {
     ...mapGetters({
       isLog: "auth/getAuthenticated",
+      brands: "goods/getBrands",
     }),
   },
 };
 </script>	
 <style scoped>
+.header-search {
+  position: relative;
+}
+
+.header-search-results {
+  position: absolute;
+  top: 42px;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  z-index: 99;
+}
+
+.header-search-results li {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.header-search-results li:hover {
+  background-color: #d3d3d3;
+}
+
 @media (max-width: 672px) {
   .header-wrap {
     height: 160px;

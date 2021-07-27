@@ -11,18 +11,11 @@
           <td>Купить</td>
         </thead>
         <tbody>
-          <tr>
-            <td>Nissan</td>
-            <td>65894481</td>
-            <td colspan="2">Хороший, вместительный бак на 100 литров</td>
-            <td>10 000 рублей</td>
-            <td><button>Добавить в корзину</button></td>
-          </tr>
-          <tr>
-            <td>Nissan</td>
-            <td>65894481</td>
-            <td colspan="2">Хороший, вместительный бак на 100 литров</td>
-            <td>10 000 рублей</td>
+          <tr v-for="(item, index) in goodCrosses" :key="index">
+            <td v-if="item.brand">{{ item.brand }}</td>
+            <td v-if="item.number">{{ item.number }}</td>
+            <td colspan="2"></td>
+            <td></td>
             <td><button>Добавить в корзину</button></td>
           </tr>
         </tbody>
@@ -34,6 +27,12 @@
 <script>
 export default {
   name: "GoodPrices",
+  props: {
+    goodCrosses: {
+      type: Array,
+      required: true,
+    },
+  },
 };
 </script>
 

@@ -8,13 +8,15 @@ import services from '../store/services'
 import info from '../store/info'
 import auth from '../store/auth'
 import catalog from '../store/catalog'
+import goods from '../store/goods'
 
 export default new Vuex.Store({
-	modules: {	
+	modules: {
 		articles,
 		services,
 		info,
 		auth,
-		catalog
+		catalog,
+		goods
 	}
-}) 
+})
