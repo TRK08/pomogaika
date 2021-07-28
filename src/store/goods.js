@@ -5,7 +5,7 @@ const goods = {
   state: {
     brands: null,
     goods: null,
-    selectedGoodId: null,
+    selectedGoodId: 0,
     cart: []
   },
   mutations: {
@@ -19,7 +19,7 @@ const goods = {
       state.selectedGoodId = payload
     },
     SET_CART(state, payload) {
-      if (state.cart) {
+      if (state.cart !== null) {
         let isProductAdd = false
         if (state.cart.length > 0) {
           state.cart.map((item) => {
@@ -54,6 +54,7 @@ const goods = {
     },
     GET_CART_FROM_STORAGE(state) {
       state.cart = JSON.parse(localStorage.getItem('cart'))
+      console.log(state.cart);
     }
   },
   actions: {
@@ -77,6 +78,7 @@ const goods = {
           `https://pomogayka96.ru/wp-json/pg/v1/shop/search/?article=${value}`
         )
         .then((res) => {
+          console.log(res.data);
           commit('SET_BRANDS', res.data)
         });
     },

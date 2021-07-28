@@ -69,7 +69,7 @@ export default {
   methods: {
     addToCart(index) {
       let img = "";
-      if (this.good.images.length) {
+      if (this.good && this.good.images.length) {
         img = `https://pubimg.4mycar.ru/images/preview/${this.good.images[0].name}`;
       }
       let goodInfo = {
@@ -87,7 +87,6 @@ export default {
     },
     chooseGood(index) {
       this.$store.dispatch("goods/TAKE_GOOD_INDEX", index);
-      // this.$router.replace(`/good/${this.goodNumber}`);
       this.$store.dispatch("goods/LOAD_GOODS");
     },
   },
