@@ -183,9 +183,11 @@ export default {
     }),
     cartCounter() {
       let res = 0;
-      this.cart.forEach((item) => {
-        res += item.quantity;
-      });
+      if (this.cart.length) {
+        this.cart.forEach((item) => {
+          res += item.quantity;
+        });
+      }
       return res;
     },
   },

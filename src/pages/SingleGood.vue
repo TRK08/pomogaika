@@ -1,38 +1,56 @@
 <template>
-  <div class="good-page" v-if="good">
-    <div class="container">
-      <h2 class="good-title">Информация о товаре</h2>
-      <div class="good-info row">
-        <div class="col-sm-8 good-info-text">
-          <h2 v-if="good.descr">{{ good.descr }}</h2>
-          <p></p>
-          <div class="good-info-block">
-            <div class="good-info-names">
-              <span>Артикул: </span>
-              <span>Производитель: </span>
-              <span>Наличие: </span>
-            </div>
-            <div class="good-info-value">
-              <span v-if="good.number">{{ good.number }} </span>
-              <span v-if="good.brand">{{ good.brand }} </span>
-              <span v-if="good.crosses"> В наличии </span>
-              <span v-else> Нет в наличии</span>
+  <div class="good-page__wrap">
+    <div class="good-page" v-if="good && brands">
+      <div class="container">
+        <h2 class="good-title">Информация о товаре</h2>
+        <div class="good-info row">
+          <div class="col-sm-8 good-info-text">
+            <h2 v-if="good.descr">{{ good.descr }}</h2>
+            <p></p>
+            <div class="good-info-block">
+              <div class="good-info-names">
+                <span>Артикул: </span>
+                <span>Производитель: </span>
+                <span>Наличие: </span>
+              </div>
+              <div class="good-info-value">
+                <span v-if="good.number">{{ good.number }} </span>
+                <span v-if="good.brand">{{ good.brand }} </span>
+                <span v-if="good.crosses"> В наличии </span>
+                <span v-else> Нет в наличии</span>
+              </div>
             </div>
           </div>
+          <div class="col-sm-4 good-info-img">
+            <img
+              v-if="good.images.length"
+              :src="`https://pubimg.4mycar.ru/images/preview/${good.images[0].name}`"
+              :alt="good.descr"
+            />
+          </div>
         </div>
-        <div class="col-sm-4 good-info-img">
-          <img
-            v-if="good.images.length"
-            :src="`https://pubimg.4mycar.ru/images/preview/${good.images[0].name}`"
-            :alt="good.descr"
-          />
-        </div>
+        <GoodPrices
+          v-if="good.crosses.length"
+          :goodCrosses="good.crosses"
+          @addToCart="addToCart"
+        />
       </div>
-      <GoodPrices
-        v-if="good.crosses.length"
-        :goodCrosses="good.crosses"
-        @addToCart="addToCart"
-      />
+    </div>
+    <div class="choose-good-block" v-else>
+      <div class="container">
+        <h1 @click="loadFromCatalog">Выберите из списка</h1>
+        <ul v-if="brands">
+          <li
+            v-for="(brand, index) in brands"
+            :key="index"
+            @click="chooseGood(index)"
+          >
+            <span> {{ brand.brand }} </span>
+            <span> {{ brand.number }} </span>
+            <span> {{ brand.description }} </span>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -44,7 +62,9 @@ export default {
   components: { GoodPrices },
   name: "SingleGood",
   data() {
-    return {};
+    return {
+      goodNumber: 0,
+    };
   },
   methods: {
     addToCart(index) {
@@ -60,17 +80,39 @@ export default {
       };
       this.$store.dispatch("goods/ADD_TO_CART", goodInfo);
     },
+    loadFromCatalog() {
+      let path = this.$route.path.split("/");
+      this.goodNumber = path[path.length - 1];
+      this.$store.dispatch("goods/LIVE_SEARCH", this.goodNumber);
+    },
+    chooseGood(index) {
+      this.$store.dispatch("goods/TAKE_GOOD_INDEX", index);
+      // this.$router.replace(`/good/${this.goodNumber}`);
+      this.$store.dispatch("goods/LOAD_GOODS");
+    },
   },
   computed: {
     ...mapGetters({
       good: "goods/getGoods",
+      brands: "goods/getBrands",
     }),
   },
   created() {
     this.$store.dispatch("goods/LOAD_GOODS");
   },
+  mounted() {
+    this.loadFromCatalog();
+  },
 };
 </script>
 
 <style scoped>
+.choose-good-block {
+  padding: 30px;
+}
+
+.choose-good-block ul li {
+  padding: 15px;
+  border-bottom: 1px solid #2c2c2c;
+}
 </style>

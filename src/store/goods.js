@@ -57,15 +57,18 @@ const goods = {
   },
   actions: {
     LOAD_GOODS({ commit, state }) {
-      let id = state.selectedGoodId,
-        brand = state.brands[id].brand,
-        num = state.brands[id].number
-      axios.get(`https://pomogayka96.ru/wp-json/pg/v1/shop/product/?brand=${brand}&article=${num}`).then((res => {
-        commit('SET_GOODS', res.data)
-        console.log(res.data);
-      })).catch((err) => {
-        console.log(err);
-      })
+      if (state.brands) {
+        let id = state.selectedGoodId,
+          brand = state.brands[id].brand,
+          num = state.brands[id].number
+        axios.get(`https://pomogayka96.ru/wp-json/pg/v1/shop/product/?brand=${brand}&article=${num}`).then((res => {
+          commit('SET_GOODS', res.data)
+          console.log(res.data);
+        })).catch((err) => {
+          console.log(err);
+        })
+      }
+
     },
     LIVE_SEARCH({ commit }, value) {
       axios
