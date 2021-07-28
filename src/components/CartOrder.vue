@@ -1,6 +1,6 @@
 <template>
   <div class="cart-order-component__wrap">
-    <div class="cart-order-component" v-if="cart.length">
+    <div class="cart-order-component" v-if="cart && cart.length">
       <h4 class="cart-order-title">Информация о заказе</h4>
       <p>
         Наш менеджер свяжется с вами для уточнения способа доставки и ее
