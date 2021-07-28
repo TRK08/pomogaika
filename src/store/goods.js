@@ -20,7 +20,7 @@ const goods = {
     },
     SET_CART(state, payload) {
       let isProductAdd = false
-      if (state.cart.length > 0) {
+      if (state.cart && state.cart.length > 0) {
         state.cart.map((item) => {
           if (item.number === payload.number) {
             isProductAdd = true
