@@ -40,7 +40,7 @@
             <router-link tag="div" to="/cart" class="header-cart">
               <img src="../../../assets/img/shop-cart-black.svg" alt="" />
               <span class="cart-price">8888 р.</span>
-              <span class="cart-count">3</span>
+              <span class="cart-count"> {{ cartCounter }} </span>
             </router-link>
           </div>
         </div>
@@ -179,7 +179,15 @@ export default {
     ...mapGetters({
       isLog: "auth/getAuthenticated",
       brands: "goods/getBrands",
+      cart: "goods/getCart",
     }),
+    cartCounter() {
+      let res = 0;
+      this.cart.forEach((item) => {
+        res += item.quantity;
+      });
+      return res;
+    },
   },
 };
 </script>	

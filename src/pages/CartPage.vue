@@ -7,7 +7,7 @@
           <CartForm />
         </div>
         <div class="col-sm-6 col-lg-5">
-          <CartOrder />
+          <CartOrder :cart="cart" />
         </div>
       </div>
     </div>
@@ -15,11 +15,18 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 import CartForm from "../components/CartForm.vue";
 import CartOrder from "../components/CartOrder.vue";
 export default {
   components: { CartForm, CartOrder },
   name: "CartPage",
+  computed: {
+    ...mapGetters({
+      cart: "goods/getCart",
+    }),
+  },
 };
 </script>
 

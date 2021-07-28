@@ -16,7 +16,9 @@
             <td v-if="item.number">{{ item.number }}</td>
             <td colspan="2"></td>
             <td></td>
-            <td><button>Добавить в корзину</button></td>
+            <td>
+              <button @click="addToCart(index)">Добавить в корзину</button>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -31,6 +33,11 @@ export default {
     goodCrosses: {
       type: Array,
       required: true,
+    },
+  },
+  methods: {
+    addToCart(index) {
+      this.$emit("addToCart", index);
     },
   },
 };

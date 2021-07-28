@@ -5,7 +5,8 @@ const goods = {
   state: {
     brands: null,
     goods: null,
-    selectedGoodId: null
+    selectedGoodId: null,
+    cart: []
   },
   mutations: {
     SET_GOODS(state, payload) {
@@ -17,6 +18,42 @@ const goods = {
     SET_GOOD_INDEX(state, payload) {
       state.selectedGoodId = payload
     },
+    SET_CART(state, payload) {
+      let isProductAdd = false
+      if (state.cart.length > 0) {
+        state.cart.map((item) => {
+          if (item.number === payload.number) {
+            isProductAdd = true
+            item.quantity++
+          }
+        })
+        if (!isProductAdd) {
+          state.cart.push(payload)
+        }
+      }
+      else {
+        state.cart.push(payload)
+      }
+      console.log(state.cart)
+      localStorage.setItem('cart', JSON.stringify(state.cart))
+    },
+    QUANTITY_MINUS(state, index) {
+      if (state.cart[index].quantity > 1) {
+        state.cart[index].quantity--
+      }
+      localStorage.setItem('cart', JSON.stringify(state.cart))
+    },
+    QUANTITY_PLUS(state, index) {
+      state.cart[index].quantity++
+      localStorage.setItem('cart', JSON.stringify(state.cart))
+    },
+    DELETE_FROM_CART(state, index) {
+      state.cart.splice(index, 1)
+      localStorage.setItem('cart', JSON.stringify(state.cart))
+    },
+    GET_CART_FROM_STORAGE(state) {
+      state.cart = JSON.parse(localStorage.getItem('cart'))
+    }
   },
   actions: {
     LOAD_GOODS({ commit, state }) {
@@ -41,6 +78,21 @@ const goods = {
     },
     TAKE_GOOD_INDEX({ commit }, index) {
       commit('SET_GOOD_INDEX', index)
+    },
+    ADD_TO_CART({ commit }, item) {
+      commit('SET_CART', item)
+    },
+    QUANTITY_MINUS({ commit }, index) {
+      commit('QUANTITY_MINUS', index)
+    },
+    QUANTITY_PLUS({ commit }, index) {
+      commit('QUANTITY_PLUS', index)
+    },
+    DELETE_FROM_CART({ commit }, index) {
+      commit('DELETE_FROM_CART', index)
+    },
+    GET_CART_FROM_STORAGE({ commit }) {
+      commit('GET_CART_FROM_STORAGE')
     }
   },
   getters: {
@@ -49,6 +101,9 @@ const goods = {
     },
     getBrands(state) {
       return state.brands
+    },
+    getCart(state) {
+      return state.cart
     }
   },
 }

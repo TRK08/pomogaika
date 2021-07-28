@@ -1200,6 +1200,11 @@ table {
   margin-bottom: 30px;
 }
 
+.cart-order-component > h4.empty-cart-order-title {
+	text-align: center;
+	margin: 30px 0;
+}
+
 .cart-order__wrap {
   margin-top: 30px;
   font-size: 15px;
@@ -1222,6 +1227,12 @@ table {
   background-color: #fff;
   margin-right: 15px;
   border: 1px solid #c4c4c4;
+}
+
+.cart-order-item-img img {
+	width: 100%;
+	height: inherit;
+	object-fit: contain;
 }
 
 .cart-order-item-descr h5 {
@@ -1251,8 +1262,16 @@ table {
   margin-bottom: 8px;
 }
 
+.cart-order-item-body {
+	margin-bottom: 15px;
+}
+
 .cart-order-item-counter span {
 	margin: 0 10px;
+}
+
+.cart-order-item-counter img {
+	cursor: pointer;
 }
 
 .cart-order-item-price {
@@ -1656,6 +1675,44 @@ input[type="file"] {
   background-color: var(--yellow-color);
   border: none;
   margin-bottom: 18px;
+}
+
+/* GOOD PAGE */
+
+.good-page {
+  padding: 30px 0;
+}
+
+.good-title {
+  margin-bottom: 70px;
+}
+
+.good-info {
+  margin-bottom: 30px;
+}
+
+.good-info-text p {
+  margin: 30px 0;
+  max-width: 620px;
+}
+
+.good-info-block {
+  display: flex;
+}
+
+.good-info-names,
+.good-info-value {
+  display: flex;
+  flex-direction: column;
+}
+
+.good-info-names span:not(:last-child),
+.good-info-value span:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.good-info-names {
+  margin-right: 30px;
 }
 
 

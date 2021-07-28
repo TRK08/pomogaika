@@ -24,6 +24,9 @@ export default {
   computed: {
     ...mapState("auth", ["preload"]),
   },
+  created() {
+    this.$store.dispatch("goods/GET_CART_FROM_STORAGE");
+  },
 };
 </script>
 

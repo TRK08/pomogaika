@@ -15,7 +15,8 @@
             <div class="good-info-value">
               <span v-if="good.number">{{ good.number }} </span>
               <span v-if="good.brand">{{ good.brand }} </span>
-              <span v-if="good.availability">{{ good.availability }} </span>
+              <span v-if="good.crosses"> В наличии </span>
+              <span v-else> Нет в наличии</span>
             </div>
           </div>
         </div>
@@ -27,7 +28,11 @@
           />
         </div>
       </div>
-      <GoodPrices :goodCrosses="good.crosses" />
+      <GoodPrices
+        v-if="good.crosses.length"
+        :goodCrosses="good.crosses"
+        @addToCart="addToCart"
+      />
     </div>
   </div>
 </template>
@@ -41,6 +46,21 @@ export default {
   data() {
     return {};
   },
+  methods: {
+    addToCart(index) {
+      let img = "";
+      if (this.good.images.length) {
+        img = `https://pubimg.4mycar.ru/images/preview/${this.good.images[0].name}`;
+      }
+      let goodInfo = {
+        brand: this.good.crosses[index].brand,
+        number: this.good.crosses[index].number,
+        quantity: 1,
+        image: img,
+      };
+      this.$store.dispatch("goods/ADD_TO_CART", goodInfo);
+    },
+  },
   computed: {
     ...mapGetters({
       good: "goods/getGoods",
@@ -53,39 +73,4 @@ export default {
 </script>
 
 <style scoped>
-.good-page {
-  padding: 30px 0;
-}
-
-.good-title {
-  margin-bottom: 70px;
-}
-
-.good-info {
-  margin-bottom: 30px;
-}
-
-.good-info-text p {
-  margin: 30px 0;
-  max-width: 620px;
-}
-
-.good-info-block {
-  display: flex;
-}
-
-.good-info-names,
-.good-info-value {
-  display: flex;
-  flex-direction: column;
-}
-
-.good-info-names span:not(:last-child),
-.good-info-value span:not(:last-child) {
-  margin-bottom: 15px;
-}
-
-.good-info-names {
-  margin-right: 30px;
-}
 </style>
