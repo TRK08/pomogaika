@@ -183,7 +183,7 @@ export default {
     }),
     cartCounter() {
       let res = 0;
-      if (this.cart.length) {
+      if (this.cart && this.cart.length) {
         this.cart.forEach((item) => {
           res += item.quantity;
         });
