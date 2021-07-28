@@ -19,24 +19,22 @@ const goods = {
       state.selectedGoodId = payload
     },
     SET_CART(state, payload) {
-      if (state.cart) {
-        let isProductAdd = false
-        if (state.cart.length > 0) {
-          state.cart.map((item) => {
-            if (item.number === payload.number) {
-              isProductAdd = true
-              item.quantity++
-            }
-          })
-          if (!isProductAdd) {
-            state.cart.push(payload)
+      let isProductAdd = false
+      if (state.cart.length > 0) {
+        state.cart.map((item) => {
+          if (item.number === payload.number) {
+            isProductAdd = true
+            item.quantity++
           }
-        }
-        else {
+        })
+        if (!isProductAdd) {
           state.cart.push(payload)
         }
-        localStorage.setItem('cart', JSON.stringify(state.cart))
       }
+      else {
+        state.cart.push(payload)
+      }
+      localStorage.setItem('cart', JSON.stringify(state.cart))
     },
     QUANTITY_MINUS(state, index) {
       if (state.cart[index].quantity > 1) {
