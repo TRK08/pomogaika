@@ -204,7 +204,7 @@ export default {
   top: 70px;
   width: 450px;
   background-color: #fff;
-  z-index: 1;
+  z-index: 3;
 }
 
 .header-search-results li {

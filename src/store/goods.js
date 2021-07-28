@@ -53,8 +53,9 @@ const goods = {
       localStorage.setItem('cart', JSON.stringify(state.cart))
     },
     GET_CART_FROM_STORAGE(state) {
-      state.cart = JSON.parse(localStorage.getItem('cart'))
-      console.log(state.cart);
+      if (localStorage.getItem('cart') !== null) {
+        state.cart = [...JSON.parse(localStorage.getItem('cart'))]
+      }
     }
   },
   actions: {
