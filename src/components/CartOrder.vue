@@ -78,14 +78,31 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      goods: [
+        {
+          title: "Набор амортизаторов для Dodge Charger",
+          article: "54891489184654754",
+          price: 15000,
+          count: 1,
+        },
+        {
+          title: "Крышка топливного бака Toyota Crown",
+          article: "84451512146811",
+          price: 600,
+          count: 3,
+        },
+      ],
+    };
   },
   computed: {
     totalPrice() {
       let sum = 0;
-      this.goods.forEach((good) => {
-        sum = sum + good.price;
-      });
+      if (this.goods) {
+        this.goods.forEach((good) => {
+          sum = sum + good.price;
+        });
+      }
       return sum;
     },
   },
