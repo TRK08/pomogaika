@@ -1,6 +1,8 @@
 <template>
   <div class="shop-slider wow fadeIn" data-wow-delay=".5s" id="shop-slider">
     <div class="container">
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
       <swiper class="swiper-container" ref="mySwiper" :options="swiperOptions">
         <swiper-slide v-for="item in slides" :key="item.img">
           <div
@@ -48,10 +50,18 @@ export default {
           delay: 5000,
         },
         spaceBetween: 0,
-        touchRatio: 1,
+        // touchRatio: 1,
         loop: true,
         infinite: true,
         speed: 800,
+        breakpoints: {
+          991: {
+            navigation: {
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+            },
+          },
+        },
       },
 
       underSlider: [
@@ -83,4 +93,26 @@ export default {
 </script>
 
 <style scoped>
+.shop-slider .container {
+  position: relative;
+}
+
+.swiper-button-prev {
+  top: calc(50% - 44px);
+  left: 40px;
+  color: #fff;
+}
+
+.swiper-button-next {
+  top: calc(50% - 44px);
+  right: 40px;
+  color: #fff;
+}
+
+@media (max-width: 991px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none;
+  }
+}
 </style>
