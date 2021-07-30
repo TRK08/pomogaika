@@ -319,6 +319,11 @@ border-radius:0;
 	line-height: inherit;
 }
 
+.footer-payments-img {
+	width: 50%;
+	margin-top: 10px;
+}
+
 .footer-menu__wrap {
 	display: flex;
 	justify-content: flex-end;
@@ -2387,6 +2392,10 @@ input[type="file"] {
 
 	.article-page-nav-prev::before {
 		margin-right: 10px;
+	}
+
+	.footer-payments-img {
+		width: 100%;
 	}
 }
 @media (max-width: 390px) {

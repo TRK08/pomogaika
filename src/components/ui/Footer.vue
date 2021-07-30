@@ -23,7 +23,16 @@
               <a :href="`tel:${contacts.phone}`">Tel: {{ contacts.phone }}</a>
               <br />
               <a :href="`mailto:${contacts.email}`"> {{ contacts.email }} </a>
+              <br />
+              <span>ИП Дударенко Юлия Петровна </span>
+              <span>ИНН: 571300692948 </span>
+              <span>ОГРНИП: 319665800199288 </span>
             </p>
+            <img
+              class="footer-payments-img"
+              src="../../assets/img/payments.png"
+              alt=""
+            />
           </div>
           <div class="footer-center col-xs-8">
             <div class="footer-menu__wrap">
@@ -134,7 +143,11 @@
             © {{ getFullYear() }} ПОМОГАЙКА. All right reserved.
           </div>
           <a href="" class="footer-logo">
-            <img src="../../assets/img/hypermission-logo.png" alt="" />
+            <img
+              class="hidden-xs"
+              src="../../assets/img/hypermission-logo.png"
+              alt=""
+            />
             <span>by HyperMission</span>
           </a>
           <div class="footer-privacy">
