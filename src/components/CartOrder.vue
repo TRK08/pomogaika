@@ -15,6 +15,7 @@
           <div class="cart-order-item-header">
             <div class="cart-order-item-img">
               <img v-if="good.image" :src="good.image" alt="" />
+              <img v-else src="../assets/img/no-photo.jpg" alt="" />
             </div>
             <div class="cart-order-item-descr">
               <h5>{{ good.brand }}</h5>
@@ -49,7 +50,9 @@
               />
             </div>
           </div>
-          <h4 class="cart-order-item-price">{{ good.price }} руб</h4>
+          <h4 class="cart-order-item-price">
+            {{ Math.round(good.price) }} руб
+          </h4>
         </div>
       </div>
       <div class="cart-order-sum">Сумма заказа: {{ totalPrice }}</div>
@@ -78,32 +81,20 @@ export default {
     },
   },
   data() {
-    return {
-      goods: [
-        {
-          title: "Набор амортизаторов для Dodge Charger",
-          article: "54891489184654754",
-          price: 15000,
-          count: 1,
-        },
-        {
-          title: "Крышка топливного бака Toyota Crown",
-          article: "84451512146811",
-          price: 600,
-          count: 3,
-        },
-      ],
-    };
+    return {};
   },
   computed: {
     totalPrice() {
+      // console.log(this.cart);
       let sum = 0;
-      if (this.goods) {
-        this.goods.forEach((good) => {
-          sum = sum + good.price;
-        });
+      if (this.cart) {
+        for (let item of this.cart) {
+          if (item.price && item.quantity) {
+            sum += item.price * item.quantity;
+          }
+        }
       }
-      return sum;
+      return Math.round(sum);
     },
   },
   methods: {

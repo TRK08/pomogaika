@@ -1232,12 +1232,14 @@ table {
   background-color: #fff;
   margin-right: 15px;
   border: 1px solid #c4c4c4;
+	overflow: hidden;
 }
 
 .cart-order-item-img img {
 	width: 100%;
 	height: inherit;
 	object-fit: contain;
+	padding: 2px;
 }
 
 .cart-order-item-descr h5 {

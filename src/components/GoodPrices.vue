@@ -12,10 +12,10 @@
         </thead>
         <tbody>
           <tr v-for="(item, index) in goodCrosses" :key="index">
-            <td v-if="item.brand">{{ item.brand }}</td>
-            <td v-if="item.number">{{ item.number }}</td>
-            <td colspan="2"></td>
-            <td></td>
+            <td>{{ item.brand }}</td>
+            <td>{{ item.name }}</td>
+            <td colspan="2">{{ item.description }}</td>
+            <td>{{ Math.round(+item.price) }}</td>
             <td>
               <button @click="addToCart(index)">Добавить в корзину</button>
             </td>

@@ -111,7 +111,7 @@ const goods = {
     },
     getCart(state) {
       return state.cart
-    }
+    },
   },
 }
 

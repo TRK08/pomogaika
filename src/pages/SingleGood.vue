@@ -27,6 +27,7 @@
               :src="`https://pubimg.4mycar.ru/images/preview/${good.images[0].name}`"
               :alt="good.descr"
             />
+            <img v-else src="../assets/img/no-photo.jpg" :alt="good.descr" />
           </div>
         </div>
         <GoodPrices
@@ -74,7 +75,8 @@ export default {
       }
       let goodInfo = {
         brand: this.good.crosses[index].brand,
-        number: this.good.crosses[index].number,
+        number: this.good.crosses[index].name,
+        price: this.good.crosses[index].price,
         quantity: 1,
         image: img,
       };
@@ -113,5 +115,9 @@ export default {
 .choose-good-block ul li {
   padding: 15px;
   border-bottom: 1px solid #2c2c2c;
+}
+
+.good-info-img img {
+  width: 100%;
 }
 </style>

@@ -39,8 +39,8 @@
             </div>
             <router-link tag="div" to="/cart" class="header-cart">
               <img src="../../../assets/img/shop-cart-black.svg" alt="" />
-              <span class="cart-price">8888 р.</span>
-              <span class="cart-count"> {{ cartCounter }} </span>
+              <span class="cart-price"> {{ cartInfo.total }} р. </span>
+              <span class="cart-count"> {{ cartInfo.count }} </span>
             </router-link>
           </div>
         </div>
@@ -181,11 +181,15 @@ export default {
       brands: "goods/getBrands",
       cart: "goods/getCart",
     }),
-    cartCounter() {
-      let res = 0;
+    cartInfo() {
+      let res = {
+        total: 0,
+        count: 0,
+      };
       if (this.cart && this.cart.length) {
         this.cart.forEach((item) => {
-          res += item.quantity;
+          res.count += item.quantity;
+          res.total += Math.round(+item.price * item.quantity);
         });
       }
       return res;
