@@ -27,23 +27,6 @@ export default {
   },
   created() {
     this.$store.dispatch("goods/GET_CART_FROM_STORAGE");
-    this.getArticle();
-  },
-  methods: {
-    getArticle() {
-      console.log("test");
-      axios
-        .get(
-          "https://pomogayka96.ru/wp-json/pg/v1/shop/product/?brand=TSN&article=123"
-        )
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((e) => {
-          console.log("error");
-          console.log(e);
-        });
-    },
   },
 };
 </script>

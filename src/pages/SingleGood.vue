@@ -3,10 +3,9 @@
     <div class="good-page" v-if="good && brands">
       <div class="container">
         <h2 class="good-title">Информация о товаре</h2>
-        <div class="good-info row">
+        <div class="good-info">
           <div class="col-sm-8 good-info-text">
             <h2 v-if="good.descr">{{ good.descr }}</h2>
-            <p></p>
             <div class="good-info-block">
               <div class="good-info-names">
                 <span>Артикул: </span>
@@ -16,7 +15,7 @@
               <div class="good-info-value">
                 <span v-if="good.number">{{ good.number }} </span>
                 <span v-if="good.brand">{{ good.brand }} </span>
-                <span v-if="good.crosses"> В наличии </span>
+                <span v-if="good.crosses.length"> В наличии </span>
                 <span v-else> Нет в наличии</span>
               </div>
             </div>
@@ -108,16 +107,51 @@ export default {
 </script>
 
 <style scoped>
-.choose-good-block {
-  padding: 30px;
+.good-info-text h2 {
+  margin-bottom: 30px;
 }
 
 .choose-good-block ul li {
-  padding: 15px;
+  padding: 15px 0;
   border-bottom: 1px solid #2c2c2c;
+  cursor: pointer;
 }
 
 .good-info-img img {
   width: 100%;
+}
+
+@media (max-width: 768px) {
+  .good-info {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .good-info > div {
+    padding: 0;
+  }
+}
+@media (max-width: 672px) {
+  .good-info {
+    /* flex-direction: column; */
+  }
+
+  .good-info-block {
+    margin-bottom: 30px;
+  }
+
+  .good-info-img {
+    width: 35%;
+  }
+}
+@media (max-width: 512px) {
+  .good-info {
+    flex-direction: column;
+  }
+
+  .good-info-img {
+    width: 80%;
+  }
 }
 </style>

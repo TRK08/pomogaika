@@ -222,10 +222,28 @@ export default {
   background-color: #d3d3d3;
 }
 
+@media (max-width: 991px) {
+  .header-search-results {
+    position: absolute;
+    top: 70px;
+    width: 305px;
+  }
+}
+
 @media (max-width: 672px) {
   .header-wrap {
     height: 160px;
     position: relative;
+  }
+  .header-search-results {
+    top: 23px;
+    width: calc(100% - 45px);
+  }
+}
+
+@media (max-width: 390px) {
+  .header-search-results {
+    width: 100%;
   }
 }
 </style>

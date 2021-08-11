@@ -2084,8 +2084,6 @@ input[type="file"] {
 		display: none;
 	}
 
-
-
 	.cabinet-page__wrap {
 		flex-direction: column;
 		align-items: center;
@@ -2121,6 +2119,10 @@ input[type="file"] {
 
 	.online-registr-form__wrap {
 		margin-top: 25px;
+	}
+	
+	.good-title {
+		margin-bottom: 30px;
 	}
 }
 @media (max-width: 672px) {
