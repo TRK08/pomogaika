@@ -1,7 +1,7 @@
 <template>
   <div class="good-prices-component">
     <h2 class="good-prices-component-title">Цены:</h2>
-    <div class="good-prices-table__wrap hidden-xs">
+    <div class="good-prices-table__wrap">
       <table class="good-prices-table">
         <thead>
           <td>Производитель</td>
@@ -23,7 +23,7 @@
         </tbody>
       </table>
     </div>
-    <div class="hidden-sm">
+    <div class="good-prices-list">
       <div
         class="good-prices-mobile"
         v-for="(item, index) in goodCrosses"
@@ -139,6 +139,19 @@ button {
   text-align: left;
   font-size: 11px;
   font-weight: 400;
+}
+
+.good-prices-list {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .good-prices-table__wrap {
+    display: none;
+  }
+  .good-prices-list {
+    display: block;
+  }
 }
 
 @media (max-width: 512px) {

@@ -56,6 +56,10 @@ const goods = {
       if (localStorage.getItem('cart') !== null) {
         state.cart = [...JSON.parse(localStorage.getItem('cart'))]
       }
+    },
+    CLEAR_CART(state) {
+      state.cart = []
+      localStorage.removeItem('cart')
     }
   },
   actions: {
@@ -83,6 +87,28 @@ const goods = {
           commit('SET_BRANDS', res.data)
         });
     },
+    SET_ORDER({ commit, state }, userInfo) {
+      let products = []
+      for (let i = 0; i < state.cart.length; i++) {
+        let obj = {
+          id: state.cart[i].id,
+          amount: state.cart[i].quantity
+        }
+        products.push(obj)
+      }
+      userInfo.products = products
+      let info = JSON.stringify(userInfo)
+      axios.post('https://pomogayka96.ru/wp-json/pg/v1/shop/order/', info, {
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      })
+        .then((res) => {
+          let invoice = JSON.stringify(res.data.invoice_id)
+          localStorage.setItem('invoice_id', invoice)
+          window.open(res.data.paylink)
+        })
+    },
     TAKE_GOOD_INDEX({ commit }, index) {
       commit('SET_GOOD_INDEX', index)
     },
@@ -100,6 +126,9 @@ const goods = {
     },
     GET_CART_FROM_STORAGE({ commit }) {
       commit('GET_CART_FROM_STORAGE')
+    },
+    CLEAR_CART({ commit }) {
+      commit('CLEAR_CART')
     }
   },
   getters: {

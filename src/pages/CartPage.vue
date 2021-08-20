@@ -27,6 +27,7 @@ export default {
       cart: "goods/getCart",
     }),
   },
+  methods: {},
 };
 </script>
 

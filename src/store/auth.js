@@ -6,7 +6,7 @@ const auth = {
     token: null,
     user: null,
     error: false,
-    preload: true
+    preload: true,
   },
   mutations: {
     SET_USER(state, user) {
@@ -22,31 +22,16 @@ const auth = {
       state.preload = !state.preload
     },
     CHANGE_AVATAR(state, avatar) {
-      state.user.avatar = avatar
+      state.user.user_avatar = avatar
       localStorage.setItem("user", JSON.stringify(state.user));
     }
   },
   actions: {
     SET_PRELOAD({ commit }) {
-
       document.addEventListener('DOMContentLoaded', () => {
         commit('PRELOADER')
-        console.log(123)
       })
-
       commit('PRELOADER')
-
-      // document.addEventListener('readystatechange', event => {
-      //   if (event.target.readyState === "interactive") {
-      //     commit('PRELOADER', true)
-      //   }
-      //   if (event.target.readyState === "complete") {
-      //     commit('PRELOADER', false)
-      //   }
-      // })
-
-      // commit('PRELOADER')
-
     },
 
     async REGISTR({ commit }, user) {
@@ -123,7 +108,7 @@ const auth = {
       console.log(avatar);
       localStorage.removeItem("user");
       commit("CHANGE_AVATAR", avatar)
-    }
+    },
   },
   getters: {
     getAuthenticated(state) {

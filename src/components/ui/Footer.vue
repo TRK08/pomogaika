@@ -11,7 +11,8 @@
         this.$route.path === '/cart' ||
         this.$route.path === '/login' ||
         this.$route.path === '/registr' ||
-        this.$route.name === 'goods'
+        this.$route.name === 'goods' ||
+        this.$route.name === 'order-received'
       "
     >
       <div class="container">

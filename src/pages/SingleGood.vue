@@ -73,6 +73,7 @@ export default {
         img = `https://pubimg.4mycar.ru/images/preview/${this.good.images[0].name}`;
       }
       let goodInfo = {
+        id: this.good.crosses[index].id,
         brand: this.good.crosses[index].brand,
         number: this.good.crosses[index].name,
         price: this.good.crosses[index].price,
@@ -107,6 +108,11 @@ export default {
 </script>
 
 <style scoped>
+.good-info-text,
+.good-info-img {
+  padding: 0;
+}
+
 .good-info-text h2 {
   margin-bottom: 30px;
 }
@@ -119,6 +125,10 @@ export default {
 
 .good-info-img img {
   width: 100%;
+}
+
+.choose-good-block {
+  padding: 50px 0;
 }
 
 @media (max-width: 768px) {

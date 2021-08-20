@@ -12,6 +12,7 @@ import CabinetPage from '../pages/CabinetPage'
 import LoginPage from '../pages/LoginPage'
 import RegistrPage from '../pages/RegistrPage'
 import SingleGood from '../pages/SingleGood'
+import OrderReceived from '../pages/OrderReceived'
 import NotFound from '../pages/NotFound'
 
 import store from '../store'
@@ -102,7 +103,12 @@ const routes = [
 		component: SingleGood,
 		props: true,
 		name: 'goods'
-	}
+	},
+	{
+		path: '/order-received',
+		component: OrderReceived,
+		name: 'order-received'
+	},
 ]
 
 export default routes

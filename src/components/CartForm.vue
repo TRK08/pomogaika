@@ -1,6 +1,6 @@
 <template>
   <div class="cart-form-component">
-    <form action="">
+    <form action="" @submit.prevent="paymentInfo">
       <div class="adress-form__wrap">
         <div class="cart-form-head-text">
           <h4>Адрес доставки</h4>
@@ -71,6 +71,7 @@
             <input
               type="text"
               placeholder="Введите адрес"
+              v-model="adress"
               id="adress-form-adress"
             />
           </div>
@@ -79,6 +80,7 @@
             <input
               type="text"
               placeholder="Введите название города"
+              v-model="city"
               id="adress-form-city"
             />
           </div>
@@ -87,6 +89,7 @@
             <input
               type="text"
               placeholder="Выберите страну"
+              v-model="country"
               id="adress-form-country"
             />
           </div>
@@ -95,6 +98,7 @@
             <input
               type="text"
               placeholder="Введите индекс"
+              v-model="index"
               id="adress-form-index"
             />
           </div>
@@ -113,6 +117,7 @@
               rows="3"
               type="text"
               placeholder="Здесь вы можете оставить сообщение, которое получат наши менеджеры"
+              v-model="note"
               id="additional-info-form-name"
             />
           </div>
@@ -172,6 +177,11 @@ export default {
       surname: "",
       email: "",
       phone: "",
+      adress: "",
+      city: "",
+      country: "",
+      index: "",
+      note: "",
     };
   },
   validations: {
@@ -200,6 +210,23 @@ export default {
         this.surname = userName[1];
         this.email = this.isLoginUser.user_email;
       }
+    },
+    paymentInfo() {
+      let id = this.isLoginUser ? 0 : 1;
+      let obj = {
+        user: id,
+        name: this.name,
+        surname: this.surname,
+        email: this.email,
+        phone: this.phone,
+        adress: this.adress,
+        city: this.city,
+        country: this.country,
+        index: this.index,
+        note: this.note,
+      };
+      this.$store.dispatch("goods/SET_ORDER", obj);
+      // this.$emit("getOrderInfo", obj);
     },
   },
   computed: {

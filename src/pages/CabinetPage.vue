@@ -13,7 +13,7 @@
           <div class="cabinet-img">
             <small>Фотография</small>
             <div class="cabinet-img__wrap">
-              <img :src="user.avatar" alt="" />
+              <img :src="user.user_avatar" alt="" />
             </div>
           </div>
           <div class="cabinet-load-img">
@@ -43,17 +43,11 @@
                 <td>Статус заказа</td>
               </thead>
               <tbody>
-                <tr>
-                  <td>№ 005451</td>
-                  <td>25.12.2020</td>
-                  <td>15 600 р.</td>
-                  <td>Доставлено</td>
-                </tr>
-                <tr>
-                  <td>№ 005451</td>
-                  <td>25.12.2020</td>
-                  <td>15 600 р.</td>
-                  <td>Доставлено</td>
+                <tr v-for="order in orders" :key="order.id">
+                  <td>№ {{ order.id }}</td>
+                  <td>{{ order.date }}</td>
+                  <td>{{ order.total }} р.</td>
+                  <td>{{ order.status }}</td>
                 </tr>
               </tbody>
             </table>
@@ -72,6 +66,7 @@ export default {
   data() {
     return {
       file: "null",
+      orders: [],
     };
   },
   methods: {
@@ -84,8 +79,43 @@ export default {
         this.$router.replace("/");
       });
     },
+    getOrders() {
+      axios
+        .get(
+          `https://pomogayka96.ru/wp-json/pg/v1/get/orders?user=${this.user.user_id}`
+        )
+        .then((res) => {
+          this.orders = res.data;
+          for (let i = 0; i < this.orders.length; i++) {
+            if (this.orders[i].status === "completed") {
+              this.orders[i].status = "Оплачен";
+            }
+            if (this.orders[i].status === "on-hold") {
+              this.orders[i].status = "Не оплачен";
+            }
+            if (this.orders[i].status === "failed") {
+              this.orders[i].status = "Оплата не прошла";
+            }
+            if (this.orders[i].status === "processing") {
+              this.orders[i].status = "Оплата на подтверждении";
+            }
+            if (this.orders[i].status === "shipped") {
+              this.orders[i].status = "Отправлен";
+            }
+            if (this.orders[i].status === "cancelled") {
+              this.orders[i].status = "Отменен";
+            }
+            if (this.orders[i].status === "refunded") {
+              this.orders[i].status = "Возвращен";
+            }
+            if (this.orders[i].status === "pending") {
+              this.orders[i].status = "Ожидается оплата";
+            }
+          }
+          console.log(this.orders[0].status);
+        });
+    },
     changeAvatar() {
-      console.log(this.user);
       axios
         .get(
           `https://pomogayka96.ru/wp-json/pg/v1/get/user?email=${this.user.user_email}`
@@ -119,6 +149,37 @@ export default {
     ...mapGetters({
       user: "auth/getAuthenticated",
     }),
+    formatStatus() {
+      return this.orders.forEach((item) => {
+        if (item.status === "completed") {
+          return "Оплачен";
+        }
+        if (item.status === "on-hold") {
+          return "Не оплачен";
+        }
+        if (item.status === "failed") {
+          return "Оплата не прошла";
+        }
+        if (item.status === "processing") {
+          return "Оплата на подтверждении";
+        }
+        if (item.status === "shipped") {
+          return "Отправлен";
+        }
+        if (item.status === "cancelled") {
+          return "Отменен";
+        }
+        if (item.status === "refunded") {
+          return "Возвращен";
+        }
+        if (item.status === "pending") {
+          return "Отправка";
+        }
+      });
+    },
+  },
+  created() {
+    this.getOrders();
   },
 };
 </script>
