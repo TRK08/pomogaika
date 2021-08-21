@@ -17,7 +17,10 @@
             <td colspan="2">{{ item.description }}</td>
             <td>{{ Math.round(+item.price) }} р.</td>
             <td>
-              <button @click="addToCart(index)">Добавить в корзину</button>
+              <button :disabled="item.isAdded" @click="addToCart(index)">
+                <span v-if="!item.isAdded">Добавить в корзину</span>
+                <span v-else>Добавлено</span>
+              </button>
             </td>
           </tr>
         </tbody>
@@ -48,7 +51,10 @@
           </div>
           <div class="good-mobile-info-block">
             <p>Купить</p>
-            <button @click="addToCart(index)">Добавить в корзину</button>
+            <button :disabled="item.isAdded" @click="addToCart(index)">
+              <span v-if="!item.isAdded">Добавить в корзину</span>
+              <span v-else>Добавлено</span>
+            </button>
           </div>
         </div>
       </div>
@@ -65,8 +71,14 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      isAdded: false,
+    };
+  },
   methods: {
     addToCart(index) {
+      this.goodCrosses[index].isAdded = true;
       this.$emit("addToCart", index);
     },
   },

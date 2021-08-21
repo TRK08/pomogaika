@@ -35,7 +35,6 @@ export default {
   methods: {
     getPaymentStatus() {
       let invoice = JSON.parse(localStorage.getItem("invoice_id"));
-      console.log(invoice);
       axios
         .get(
           `http://pomogayka96.ru/wp-json/pg/v1/shop/status/?invoice=${invoice}`

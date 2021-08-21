@@ -17,7 +17,7 @@
             </div>
           </div>
           <div class="cabinet-load-img">
-            <small>Загрузить фотографию</small>
+            <small>Загрузить фотографию </small>
             <label class="custom-load-profile-img" for="load-profile-img"
               >Выбрать файл</label
             >
@@ -26,9 +26,11 @@
               type="file"
               name="upload"
               placeholder="Выбрать файл"
+              accept=".jpg,.jpeg,.png"
               id="load-profile-img"
               @change="changeAvatar"
             />
+            <small class="img-format">Используйте форматы .jpg, .png</small>
           </div>
         </div>
         <div class="cabinet-info">
@@ -45,7 +47,7 @@
               <tbody>
                 <tr v-for="order in orders" :key="order.id">
                   <td>№ {{ order.id }}</td>
-                  <td>{{ order.date }}</td>
+                  <td>{{ order.date.split("-").reverse().join("-") }}</td>
                   <td>{{ order.total }} р.</td>
                   <td>{{ order.status }}</td>
                 </tr>
@@ -186,4 +188,8 @@ export default {
 
 
 <style scoped>
+.img-format {
+  text-align: center;
+  margin-top: 10px;
+}
 </style>

@@ -1269,6 +1269,10 @@ table {
   margin-bottom: 8px;
 }
 
+.cart-order-item-remove {
+	cursor: pointer;
+}
+
 .cart-order-item-body {
 	margin-bottom: 15px;
 }

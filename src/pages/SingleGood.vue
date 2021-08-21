@@ -1,7 +1,11 @@
 <template>
   <div class="good-page__wrap">
-    <div class="good-page" v-if="good && brands">
-      <div class="container">
+    <div class="good-page" v-if="good && brands && !showList">
+      <div class="container" v-if="good.crosses && good.crosses.length > 0">
+        <div class="back-to-goods-list" @click="showList = !showList">
+          <img src="../assets/img/breadcrumb-arrow.svg" alt="" />
+          <span>К списку товаров</span>
+        </div>
         <h2 class="good-title">Информация о товаре</h2>
         <div class="good-info">
           <div class="col-sm-8 good-info-text">
@@ -14,7 +18,7 @@
               </div>
               <div class="good-info-value">
                 <span v-if="good.number">{{ good.number }} </span>
-                <span v-if="good.brand">{{ good.brand }} </span>
+                <span v-if="good.brand">{{ good.brand || "test" }} </span>
                 <span v-if="good.crosses.length"> В наличии </span>
                 <span v-else> Нет в наличии</span>
               </div>
@@ -22,7 +26,7 @@
           </div>
           <div class="col-sm-4 good-info-img">
             <img
-              v-if="good.images.length"
+              v-if="good.images && good.images.length"
               :src="`https://pubimg.4mycar.ru/images/preview/${good.images[0].name}`"
               :alt="good.descr"
             />
@@ -35,6 +39,14 @@
           @addToCart="addToCart"
         />
       </div>
+      <div class="container good-not-found__wrap" v-else>
+        <div class="good-not-found">
+          <h2>Данного товара нет в наличии</h2>
+          <button @click="showList = !showList" class="btn-to-list">
+            К списку товаров
+          </button>
+        </div>
+      </div>
     </div>
     <div class="choose-good-block" v-else>
       <div class="container">
@@ -45,9 +57,9 @@
             :key="index"
             @click="chooseGood(index)"
           >
-            <span> {{ brand.brand }} </span>
-            <span> {{ brand.number }} </span>
-            <span> {{ brand.description }} </span>
+            <span class="col-sm-4 col-xs-4"> {{ brand.brand }} </span>
+            <span class="col-sm-2 col-xs-2"> {{ brand.number }} </span>
+            <span class="col-sm-6 col-xs-6"> {{ brand.description }} </span>
           </li>
         </ul>
       </div>
@@ -64,6 +76,7 @@ export default {
   data() {
     return {
       goodNumber: 0,
+      showList: false,
     };
   },
   methods: {
@@ -88,6 +101,9 @@ export default {
       this.$store.dispatch("goods/LIVE_SEARCH", this.goodNumber);
     },
     chooseGood(index) {
+      setTimeout(() => {
+        this.showList = false;
+      }, 1500);
       this.$store.dispatch("goods/TAKE_GOOD_INDEX", index);
       this.$store.dispatch("goods/LOAD_GOODS");
     },
@@ -121,6 +137,11 @@ export default {
   padding: 15px 0;
   border-bottom: 1px solid #2c2c2c;
   cursor: pointer;
+  display: flex;
+}
+
+.choose-good-block ul li:hover {
+  background-color: #edecec;
 }
 
 .good-info-img img {
@@ -129,6 +150,44 @@ export default {
 
 .choose-good-block {
   padding: 50px 0;
+}
+
+.good-not-found__wrap {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.good-not-found {
+  text-align: center;
+  height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--yellow-color);
+}
+
+.btn-to-list {
+  margin-top: 40px;
+  padding: 12px;
+  max-width: 500px;
+  width: 50%;
+  border: none;
+  color: #fff;
+  background-color: #000;
+}
+
+.back-to-goods-list {
+  cursor: pointer;
+  display: block;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.back-to-goods-list img {
+  transform: rotate(180deg);
+  margin-right: 10px;
 }
 
 @media (max-width: 768px) {

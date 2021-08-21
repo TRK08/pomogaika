@@ -69,8 +69,12 @@ const goods = {
           brand = state.brands[id].brand,
           num = state.brands[id].number
         axios.get(`https://pomogayka96.ru/wp-json/pg/v1/shop/product/?brand=${brand}&article=${num}`).then((res => {
+
+          res.data.crosses.forEach(item => {
+            console.log(item);
+            item.isAdded = false
+          })
           commit('SET_GOODS', res.data)
-          console.log(res.data);
         })).catch((err) => {
           console.log(err);
         })
@@ -106,7 +110,7 @@ const goods = {
         .then((res) => {
           let invoice = JSON.stringify(res.data.invoice_id)
           localStorage.setItem('invoice_id', invoice)
-          window.open(res.data.paylink)
+          window.location.assign(res.data.paylink)
         })
     },
     TAKE_GOOD_INDEX({ commit }, index) {

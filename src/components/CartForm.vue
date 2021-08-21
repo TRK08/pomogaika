@@ -241,8 +241,8 @@ export default {
 </script>
 
 <style scoped>
-.form-group--error label {
-  color: red;
+.form-group--error input {
+  border-right: 5px solid red;
 }
 </style>
 

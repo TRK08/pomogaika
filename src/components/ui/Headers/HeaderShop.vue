@@ -72,7 +72,9 @@
             :key="item.text"
           >
             <img :src="item.img" alt="" />
-            <span class="hidden-sm hidden-xs">{{ item.text }}</span>
+            <span class="hidden-sm hidden-xs">{{
+              isLog ? isLog.user_display_name : item.text
+            }}</span>
           </router-link>
           <router-link
             tag="div"
