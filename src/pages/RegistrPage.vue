@@ -74,7 +74,13 @@
           >Я принимаю условия политики обработки данных и
           конфиденциальности</label
         >
-        <button type="submit">Зарегистрироваться</button>
+        <button
+          :disabled="!(confidenceRules && !this.$v.$invalid)"
+          :class="{ 'disable-btn': !(confidenceRules && !this.$v.$invalid) }"
+          type="submit"
+        >
+          Зарегистрироваться
+        </button>
         <p>
           Нажимая кнопку “Зарегистрироваться”, вы подтверждаете согласение на
           обработку персональных данных и ознакомление с политикой
@@ -186,5 +192,9 @@ small {
   line-height: 16px;
   text-align: center;
   color: red;
+}
+
+.disable-btn {
+  opacity: 0.5;
 }
 </style>

@@ -63,42 +63,60 @@
               placeholder="+7 --- --- -- --"
               id="adress-form-number"
               v-mask="'+7 (###) ###-##-##'"
+              inputmode="numeric"
               v-model.trim="$v.phone.$model"
             />
           </div>
-          <div class="cart-form-input__wrap col-sm-6">
-            <label for="adress-form-adress">Адрес</label>
+          <div
+            class="cart-form-input__wrap col-sm-6"
+            :class="{ 'form-group--error': $v.adress.$error }"
+          >
+            <label for="adress-form-adress">Адрес*</label>
             <input
+              class="form__input"
               type="text"
               placeholder="Введите адрес"
-              v-model="adress"
+              v-model.trim="$v.adress.$model"
               id="adress-form-adress"
             />
           </div>
-          <div class="cart-form-input__wrap col-sm-6">
-            <label for="adress-form-city">Город</label>
+          <div
+            class="cart-form-input__wrap col-sm-6"
+            :class="{ 'form-group--error': $v.city.$error }"
+          >
+            <label for="adress-form-city">Город*</label>
             <input
+              class="form__input"
               type="text"
               placeholder="Введите название города"
-              v-model="city"
+              v-model.trim="$v.city.$model"
               id="adress-form-city"
             />
           </div>
-          <div class="cart-form-input__wrap col-sm-6">
-            <label for="adress-form-country">Страна</label>
+          <div
+            class="cart-form-input__wrap col-sm-6"
+            :class="{ 'form-group--error': $v.country.$error }"
+          >
+            <label for="adress-form-country">Страна*</label>
             <input
+              class="form__input"
               type="text"
               placeholder="Выберите страну"
-              v-model="country"
+              v-model.trim="$v.country.$model"
               id="adress-form-country"
             />
           </div>
-          <div class="cart-form-input__wrap col-sm-6">
-            <label for="adress-form-index">Индекс</label>
+          <div
+            class="cart-form-input__wrap col-sm-6"
+            :class="{ 'form-group--error': $v.index.$error }"
+          >
+            <label for="adress-form-index">Индекс*</label>
             <input
+              class="form__input"
               type="text"
+              inputmode="numeric"
               placeholder="Введите индекс"
-              v-model="index"
+              v-model.trim="$v.index.$model"
               id="adress-form-index"
             />
           </div>
@@ -130,7 +148,10 @@
         </div>
         <p>Последний шаг перед оплатой заказа</p>
         <div action="" class="submit-order-form">
-          <div class="cart-form-checkbox__wrap">
+          <div
+            @click="emailCheckbox = !emailCheckbox"
+            class="cart-form-checkbox__wrap"
+          >
             <input
               class="checkbox-custom"
               type="checkbox"
@@ -146,12 +167,22 @@
               type="checkbox"
               id="submit-order-form-2"
             />
-            <label class="checkbox-custom-label" for="submit-order-form-2"
+            <label
+              @click="confidCheckbox = !confidCheckbox"
+              class="checkbox-custom-label"
+              for="submit-order-form-2"
               >Я принимаю условия политики обработки данных и
               конфиденциальности</label
             >
           </div>
-          <button class="submit-order-form-btn" type="submit">Оплатить</button>
+          <button
+            :class="{ 'disable-btn': !validForm }"
+            :disabled="!validForm"
+            class="submit-order-form-btn"
+            type="submit"
+          >
+            Оплатить
+          </button>
           <div class="submit-order-form-privacy">
             <img src="../assets/img/privacy.svg" alt="" />
             <span>Все ваши данные защищены</span>
@@ -182,6 +213,8 @@ export default {
       country: "",
       index: "",
       note: "",
+      emailCheckbox: false,
+      confidCheckbox: false,
     };
   },
   validations: {
@@ -201,6 +234,22 @@ export default {
       required,
       minLength: minLength(18),
     },
+    adress: {
+      required,
+      minLength: minLength(3),
+    },
+    city: {
+      required,
+      minLength: minLength(3),
+    },
+    country: {
+      required,
+      minLength: minLength(3),
+    },
+    index: {
+      required,
+      minLength: minLength(3),
+    },
   },
   methods: {
     fillInputsValue() {
@@ -212,7 +261,7 @@ export default {
       }
     },
     paymentInfo() {
-      let id = this.isLoginUser ? 0 : 1;
+      let id = this.isLoginUser ? this.isLoginUser.user_id : 0;
       let obj = {
         user: id,
         name: this.name,
@@ -233,6 +282,9 @@ export default {
     ...mapGetters({
       isLoginUser: "auth/getAuthenticated",
     }),
+    validForm() {
+      return this.confidCheckbox && !this.$v.$invalid;
+    },
   },
   created() {
     this.fillInputsValue();
@@ -243,6 +295,10 @@ export default {
 <style scoped>
 .form-group--error input {
   border-right: 5px solid red;
+}
+
+.disable-btn {
+  opacity: 0.5;
 }
 </style>
 
