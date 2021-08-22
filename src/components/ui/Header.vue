@@ -10,8 +10,10 @@
         this.$route.path === '/cart' ||
         this.$route.path === '/login' ||
         this.$route.path === '/registr' ||
+        this.$route.path === '/reset-password' ||
+        this.$route.path === '/order-received' ||
         this.$route.name === 'goods' ||
-        this.$route.name === 'order-received'
+        this.$route.name === 'lost-password'
       "
       :contacts="contacts"
     />

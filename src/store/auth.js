@@ -46,6 +46,7 @@ const auth = {
         await axios
           .post(`https://pomogayka96.ru/wp-json/pg/v1/registration?`, user, { params: requestParams })
           .then(res => {
+            console.log(res);
           })
       }
       catch (err) {

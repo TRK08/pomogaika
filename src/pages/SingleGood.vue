@@ -4,7 +4,7 @@
       <div class="container" v-if="good.crosses && good.crosses.length > 0">
         <div class="back-to-goods-list" @click="showList = !showList">
           <img src="../assets/img/breadcrumb-arrow.svg" alt="" />
-          <span>К списку товаров</span>
+          <span>К другим запчастям</span>
         </div>
         <h2 class="good-title">Информация о товаре</h2>
         <div class="good-info">

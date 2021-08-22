@@ -13,6 +13,8 @@ import LoginPage from '../pages/LoginPage'
 import RegistrPage from '../pages/RegistrPage'
 import SingleGood from '../pages/SingleGood'
 import OrderReceived from '../pages/OrderReceived'
+import ResetPassword from '../pages/ResetPassword'
+import LostPassword from '../pages/LostPassword'
 import NotFound from '../pages/NotFound'
 
 import store from '../store'
@@ -107,8 +109,18 @@ const routes = [
 	{
 		path: '/order-received',
 		component: OrderReceived,
-		name: 'order-received'
 	},
+	{
+		path: '/reset-password',
+		component: ResetPassword,
+	},
+	{
+		path: '/lost-password/*',
+		component: LostPassword,
+		props: true,
+		name: 'lost-password'
+	},
+
 ]
 
 export default routes

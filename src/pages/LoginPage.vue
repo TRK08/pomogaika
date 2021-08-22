@@ -31,6 +31,12 @@
               />
             </div>
             <button class="login-btn">Войти</button>
+            <router-link
+              class="remember-password"
+              tag="span"
+              to="/reset-password"
+              >Забыли пароль?</router-link
+            >
           </form>
         </div>
         <div class="login-page-separator"></div>
@@ -108,5 +114,30 @@ export default {
 
 .form-group--error input {
   border-right: 5px solid red;
+}
+
+.login-form {
+  position: relative;
+}
+
+.remember-password {
+  display: block;
+  text-align: center;
+  margin-bottom: 10px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -40px;
+  cursor: pointer;
+}
+
+.remember-password:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 671px) {
+  .login-form {
+    margin-bottom: 50px;
+  }
 }
 </style>
