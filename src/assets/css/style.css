@@ -945,7 +945,11 @@ border-radius:0;
   position: relative;
 }
 
-
+.offer-item-img-box img {
+	object-fit: cover;
+	height: inherit;
+	width: 100%;
+}
 
 .offer-item-discount {
   position: absolute;
@@ -1325,7 +1329,7 @@ table {
 	margin-top: 8px;
 	background-color: #F9F9F9;
 	border: 1px solid #D1D1D1;
-	
+	margin-bottom: 10px;
 }
 
 .cart-order-coupon input::placeholder {
@@ -1822,11 +1826,6 @@ input[type="file"] {
 		height: 115px;
 	}
 
-	.offer-item-img-box img {
-		width: 100%;
-		height: inherit;
-		object-fit: contain;
-	}
 
 	.offer-item-body {
 		padding: 30px 13px 20px 13px;
@@ -2127,6 +2126,10 @@ input[type="file"] {
 	
 	.good-title {
 		margin-bottom: 30px;
+	}
+
+	.offer-item-img-box {
+		height: 200px;
 	}
 }
 @media (max-width: 672px) {

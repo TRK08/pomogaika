@@ -6,7 +6,8 @@ const goods = {
     brands: null,
     goods: null,
     selectedGoodId: 0,
-    cart: []
+    cart: [],
+    sales: []
   },
   mutations: {
     SET_GOODS(state, payload) {
@@ -60,6 +61,9 @@ const goods = {
     CLEAR_CART(state) {
       state.cart = []
       localStorage.removeItem('cart')
+    },
+    SET_SALES(state, sales) {
+      state.sales = sales
     }
   },
   actions: {
@@ -133,7 +137,12 @@ const goods = {
     },
     CLEAR_CART({ commit }) {
       commit('CLEAR_CART')
-    }
+    },
+    LOAD_SALES({ commit }) {
+      axios.get('https://pomogayka96.ru/wp-json/pg/v1/get/sales').then((res) => {
+        commit('SET_SALES', res.data)
+      })
+    },
   },
   getters: {
     getGoods(state) {
@@ -145,6 +154,9 @@ const goods = {
     getCart(state) {
       return state.cart
     },
+    getSales(state) {
+      return state.sales
+    }
   },
 }
 

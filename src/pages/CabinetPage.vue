@@ -19,7 +19,7 @@
           <div class="cabinet-load-img">
             <small>Загрузить фотографию </small>
             <label class="custom-load-profile-img" for="load-profile-img"
-              >Выбрать файл</label
+              >Выбрать файл (.jpg, .png)</label
             >
             <input
               ref="file"
@@ -30,7 +30,6 @@
               id="load-profile-img"
               @change="changeAvatar"
             />
-            <small class="img-format">Используйте форматы .jpg, .png</small>
           </div>
         </div>
         <div class="cabinet-info">

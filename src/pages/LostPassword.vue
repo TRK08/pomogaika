@@ -7,6 +7,7 @@
         class="reset-pass-form login-form"
       >
         <h2>Введите новый пароль</h2>
+        <small> {{ statusMsg }} </small>
         <div
           class="form-group"
           :class="{ 'form-group--error': $v.password.$error }"
@@ -47,6 +48,7 @@ export default {
       currrentUrl: "",
       password: "",
       passwordConfirm: "",
+      statusMsg: "",
     };
   },
   validations: {
@@ -70,7 +72,12 @@ export default {
           `https://pomogayka96.ru/wp-json/pg/v1/user/updatep?${this.currentUrl}&password=${this.password}`
         )
         .then((res) => {
-          console.log(res);
+          this.statusMsg = res.data.msg;
+          if (res.data.code === "200") {
+            setTimeout(() => {
+              this.$router.push("/login");
+            }, 500);
+          }
         });
     },
   },
@@ -103,6 +110,12 @@ export default {
 
 .reset-pass-form button:disabled {
   opacity: 0.5;
+}
+
+.reset-pass-form small {
+  display: block;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
 .form-group--error input {

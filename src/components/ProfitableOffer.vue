@@ -5,19 +5,24 @@
       <div class="row">
         <div
           class="offer__wrap col-xs-6 col-sm-4"
-          v-for="offer in offers"
+          v-for="offer in sales"
           :key="offer.price"
         >
           <div class="offer-item">
             <div class="offer-item-img-box">
-              <img :src="offer.img" alt="" />
-              <div class="offer-item-discount">- {{ offer.discount }}</div>
+              <img :src="offer.image" alt="" />
+              <div class="offer-item-discount">- {{ offer.sale_percent }}%</div>
             </div>
             <div class="offer-item-body">
               <p class="offer-item-title">{{ offer.title }}</p>
-              <p class="offer-item-descr">{{ offer.descr }}</p>
-              <p class="offer-item-price">{{ offer.price }}</p>
-              <button class="offer-item-btn">Подробнее</button>
+              <p class="offer-item-descr">{{ offer.description }}</p>
+              <p class="offer-item-price">{{ offer.sale_price }} ₽</p>
+              <router-link
+                tag="button"
+                :to="`/good/${offer.title}`"
+                class="offer-item-btn"
+                >Подробнее</router-link
+              >
             </div>
           </div>
         </div>
@@ -27,6 +32,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "ProfitableOffer",
   data() {
@@ -63,8 +69,14 @@ export default {
       }
     },
   },
+  computed: {
+    ...mapGetters({
+      sales: "goods/getSales",
+    }),
+  },
   created() {
     this.setMobileOffers();
+    this.$store.dispatch("goods/LOAD_SALES");
   },
 };
 </script>

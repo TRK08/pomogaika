@@ -7,6 +7,7 @@ const auth = {
     user: null,
     error: false,
     preload: true,
+    registrStatus: null
   },
   mutations: {
     SET_USER(state, user) {
@@ -24,6 +25,9 @@ const auth = {
     CHANGE_AVATAR(state, avatar) {
       state.user.user_avatar = avatar
       localStorage.setItem("user", JSON.stringify(state.user));
+    },
+    REGISTR_STATUS(state, status) {
+      state.registrStatus = status
     }
   },
   actions: {
@@ -46,7 +50,7 @@ const auth = {
         await axios
           .post(`https://pomogayka96.ru/wp-json/pg/v1/registration?`, user, { params: requestParams })
           .then(res => {
-            console.log(res);
+            commit('REGISTR_STATUS', res.data)
           })
       }
       catch (err) {
@@ -117,6 +121,9 @@ const auth = {
     },
     getError(state) {
       return state.error
+    },
+    getRegistrStatus(state) {
+      return state.registrStatus
     }
   }
 }

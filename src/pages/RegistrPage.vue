@@ -4,6 +4,7 @@
       <h2>Регистрация</h2>
       <form action="" @submit.prevent="registr" class="registr-page-form">
         <small v-if="errorFlag">Все поля должны быть заполнены правильно</small>
+        <small v-if="errorMsg.length"> {{ errorMsg }} </small>
         <div class="registr-form-inputs-box">
           <div
             class="form-group"
@@ -92,7 +93,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import { required, minLength, email, sameAs } from "vuelidate/lib/validators";
 export default {
   name: "RegistrPage",
@@ -105,6 +106,7 @@ export default {
       passwordConfirm: "",
       confidenceRules: false,
       errorFlag: false,
+      errorMsg: "",
       load: false,
     };
   },
@@ -147,7 +149,12 @@ export default {
 
       if (this.confidenceRules && !this.$v.$invalid) {
         this.REGISTR(form).then(() => {
-          this.$router.push("/login");
+          if (this.regStatus.code === "500") {
+            this.errorMsg = this.regStatus.msg;
+          }
+          if (this.regStatus.code === "200") {
+            this.$router.push("/login");
+          }
         });
       } else {
         if (!this.confidenceRules) {
@@ -157,6 +164,11 @@ export default {
         }
       }
     },
+  },
+  computed: {
+    ...mapGetters({
+      regStatus: "auth/getRegistrStatus",
+    }),
   },
 };
 </script>

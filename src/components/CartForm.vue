@@ -148,16 +148,16 @@
         </div>
         <p>Последний шаг перед оплатой заказа</p>
         <div action="" class="submit-order-form">
-          <div
-            @click="emailCheckbox = !emailCheckbox"
-            class="cart-form-checkbox__wrap"
-          >
+          <div class="cart-form-checkbox__wrap">
             <input
               class="checkbox-custom"
               type="checkbox"
               id="submit-order-form-1"
             />
-            <label class="checkbox-custom-label" for="submit-order-form-1"
+            <label
+              class="checkbox-custom-label"
+              for="submit-order-form-1"
+              @click="emailCheckbox = !emailCheckbox"
               >Я согласен получать рассылку рекламных предложений и акций</label
             >
           </div>
@@ -202,6 +202,12 @@ import { required, minLength, email } from "vuelidate/lib/validators";
 import { mapGetters } from "vuex";
 export default {
   name: "CartForm",
+  props: {
+    coupon: {
+      type: String,
+      required: false,
+    },
+  },
   data() {
     return {
       name: "",
@@ -273,9 +279,10 @@ export default {
         country: this.country,
         index: this.index,
         note: this.note,
+        coupon: this.coupon,
+        isAdv: this.emailCheckbox,
       };
       this.$store.dispatch("goods/SET_ORDER", obj);
-      // this.$emit("getOrderInfo", obj);
     },
   },
   computed: {

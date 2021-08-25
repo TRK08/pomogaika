@@ -4,10 +4,10 @@
       <h2>Корзина</h2>
       <div class="row cart-page__wrap">
         <div class="col-sm-6 col-lg-7">
-          <CartForm />
+          <CartForm :coupon="coupon" />
         </div>
         <div class="col-sm-6 col-lg-5">
-          <CartOrder :cart="cart" />
+          <CartOrder :cart="cart" @promo="promo" />
         </div>
       </div>
     </div>
@@ -22,12 +22,21 @@ import CartOrder from "../components/CartOrder.vue";
 export default {
   components: { CartForm, CartOrder },
   name: "CartPage",
+  data() {
+    return {
+      coupon: "",
+    };
+  },
   computed: {
     ...mapGetters({
       cart: "goods/getCart",
     }),
   },
-  methods: {},
+  methods: {
+    promo(item) {
+      this.coupon = item;
+    },
+  },
 };
 </script>
 

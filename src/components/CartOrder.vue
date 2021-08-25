@@ -58,11 +58,17 @@
       <div class="cart-order-sum">Сумма заказа: {{ totalPrice }}</div>
       <div class="cart-order-coupon">
         <span>Промокод</span>
-        <input type="text" placeholder="Введите промокод здесь" />
+        <input
+          @input="setPromo"
+          type="text"
+          v-model="promo"
+          placeholder="Введите промокод здесь"
+        />
+        <small> {{ status }} </small>
       </div>
       <div class="cart-order-total-sum">
         <h4>Итого к оплате:</h4>
-        <span>{{ totalPrice }} руб</span>
+        <span>{{ totalPrice - couponAmount }} руб</span>
       </div>
     </div>
     <div v-else class="cart-order-component">
@@ -72,6 +78,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "CartOrder",
   props: {
@@ -81,7 +88,11 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      promo: "",
+      status: "",
+      couponAmount: 0,
+    };
   },
   computed: {
     totalPrice() {
@@ -106,6 +117,25 @@ export default {
     },
     deleteFromCart(index) {
       this.$store.dispatch("goods/DELETE_FROM_CART", index);
+    },
+    setPromo() {
+      this.$emit("promo", this.promo);
+      axios
+        .get(
+          `https://pomogayka96.ru/wp-json/pg/v1/get/promo?promo=${this.promo}`
+        )
+        .then((res) => {
+          if (res.data.code === "400") {
+            this.status = res.data.msg;
+          }
+          if (res.data.code === "500") {
+            this.status = res.data.msg;
+          }
+          if (res.data.code === "200") {
+            this.status = "Промокод успешно применен";
+            this.couponAmount = res.data.amount;
+          }
+        });
     },
   },
 };
