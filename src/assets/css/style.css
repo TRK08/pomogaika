@@ -376,6 +376,8 @@ border-radius:0;
 .footer-logo {
 	font-family: "Noah"; 
 	font-weight: 400;
+	display: flex;
+	align-items: center;
 }
 
 .footer-logo span {
@@ -1822,6 +1824,16 @@ input[type="file"] {
 		height: 18px;
 	}
 
+	.footer-logo span {
+		font-size: 13px;
+		line-height: 20px;
+	}
+
+	.footer-copyright {
+		font-size: 10px;
+		line-height: 20px;
+	}
+
 	.offer-item-img-box {
 		height: 115px;
 	}
@@ -2251,7 +2263,18 @@ input[type="file"] {
 		min-height: 190px;
 	}
 
-	
+	.footer-bottom__wrap {
+		flex-wrap: wrap;
+		padding: 13px 0;
+	}
+
+	.footer-privacy {
+		order: -1
+	}
+
+	.footer-copyright {
+		order: 2;
+	}
 	
 }
 @media (max-width: 512px) {
@@ -2407,6 +2430,14 @@ input[type="file"] {
 
 	.footer-payments-img {
 		width: 100%;
+	}
+
+	.footer-bottom__wrap {
+		flex-direction: column;
+	}
+
+	.footer-logo {
+		margin: 5px 0;
 	}
 }
 @media (max-width: 390px) {

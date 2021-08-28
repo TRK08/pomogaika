@@ -146,11 +146,7 @@
             © {{ getFullYear() }} ПОМОГАЙКА. All right reserved.
           </div>
           <a href="" class="footer-logo">
-            <img
-              class="hidden-xs"
-              src="../../assets/img/hypermission-logo.png"
-              alt=""
-            />
+            <img src="../../assets/img/hypermission-logo.png" alt="" />
             <span>by HyperMission</span>
           </a>
           <div class="footer-privacy">
