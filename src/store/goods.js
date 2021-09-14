@@ -75,9 +75,13 @@ const goods = {
         axios.get(`https://pomogayka96.ru/wp-json/pg/v1/shop/product/?brand=${brand}&article=${num}`).then((res => {
 
           res.data.crosses.forEach(item => {
-            console.log(item);
             item.isAdded = false
           })
+
+          res.data.crosses = res.data.crosses.filter(item => {
+            return item.price !== ''
+          })
+          console.log(res.data);
           commit('SET_GOODS', res.data)
         })).catch((err) => {
           console.log(err);
