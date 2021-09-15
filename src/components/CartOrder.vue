@@ -96,7 +96,6 @@ export default {
   },
   computed: {
     totalPrice() {
-      // console.log(this.cart);
       let sum = 0;
       if (this.cart) {
         for (let item of this.cart) {
