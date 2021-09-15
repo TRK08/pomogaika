@@ -113,7 +113,6 @@ export default {
               this.orders[i].status = "Ожидается оплата";
             }
           }
-          console.log(this.orders[0].status);
         });
     },
     changeAvatar() {
@@ -131,7 +130,7 @@ export default {
           for (var field in userData) {
             form2.append(field, userData[field]);
           }
-          console.log(form2);
+
           return form2;
         })
         .then((form2) => {

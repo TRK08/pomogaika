@@ -81,7 +81,6 @@ const goods = {
           res.data.crosses = res.data.crosses.filter(item => {
             return item.price !== ''
           })
-          console.log(res.data);
           commit('SET_GOODS', res.data)
         })).catch((err) => {
           console.log(err);
@@ -95,7 +94,7 @@ const goods = {
           `https://pomogayka96.ru/wp-json/pg/v1/shop/search/?article=${value}`
         )
         .then((res) => {
-          console.log(res.data);
+
           commit('SET_BRANDS', res.data)
         });
     },

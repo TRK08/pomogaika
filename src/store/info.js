@@ -75,7 +75,7 @@ const info = {
       axios
         .get('https://pomogayka96.ru/wp-json/pg/v1/get/pages/?id=297')
         .then(res => {
-          console.log(res.data);
+
           commit('SET_SEND_INFO', res.data)
         })
     },
@@ -83,7 +83,7 @@ const info = {
       axios
         .get('https://pomogayka96.ru/wp-json/pg/v1/get/pages/?id=299')
         .then(res => {
-          console.log(res.data);
+
           commit('SET_PAYMENT_INFO', res.data)
         })
     }

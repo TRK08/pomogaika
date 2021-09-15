@@ -40,7 +40,6 @@ export default {
           `http://pomogayka96.ru/wp-json/pg/v1/shop/status/?invoice=${invoice}`
         )
         .then((res) => {
-          console.log(res.data);
           this.paymentStatus = res.data.result;
           this.textInfo = res.data.text;
           if (res.data.result) {

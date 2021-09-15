@@ -110,7 +110,7 @@ const auth = {
       commit("SET_USER", null);
     },
     changeAvatar({ commit }, avatar) {
-      console.log(avatar);
+
       localStorage.removeItem("user");
       commit("CHANGE_AVATAR", avatar)
     },

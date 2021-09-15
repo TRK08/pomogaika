@@ -78,7 +78,6 @@ export default {
           `https://pomogayka96.ru/wp-json/pg/v1/user/resetp?login=${this.email}`
         )
         .then((res) => {
-          console.log(res.data);
           if (res.data.code === "200") {
             this.succes = true;
             this.userNotFound = false;
