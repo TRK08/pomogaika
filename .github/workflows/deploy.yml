@@ -21,7 +21,7 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
-        server: 185.224.138.188
+        server: 153.92.217.31
         port: 21
         protocol: ftp
         username: u263465232.pomogayka96.ru
