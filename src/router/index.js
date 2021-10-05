@@ -6,8 +6,8 @@ import store from '../store'
 const router = new VueRouter({
     routes,
     mode: 'history',
-    scrollBehavior: function(to, from, savedPosition) {
-        
+    scrollBehavior: function (to, from, savedPosition) {
+
         if (to.hash) {
             return {
                 selector: to.hash,
@@ -18,6 +18,7 @@ const router = new VueRouter({
         }
     },
 });
+
 
 
 

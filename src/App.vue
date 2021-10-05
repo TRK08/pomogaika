@@ -25,8 +25,25 @@ export default {
   computed: {
     ...mapState("auth", ["preload"]),
   },
+  data() {
+    return {};
+  },
+  methods: {
+    getCartId() {
+      let href = window.location.href.split("/");
+      if (href[href.length - 2] === "cart") {
+        // localStorage.setItem("cartId", );
+        this.$store.dispatch("goods/GET_ADMIN_CART", href[href.length - 1]);
+        this.$router.push("/cart");
+        setTimeout(() => {
+          this.$store.commit("auth/PRELOADER");
+        }, 500);
+      }
+    },
+  },
   created() {
     this.$store.dispatch("goods/GET_CART_FROM_STORAGE");
+    this.getCartId();
   },
 };
 </script>

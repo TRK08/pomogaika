@@ -30,7 +30,7 @@ const routes = [
 	},
 	{
 		path: '/cart',
-		component: CartPage
+		component: CartPage,
 	},
 	{
 		path: '/cabinet',

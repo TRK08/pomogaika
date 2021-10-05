@@ -19,7 +19,7 @@ const auth = {
     SET_ERROR(state, err) {
       state.error = err
     },
-    PRELOADER(state, flag) {
+    PRELOADER(state) {
       state.preload = !state.preload
     },
     CHANGE_AVATAR(state, avatar) {
@@ -95,6 +95,7 @@ const auth = {
         let error = false
         commit('SET_ERROR', error)
         localStorage.setItem("user", JSON.stringify(user));
+        console.log(user);
         commit("SET_TOKEN", user.token);
         commit("SET_USER", user);
       }

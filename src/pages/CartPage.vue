@@ -4,7 +4,8 @@
       <h2>Корзина</h2>
       <div class="row cart-page__wrap">
         <div class="col-sm-6 col-lg-7">
-          <CartForm :coupon="coupon" />
+          <CartFormAdmin v-if="user && user.role === 'admin'" />
+          <CartForm :coupon="coupon" v-else />
         </div>
         <div class="col-sm-6 col-lg-5">
           <CartOrder :cart="cart" @promo="promo" />
@@ -18,9 +19,10 @@
 import { mapGetters } from "vuex";
 
 import CartForm from "../components/CartForm.vue";
+import CartFormAdmin from "../components/CartFormAdmin.vue";
 import CartOrder from "../components/CartOrder.vue";
 export default {
-  components: { CartForm, CartOrder },
+  components: { CartForm, CartOrder, CartFormAdmin },
   name: "CartPage",
   data() {
     return {
@@ -30,6 +32,7 @@ export default {
   computed: {
     ...mapGetters({
       cart: "goods/getCart",
+      user: "auth/getAuthenticated",
     }),
   },
   methods: {

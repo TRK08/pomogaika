@@ -39,6 +39,9 @@ const goods = {
         localStorage.setItem('cart', JSON.stringify(state.cart))
       }
     },
+    SET_ADMIN_CART(state, payload) {
+      state.cart = payload
+    },
     QUANTITY_MINUS(state, index) {
       if (state.cart[index].quantity > 1) {
         state.cart[index].quantity--
@@ -119,6 +122,30 @@ const goods = {
           localStorage.setItem('invoice_id', invoice)
           window.location.assign(res.data.paylink)
         })
+    },
+    SEND_ADMIN_CART({ state }, email) {
+      let data = {
+        email: email,
+        goods: state.cart
+      }
+      console.log(JSON.stringify(data));
+      axios.post('https://pomogayka96.ru/wp-json/pg/v1/save/cart', JSON.stringify(data), {
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      }).then((res) => {
+        console.log(res);
+      })
+    },
+    GET_ADMIN_CART({ state, commit }, id) {
+      axios.get(`https://pomogayka96.ru/wp-json/pg/v1/get/cart?id=${id}`).then(res => {
+
+        res.data.forEach(item => {
+          item.quantity = +item.quantity
+        })
+
+        commit('SET_ADMIN_CART', res.data)
+      })
     },
     TAKE_GOOD_INDEX({ commit }, index) {
       commit('SET_GOOD_INDEX', index)

@@ -27,7 +27,7 @@ store.dispatch("auth/VALIDATE", user);
 
 
 Vue.use(VueTyperPlugin)
-Vue.use(VueRouter) 
+Vue.use(VueRouter)
 Vue.use(Vuelidate)
 Vue.use(require('vue-cookies'))
 Vue.use(VueAwesomeSwiper)
@@ -35,25 +35,22 @@ Vue.use(VueScrollTo)
 Vue.use(VueTheMask)
 Vue.use(YmapPlugin, settings)
 
-
-
-
 router.beforeEach((to, from, next) => {
-  if(to.hash) {
+  if (to.hash) {
     store.dispatch('auth/SET_PRELOAD')
-    setTimeout(function(){
+    setTimeout(function () {
       next()
     }, 200);
-    setTimeout(function(){
+    setTimeout(function () {
       store.dispatch('auth/SET_PRELOAD')
     }, 700);
   }
   else {
     store.dispatch('auth/SET_PRELOAD')
-    setTimeout(function(){
+    setTimeout(function () {
       next()
     }, 300);
-    setTimeout(function(){
+    setTimeout(function () {
       store.dispatch('auth/SET_PRELOAD')
     }, 1500);
   }
