@@ -33,7 +33,32 @@
           </div>
         </div>
         <div class="cabinet-info">
-          <form class="cabinet-change-info" action=""></form>
+          <div class="cabinet-info-notifications">
+            <div class="cabinet-info-notifications__header">
+              <h3>Уведомления</h3>
+              <div @click="readAllNotify" class="cabinet-notifications-bell">
+                <img src="../assets/img/bell.svg" alt="" />
+                <div
+                  v-if="!readAll"
+                  class="cabinet-notifications-bell__unread"
+                ></div>
+              </div>
+            </div>
+            <div
+              class="cabinet-info-notification"
+              v-for="item in user.notifications"
+              :key="item.link"
+            >
+              <p>
+                <span
+                  class="cabinet-info-notification-status"
+                  :class="{ readed: !item.readed }"
+                ></span>
+                {{ item.text }}
+              </p>
+              <a :href="item.link"> {{ item.button }}</a>
+            </div>
+          </div>
           <div class="cabinet-info-offers">
             <h3>Мои заказы</h3>
             <table class="cabinet-offers-table">
@@ -68,6 +93,8 @@ export default {
     return {
       file: "null",
       orders: [],
+      isRead: null,
+      readAll: false,
     };
   },
   methods: {
@@ -75,6 +102,37 @@ export default {
       SIGN_OUT: "auth/SIGN_OUT",
     }),
 
+    checkReadedNotify() {
+      this.user.notifications.map((item) => {
+        if (!item.readed) {
+          this.isRead = false;
+        } else {
+          this.isRead = true;
+        }
+      });
+    },
+    readAllNotify() {
+      this.user.notifications.map((item) => {
+        item.readed = true;
+      });
+
+      this.readAll = true;
+
+      let data = {
+        id: user.id,
+        notifications: user.notifications,
+      };
+
+      axios.post(
+        "https://pomogayka96.ru/wp-json/pg/v1/update/notifications",
+        JSON.stringify(data),
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+    },
     signOut() {
       this.SIGN_OUT().then(() => {
         this.$router.replace("/");
@@ -180,6 +238,7 @@ export default {
   },
   created() {
     this.getOrders();
+    this.checkReadedNotify();
   },
 };
 </script>
@@ -189,5 +248,61 @@ export default {
 .img-format {
   text-align: center;
   margin-top: 10px;
+}
+
+.cabinet-info-notifications__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cabinet-notifications-bell {
+  position: relative;
+  cursor: pointer;
+}
+
+.cabinet-notifications-bell img {
+  width: 30px;
+  height: 30px;
+}
+
+.cabinet-info-notifications {
+  margin-bottom: 30px;
+}
+
+.cabinet-info-notification p {
+  display: flex;
+  align-items: center;
+}
+
+.cabinet-notifications-bell__unread {
+  position: absolute;
+  right: 0;
+  top: -5px;
+  display: block;
+  width: 15px;
+  height: 15px;
+  background-color: #f84f31;
+  border-radius: 100%;
+}
+
+.cabinet-info-notification-status {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  background-color: #2c2c2c;
+  margin-right: 10px;
+}
+
+.cabinet-info-notification-status.readed {
+  background-color: #f84f31;
+}
+
+.cabinet-info-notification {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  border-bottom: 1px solid #c4c4c4;
+  padding: 15px 0;
 }
 </style>

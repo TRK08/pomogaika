@@ -8,7 +8,7 @@
           <CartForm :coupon="coupon" v-else />
         </div>
         <div class="col-sm-6 col-lg-5">
-          <CartOrder :cart="cart" @promo="promo" />
+          <CartOrder :cart="cart" :user="user" @promo="promo" />
         </div>
       </div>
     </div>

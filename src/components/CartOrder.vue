@@ -2,7 +2,7 @@
   <div class="cart-order-component__wrap">
     <div class="cart-order-component" v-if="cart && cart.length">
       <h4 class="cart-order-title">Информация о заказе</h4>
-      <p>
+      <p v-if="user && user.role !== 'administrator'">
         Наш менеджер свяжется с вами для уточнения способа доставки и ее
         стоимости
       </p>
@@ -55,8 +55,13 @@
           </h4>
         </div>
       </div>
-      <div class="cart-order-sum">Сумма заказа: {{ totalPrice }}</div>
-      <div class="cart-order-coupon">
+      <div class="cart-order-sum" v-if="user && user.role !== 'administrator'">
+        Сумма заказа: {{ totalPrice }}
+      </div>
+      <div
+        class="cart-order-coupon"
+        v-if="user && user.role !== 'administrator'"
+      >
         <span>Промокод</span>
         <input
           @input="setPromo"
@@ -66,7 +71,10 @@
         />
         <small> {{ status }} </small>
       </div>
-      <div class="cart-order-total-sum">
+      <div
+        class="cart-order-total-sum"
+        v-if="user && user.role !== 'administrator'"
+      >
         <h4>Итого к оплате:</h4>
         <span>{{ totalPrice - couponAmount }} руб</span>
       </div>
@@ -84,6 +92,10 @@ export default {
   props: {
     cart: {
       type: Array,
+      required: true,
+    },
+    user: {
+      type: Object,
       required: true,
     },
   },
