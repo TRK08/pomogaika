@@ -120,12 +120,10 @@ export default {
 
     checkReadedNotify() {
       this.notifications.forEach((item) => {
-        console.log(item.readed);
         if (!item.readed) {
           this.readAll = false;
         }
       });
-      console.log(this.notifications);
     },
     readAllNotify() {
       this.notifications.forEach((item) => {
@@ -150,7 +148,7 @@ export default {
           }
         )
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
         });
     },
     signOut() {
@@ -228,8 +226,7 @@ export default {
           `https://pomogayka96.ru/wp-json/pg/v1/get/notifications?user=${this.user.user_id}`
         )
         .then((res) => {
-          this.notifications = res.data;
-          this.notifications.reverse();
+          this.notifications = [...res.data.reverse()];
           this.checkReadedNotify();
         });
     },
