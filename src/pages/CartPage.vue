@@ -4,7 +4,7 @@
       <h2>Корзина</h2>
       <div class="row cart-page__wrap">
         <div class="col-sm-6 col-lg-7">
-          <CartFormAdmin v-if="user && user.role === 'admin'" />
+          <CartFormAdmin v-if="user && user.role === 'administrator'" />
           <CartForm :coupon="coupon" v-else />
         </div>
         <div class="col-sm-6 col-lg-5">
