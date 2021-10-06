@@ -123,15 +123,19 @@ export default {
         notifications: user.notifications,
       };
 
-      axios.post(
-        "https://pomogayka96.ru/wp-json/pg/v1/update/notifications",
-        JSON.stringify(data),
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      axios
+        .post(
+          "https://pomogayka96.ru/wp-json/pg/v1/update/notifications",
+          JSON.stringify(data),
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res.data);
+        });
     },
     signOut() {
       this.SIGN_OUT().then(() => {
