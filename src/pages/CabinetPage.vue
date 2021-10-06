@@ -13,7 +13,7 @@
           <div class="cabinet-img">
             <small>Фотография</small>
             <div class="cabinet-img__wrap">
-              <img :src="user.user_avatar" alt="" />
+              <img v-if="user.user_avatar" :src="user.user_avatar" alt="" />
             </div>
           </div>
           <div class="cabinet-load-img">
@@ -33,10 +33,11 @@
           </div>
         </div>
         <div class="cabinet-info">
-          <div class="cabinet-info-notifications">
+          <div class="cabinet-info-notifications" v-if="notifications">
             <div class="cabinet-info-notifications__header">
               <h3>Уведомления</h3>
               <div @click="readAllNotify" class="cabinet-notifications-bell">
+                Прочитать все
                 <img src="../assets/img/bell.svg" alt="" />
                 <div
                   v-if="!readAll"
@@ -46,7 +47,7 @@
             </div>
             <div
               class="cabinet-info-notification"
-              v-for="item in user.notifications"
+              v-for="item in notifications.slice(0, showNotify)"
               :key="item.link"
             >
               <p>
@@ -58,6 +59,20 @@
               </p>
               <a :href="item.link"> {{ item.button }}</a>
             </div>
+            <button
+              class="cabinet-info__show-more"
+              v-if="showNotify <= notifications.length - 1"
+              @click="showNotify += 3"
+            >
+              Показать еще
+            </button>
+            <button
+              class="cabinet-info__show-more"
+              v-else
+              @click="showNotify = 3"
+            >
+              Скрыть все
+            </button>
           </div>
           <div class="cabinet-info-offers">
             <h3>Мои заказы</h3>
@@ -93,8 +108,9 @@ export default {
     return {
       file: "null",
       orders: [],
-      isRead: null,
-      readAll: false,
+      readAll: true,
+      notifications: null,
+      showNotify: 3,
     };
   },
   methods: {
@@ -103,24 +119,24 @@ export default {
     }),
 
     checkReadedNotify() {
-      this.user.notifications.map((item) => {
+      this.notifications.forEach((item) => {
+        console.log(item.readed);
         if (!item.readed) {
-          this.isRead = false;
-        } else {
-          this.isRead = true;
+          this.readAll = false;
         }
       });
+      console.log(this.notifications);
     },
     readAllNotify() {
-      this.user.notifications.map((item) => {
+      this.notifications.forEach((item) => {
         item.readed = true;
       });
 
       this.readAll = true;
 
       let data = {
-        id: user.id,
-        notifications: user.notifications,
+        user: this.user.user_id,
+        notifications: this.notifications,
       };
 
       axios
@@ -206,6 +222,16 @@ export default {
           console.log(err);
         });
     },
+    getNotify() {
+      axios
+        .get(
+          `https://pomogayka96.ru/wp-json/pg/v1/get/notifications?user=${this.user.user_id}`
+        )
+        .then((res) => {
+          this.notifications = res.data.reverse();
+          this.checkReadedNotify();
+        });
+    },
   },
   computed: {
     ...mapGetters({
@@ -242,7 +268,7 @@ export default {
   },
   created() {
     this.getOrders();
-    this.checkReadedNotify();
+    this.getNotify();
   },
 };
 </script>
@@ -276,6 +302,14 @@ export default {
 .cabinet-info-notification p {
   display: flex;
   align-items: center;
+}
+
+.cabinet-info__show-more {
+  margin: 0 auto;
+  margin-top: 15px;
+  width: 100%;
+  background-color: transparent;
+  border: none;
 }
 
 .cabinet-notifications-bell__unread {
