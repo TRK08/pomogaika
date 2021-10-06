@@ -226,7 +226,7 @@ export default {
           `https://pomogayka96.ru/wp-json/pg/v1/get/notifications?user=${this.user.user_id}`
         )
         .then((res) => {
-          this.notifications = [...res.data.reverse()];
+          this.notifications = JSON.parse(JSON.stringify(res.data)).reverse();
           this.checkReadedNotify();
         });
     },
