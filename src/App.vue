@@ -31,9 +31,8 @@ export default {
   methods: {
     getCartId() {
       let href = window.location.href.split("/");
-      if (href[href.length - 2] === "cart") {
-        // localStorage.setItem("cartId", );
-        this.$store.dispatch("goods/GET_ADMIN_CART", href[href.length - 1]);
+      if (href[href.length - 3] === "cart") {
+        this.$store.dispatch("goods/GET_ADMIN_CART", href[href.length - 2]);
         this.$router.push("/cart");
         setTimeout(() => {
           this.$store.commit("auth/PRELOADER");
