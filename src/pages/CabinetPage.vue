@@ -147,9 +147,7 @@ export default {
             },
           }
         )
-        .then((res) => {
-          // console.log(res.data);
-        })
+        .then((res) => {})
         .catch((err) => {
           console.log(err);
         });

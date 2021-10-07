@@ -100,7 +100,6 @@ const auth = {
         let error = false
         commit('SET_ERROR', error)
         localStorage.setItem("user", JSON.stringify(user));
-        console.log(user);
         commit("SET_TOKEN", user.token);
         commit("SET_USER", user);
       }
@@ -125,7 +124,6 @@ const auth = {
           `https://pomogayka96.ru/wp-json/pg/v1/get/notifications?user=${state.user.user_id}`
         )
         .then((res) => {
-          console.log(res.data);
           commit('SET_NOTIFICATIONS', res.data)
         })
         .catch((err) => {
@@ -144,7 +142,6 @@ const auth = {
       return state.registrStatus
     },
     getNotifications(state) {
-      console.log(JSON.parse(JSON.stringify(state.notifications)));
       return JSON.parse(JSON.stringify(state.notifications))
     }
   }

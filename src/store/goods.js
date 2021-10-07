@@ -128,7 +128,6 @@ const goods = {
         email: email,
         goods: state.cart
       }
-      console.log(JSON.stringify(data));
       axios.post('https://pomogayka96.ru/wp-json/pg/v1/save/cart', JSON.stringify(data), {
         headers: {
           'Content-Type': 'application/json',
