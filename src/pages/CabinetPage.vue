@@ -109,7 +109,7 @@ export default {
       file: "null",
       orders: [],
       readAll: true,
-      notifications: null,
+      // notifications: [],
       showNotify: 3,
     };
   },
@@ -149,6 +149,9 @@ export default {
         )
         .then((res) => {
           // console.log(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
         });
     },
     signOut() {
@@ -220,20 +223,11 @@ export default {
           console.log(err);
         });
     },
-    getNotify() {
-      axios
-        .get(
-          `https://pomogayka96.ru/wp-json/pg/v1/get/notifications?user=${this.user.user_id}`
-        )
-        .then((res) => {
-          this.notifications = JSON.parse(JSON.stringify(res.data)).reverse();
-          this.checkReadedNotify();
-        });
-    },
   },
   computed: {
     ...mapGetters({
       user: "auth/getAuthenticated",
+      notifications: "auth/getNotifications",
     }),
     formatStatus() {
       return this.orders.forEach((item) => {
@@ -266,7 +260,9 @@ export default {
   },
   created() {
     this.getOrders();
-    this.getNotify();
+    this.$store.dispatch("auth/getNotify").then((res) => {
+      this.checkReadedNotify();
+    });
   },
 };
 </script>

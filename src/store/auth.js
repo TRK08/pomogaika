@@ -7,7 +7,8 @@ const auth = {
     user: null,
     error: false,
     preload: true,
-    registrStatus: null
+    registrStatus: null,
+    notifications: null
   },
   mutations: {
     SET_USER(state, user) {
@@ -28,6 +29,9 @@ const auth = {
     },
     REGISTR_STATUS(state, status) {
       state.registrStatus = status
+    },
+    SET_NOTIFICATIONS(state, payload) {
+      state.notifications = payload.reverse()
     }
   },
   actions: {
@@ -111,9 +115,21 @@ const auth = {
       commit("SET_USER", null);
     },
     changeAvatar({ commit }, avatar) {
-
       localStorage.removeItem("user");
       commit("CHANGE_AVATAR", avatar)
+    },
+    async getNotify({ state, commit }) {
+      await axios
+        .get(
+          `https://pomogayka96.ru/wp-json/pg/v1/get/notifications?user=${state.user.user_id}`
+        )
+        .then((res) => {
+          console.log(res.data);
+          commit('SET_NOTIFICATIONS', res.data)
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
   },
   getters: {
@@ -125,6 +141,9 @@ const auth = {
     },
     getRegistrStatus(state) {
       return state.registrStatus
+    },
+    getNotifications(state) {
+      return state.notifications
     }
   }
 }
