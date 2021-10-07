@@ -31,7 +31,8 @@ const auth = {
       state.registrStatus = status
     },
     SET_NOTIFICATIONS(state, payload) {
-      state.notifications = payload.reverse()
+      payload.reverse()
+      state.notifications = payload
     }
   },
   actions: {
@@ -143,7 +144,8 @@ const auth = {
       return state.registrStatus
     },
     getNotifications(state) {
-      return state.notifications
+      console.log(JSON.parse(JSON.stringify(state.notifications)));
+      return JSON.parse(JSON.stringify(state.notifications))
     }
   }
 }
