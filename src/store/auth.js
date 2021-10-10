@@ -121,9 +121,10 @@ const auth = {
     async getNotify({ state, commit }) {
       await axios
         .get(
-          `https://pomogayka96.ru/wp-json/pg/v1/get/notifications?user=${state.user.user_id}`
+          `https://pomogayka96.ru/wp-json/pg/v1/get/notifications?used=${state.user.user_id}`
         )
         .then((res) => {
+          console.log(res.data);
           commit('SET_NOTIFICATIONS', res.data)
         })
         .catch((err) => {
