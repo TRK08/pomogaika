@@ -121,11 +121,13 @@ const auth = {
     async getNotify({ state, commit }) {
       await axios
         .get(
-          `https://pomogayka96.ru/wp-json/pg/v1/get/notifications?used=${state.user.user_id}`
+          `https://pomogayka96.ru/wp-json/pg/v1/get/notifications?user=${state.user.user_id}`
         )
         .then((res) => {
-          console.log(res.data);
-          commit('SET_NOTIFICATIONS', res.data)
+          console.log(res);
+          if (res.data) {
+            commit('SET_NOTIFICATIONS', res.data)
+          }
         })
         .catch((err) => {
           console.log(err);
@@ -143,7 +145,7 @@ const auth = {
       return state.registrStatus
     },
     getNotifications(state) {
-      return JSON.parse(JSON.stringify(state.notifications))
+      return state.notifications
     }
   }
 }

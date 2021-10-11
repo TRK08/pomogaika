@@ -119,11 +119,13 @@ export default {
     }),
 
     checkReadedNotify() {
-      this.notifications.forEach((item) => {
-        if (!item.readed) {
-          this.readAll = false;
-        }
-      });
+      if (this.notifications) {
+        this.notifications.forEach((item) => {
+          if (!item.readed) {
+            this.readAll = false;
+          }
+        });
+      }
     },
     readAllNotify() {
       this.notifications.forEach((item) => {
