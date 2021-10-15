@@ -1,6 +1,6 @@
 <template>
   <section class="form-admin">
-    <h2>Введите E-mail пользователя которому хотите отправить корзину</h2>
+    <h2>Введите E-mail пользователя, которому хотите отправить корзину</h2>
     <form action="" @submit.prevent="sendCart">
       <input v-model="email" type="text" placeholder="E-mail" />
       <button>Отправить</button>
